@@ -1,0 +1,12 @@
+{
+  "Enable": true,
+  "Version": "1.2.0",
+  "Id": "DeepEngineMod",
+  "DisplayName": "Deep Engine Mod",
+  "Author": "AndreaDev3D",
+  "Game": "Subnautica",
+  "AssemblyName": "AD3D_DeepEngineMod.dll",
+  "EntryMethod": "AD3D_DeepEngineMod.QPatch.Patch",
+  "Config": {},
+  "Requires": []
+}
