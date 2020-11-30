@@ -54,23 +54,23 @@ namespace AD3D_DeepEngineMod.BO.Patch.DeepEngine
             ApplySubnauticaShaders(_prefab);
 
             // Add constructable - This prefab normally isn't constructed.
-            Constructable constructible = _prefab.AddComponent<Constructable>();
-            constructible.constructedAmount = 1;
-            constructible.allowedInBase = true;
-            constructible.allowedInSub = false;
-            constructible.allowedOutside = true;
-            constructible.allowedOnCeiling = false;
-            constructible.allowedOnGround = true;
-            constructible.allowedOnWall = false;
-            constructible.allowedOnConstructables = false;
-            constructible.techType = this.TechType;
-            constructible.rotationEnabled = true;
-            constructible.placeDefaultDistance = 6f;
-            constructible.placeMinDistance = 0.5f;
-            constructible.placeMaxDistance = 15f;
-            constructible.surfaceType = VFXSurfaceTypes.metal;
-            constructible.model = _prefab;
-            constructible.forceUpright = true;
+            //Constructable constructible = _prefab.AddComponent<Constructable>();
+            //constructible.constructedAmount = 1;
+            //constructible.allowedInBase = true;
+            //constructible.allowedInSub = false;
+            //constructible.allowedOutside = true;
+            //constructible.allowedOnCeiling = false;
+            //constructible.allowedOnGround = true;
+            //constructible.allowedOnWall = false;
+            //constructible.allowedOnConstructables = false;
+            //constructible.techType = this.TechType;
+            //constructible.rotationEnabled = true;
+            //constructible.placeDefaultDistance = 6f;
+            //constructible.placeMinDistance = 0.5f;
+            //constructible.placeMaxDistance = 15f;
+            //constructible.surfaceType = VFXSurfaceTypes.metal;
+            //constructible.model = _prefab;
+            //constructible.forceUpright = true;
 
             return _prefab;
         }
