@@ -85,9 +85,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BO\Helper\Constant.cs" />
-    <Compile Include="BO\Helper\GameObjectFinder.cs" />
-    <Compile Include="BO\Helper\Import.cs" />
+    <Compile Include="BO\Utils\Constant.cs" />
+    <Compile Include="BO\Utils\GameObjectFinder.cs" />
+    <Compile Include="BO\Utils\Helper.cs" />
     <Compile Include="BO\Patch\DeepEngine\DeepEngineAnim.cs" />
     <Compile Include="BO\Patch\DeepEngine\DeepEngineKit.cs" />
     <Compile Include="QPatch.cs" />

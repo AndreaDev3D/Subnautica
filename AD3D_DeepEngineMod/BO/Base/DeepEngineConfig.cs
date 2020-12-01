@@ -1,4 +1,4 @@
-﻿using AD3D_DeepEngineMod.BO.Helper;
+﻿using AD3D_DeepEngineMod.BO.Utils;
 using QModManager.Utility;
 using SMLHelper.V2.Json;
 using SMLHelper.V2.Options;
@@ -28,7 +28,7 @@ namespace AD3D_DeepEngineMod.BO
         private void MyCheckboxToggleEvent(ToggleChangedEventArgs e)
         {
             // Reload if value changed
-            Import.LoadConfig();
+            Utils.Helper.LoadConfig();
             // Log
             Logger.Log(Logger.Level.Info, "Config value was changed!");
             Logger.Log(Logger.Level.Info, $"{e.Value}");
