@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AD3D_DeepEngineMod.BO.Helper
+namespace AD3D_DeepEngineMod.BO.Utils
 {
     public class Constant
     {

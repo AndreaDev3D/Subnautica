@@ -1,5 +1,5 @@
 ﻿using AD3D_DeepEngineMod.BO;
-using AD3D_DeepEngineMod.BO.Helper;
+using AD3D_DeepEngineMod.BO.Utils;
 using AD3D_DeepEngineMod.BO.Patch;
 using AD3D_DeepEngineMod.BO.Patch.DeepEngine;
 using QModManager.API.ModLoading;
@@ -21,35 +21,18 @@ namespace AD3D_DeepEngineMod
         [QModPatch]
         public static void Patch()
         {
-            Import.LoadConfig();
-
-            //patch crafting recipes
-            //DeepEngineKit = TechTypeHandler.AddTechType($"{Constant.ClassID}_Kit", Constant.FriendlyName, Constant.ShortDescription, Helper.GetSpriteFromBundle("Icon"));
-            //CraftDataHandler.SetItemSize(DeepEngineKit, new Vector2int(2, 2));
-            //var techDataBlade = new TechData()
-            //{
-            //    craftAmount = 1,
-            //    Ingredients = new List<Ingredient>()
-            //    {
-            //      new Ingredient(TechType.Titanium, 2),
-            //      new Ingredient(TechType.Lubricant, 1),
-            //      new Ingredient(TechType.WiringKit, 1),
-            //    }
-            //};
-            //CraftDataHandler.SetTechData(DeepEngineKit, techDataBlade); 
+            Helper.LoadConfig();
 
             DeepEngineKit.Patch();
             DeepEngine.Patch();
 
-            CraftTreeHandler.AddCraftingNode(CraftTree.Type.Fabricator, DeepEngineKit.TechType, "Energy Solution");
-            //CraftTreeHandler.AddCraftingNode(CraftTree.Type.Fabricator, deepEngineKit, "Energy Solution");
-
+            //CraftTreeHandler.AddCraftingNode(CraftTree.Type.Fabricator, DeepEngineKit.TechType, "Energy Solution");
 
             //Add the databank entry.
             LanguageHandler.SetLanguageLine($"Ency_{Constant.ClassID}", Constant.FriendlyName);
-            LanguageHandler.SetLanguageLine($"EncyDesc_{Constant.ClassID}", Constant.PDADescription(Import.Config.MaxPowerAllowed));
+            LanguageHandler.SetLanguageLine($"EncyDesc_{Constant.ClassID}", Constant.PDADescription(Helper.Config.MaxPowerAllowed));
 
-            Logger.Log(Logger.Level.Info, "Patched successfully!");
+            Helper.LogEvent("Patched successfully!");
         }
     }
 }

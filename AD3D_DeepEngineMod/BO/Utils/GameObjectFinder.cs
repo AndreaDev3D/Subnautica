@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace AD3D_DeepEngineMod.BO.Helper
+namespace AD3D_DeepEngineMod.BO.Utils
 {
     public class GameObjectFinder
     {

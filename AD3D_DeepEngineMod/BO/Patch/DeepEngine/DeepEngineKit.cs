@@ -1,4 +1,4 @@
-﻿using AD3D_DeepEngineMod.BO.Helper;
+﻿using AD3D_DeepEngineMod.BO.Utils;
 using SMLHelper.V2.Assets;
 using SMLHelper.V2.Crafting;
 using System;
@@ -13,13 +13,12 @@ namespace AD3D_DeepEngineMod.BO.Patch.DeepEngine
 {
     public class DeepEngineKit : Craftable
     {
-        public DeepEngineKit() : base(Constant.ClassID, Constant.FriendlyName, Constant.ShortDescription)
+        public DeepEngineKit() : base($"{Constant.ClassID}_Kit", Constant.FriendlyName, Constant.ShortDescription)
         {
-            ClassID = $"{Constant.ClassID}_Kit";
-            FriendlyName = Constant.FriendlyName;
-            Description = Constant.ShortDescription;
         }
-        public override string[] StepsToFabricatorTab => new string[] { "Energy Solution", "Electronics" };
+
+        //public override string[] StepsToFabricatorTab => new string[] { "Energy Solution", "Electronics" };
+
         public override WorldEntityInfo EntityInfo => new WorldEntityInfo() { cellLevel = LargeWorldEntity.CellLevel.Global, classId = this.ClassID, localScale = Vector3.one, prefabZUp = false, slotType = EntitySlot.Type.Small, techType = this.TechType };
 
 
@@ -40,38 +39,19 @@ namespace AD3D_DeepEngineMod.BO.Patch.DeepEngine
         public override GameObject GetGameObject()
         {
             //Instantiates a copy of the prefab that is loaded from the AssetBundle loaded above.
-            GameObject _prefab = GameObject.Instantiate(Import.Bundle.LoadAsset<GameObject>("DeepEngine_Kit.prefab"));
-            _prefab.name = $"{Constant.ClassID}_Kit";
+            GameObject _prefab = GameObject.Instantiate(Utils.Helper.Bundle.LoadAsset<GameObject>("DeepEngine_Kit.prefab"));
+            _prefab.name = ClassID;
             //Need a tech tag for most prefabs
             var techTag = _prefab.AddComponent<TechTag>();
             techTag.type = TechType;
 
             _prefab.EnsureComponent<LargeWorldEntity>().cellLevel = LargeWorldEntity.CellLevel.Global;
-            _prefab.EnsureComponent<PrefabIdentifier>().ClassId = $"{Constant.ClassID}_Kit";
+            _prefab.EnsureComponent<PrefabIdentifier>().ClassId = ClassID;
             _prefab.EnsureComponent<Pickupable>().isPickupable = true;
 
             //Update all shaders
             ApplySubnauticaShaders(_prefab);
-
-            // Add constructable - This prefab normally isn't constructed.
-            //Constructable constructible = _prefab.AddComponent<Constructable>();
-            //constructible.constructedAmount = 1;
-            //constructible.allowedInBase = true;
-            //constructible.allowedInSub = false;
-            //constructible.allowedOutside = true;
-            //constructible.allowedOnCeiling = false;
-            //constructible.allowedOnGround = true;
-            //constructible.allowedOnWall = false;
-            //constructible.allowedOnConstructables = false;
-            //constructible.techType = this.TechType;
-            //constructible.rotationEnabled = true;
-            //constructible.placeDefaultDistance = 6f;
-            //constructible.placeMinDistance = 0.5f;
-            //constructible.placeMaxDistance = 15f;
-            //constructible.surfaceType = VFXSurfaceTypes.metal;
-            //constructible.model = _prefab;
-            //constructible.forceUpright = true;
-
+            BO.Utils.Helper.LogEvent(_prefab.name, true);
             return _prefab;
         }
 
@@ -111,7 +91,7 @@ namespace AD3D_DeepEngineMod.BO.Patch.DeepEngine
 
         protected override Atlas.Sprite GetItemSprite()
         {
-            return Import.GetSpriteFromBundle("Icon_Kit");
+            return Utils.Helper.GetSpriteFromBundle("Icon_Kit");
         }
     }
 }

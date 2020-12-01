@@ -3,9 +3,9 @@ using System.IO;
 using System.Reflection;
 using UnityEngine;
 
-namespace AD3D_DeepEngineMod.BO.Helper
+namespace AD3D_DeepEngineMod.BO.Utils
 {
-    public class Import
+    public class Helper
     {
         public static DeepEngineConfig Config { get; } = new DeepEngineConfig();
 

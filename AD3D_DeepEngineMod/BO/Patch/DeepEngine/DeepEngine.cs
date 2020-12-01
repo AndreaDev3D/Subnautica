@@ -1,4 +1,4 @@
-﻿using AD3D_DeepEngineMod.BO.Helper;
+﻿using AD3D_DeepEngineMod.BO.Utils;
 using AD3D_DeepEngineMod.Patch;
 using SMLHelper.V2.Assets;
 using SMLHelper.V2.Crafting;
@@ -13,9 +13,6 @@ namespace AD3D_DeepEngineMod.BO.Patch.DeepEngine
     {
         public DeepEngine() : base(Constant.ClassID, Constant.FriendlyName, Constant.ShortDescription)
         {
-            ClassID = Constant.ClassID;
-            FriendlyName = Constant.FriendlyName;
-            Description = Constant.ShortDescription;
         }
 
 
@@ -41,7 +38,7 @@ namespace AD3D_DeepEngineMod.BO.Patch.DeepEngine
         public override GameObject GetGameObject()
         {
             //Instantiates a copy of the prefab that is loaded from the AssetBundle loaded above.
-            GameObject _prefab = GameObject.Instantiate(Helper.Import.Bundle.LoadAsset<GameObject>("DeepEngine.prefab"));
+            GameObject _prefab = GameObject.Instantiate(Utils.Helper.Bundle.LoadAsset<GameObject>("DeepEngine.prefab"));
             _prefab.name = Constant.ClassID;
             //Need a tech tag for most prefabs
             var techTag = _prefab.AddComponent<TechTag>();
@@ -120,11 +117,11 @@ namespace AD3D_DeepEngineMod.BO.Patch.DeepEngine
 
         protected override Atlas.Sprite GetItemSprite()
         {
-            return Helper.Import.GetSpriteFromBundle("Icon");
+            return Utils.Helper.GetSpriteFromBundle("Icon");
         }
         public static Atlas.Sprite GetItemIcon()
         {
-            return Helper.Import.GetSpriteFromBundle("Icon");
+            return Utils.Helper.GetSpriteFromBundle("Icon");
         }
 
         public override PDAEncyclopedia.EntryData EncyclopediaEntryData
