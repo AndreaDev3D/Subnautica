@@ -1,12 +1,8 @@
 ﻿using AD3D_DeepEngineMod.BO;
-using AD3D_DeepEngineMod.BO.Utils;
-using AD3D_DeepEngineMod.BO.Patch;
 using AD3D_DeepEngineMod.BO.Patch.DeepEngine;
+using AD3D_DeepEngineMod.BO.Utils;
 using QModManager.API.ModLoading;
-using QModManager.Utility;
-using SMLHelper.V2.Crafting;
 using SMLHelper.V2.Handlers;
-using System.Collections.Generic;
 
 namespace AD3D_DeepEngineMod
 {
@@ -14,7 +10,7 @@ namespace AD3D_DeepEngineMod
     public class QPatch
     {
         //public static TechType DeepEngineKit;
-        //internal static DeepEngineConfig Config { get; } = OptionsPanelHandler.Main.RegisterModOptions<DeepEngineConfig>();
+        internal static DeepEngineConfig Config { get; set; } = OptionsPanelHandler.Main.RegisterModOptions<DeepEngineConfig>();
         internal static DeepEngineKit DeepEngineKit { get; } = new DeepEngineKit();
         internal static DeepEngine DeepEngine { get; } = new DeepEngine();
 
@@ -32,7 +28,7 @@ namespace AD3D_DeepEngineMod
             LanguageHandler.SetLanguageLine($"Ency_{Constant.ClassID}", Constant.FriendlyName);
             LanguageHandler.SetLanguageLine($"EncyDesc_{Constant.ClassID}", Constant.PDADescription(Helper.Config.MaxPowerAllowed));
 
-            Helper.LogEvent("Patched successfully!");
+            AD3D_Common.Helper.Log($"Patched successfully [v{Constant.DeepEngineMod_Version}]");
         }
     }
 }

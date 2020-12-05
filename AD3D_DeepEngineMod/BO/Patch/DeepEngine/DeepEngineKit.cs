@@ -40,18 +40,18 @@ namespace AD3D_DeepEngineMod.BO.Patch.DeepEngine
         {
             //Instantiates a copy of the prefab that is loaded from the AssetBundle loaded above.
             GameObject _prefab = GameObject.Instantiate(Utils.Helper.Bundle.LoadAsset<GameObject>("DeepEngine_Kit.prefab"));
-            _prefab.name = ClassID;
+            _prefab.name = $"{Constant.ClassID}_Kit";
             //Need a tech tag for most prefabs
             var techTag = _prefab.AddComponent<TechTag>();
             techTag.type = TechType;
 
             _prefab.EnsureComponent<LargeWorldEntity>().cellLevel = LargeWorldEntity.CellLevel.Global;
-            _prefab.EnsureComponent<PrefabIdentifier>().ClassId = ClassID;
+            _prefab.EnsureComponent<PrefabIdentifier>().ClassId = $"{Constant.ClassID}_Kit";
             _prefab.EnsureComponent<Pickupable>().isPickupable = true;
 
             //Update all shaders
             ApplySubnauticaShaders(_prefab);
-            BO.Utils.Helper.LogEvent(_prefab.name, true);
+
             return _prefab;
         }
 
@@ -91,7 +91,7 @@ namespace AD3D_DeepEngineMod.BO.Patch.DeepEngine
 
         protected override Atlas.Sprite GetItemSprite()
         {
-            return Utils.Helper.GetSpriteFromBundle("Icon_Kit");
+            return AD3D_Common.Helper.GetSpriteFromBundle(Helper.Bundle, "Icon_Kit");
         }
     }
 }

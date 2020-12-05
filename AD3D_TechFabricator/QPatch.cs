@@ -1,4 +1,5 @@
 ﻿using AD3D.BO.Base;
+using AD3D_Common;
 using QModManager.API.ModLoading;
 using QModManager.Utility;
 using SMLHelper.V2.Handlers;
@@ -20,7 +21,7 @@ namespace AD3D
 
             techFabricator.Patch();
 
-            AD3D.Helper.LogEvent($"Patched successfully [v{Constant.TechFabricator_Version}]");
+            Helper.Log($"Patched successfully [v{Constant.TechFabricator_Version}]");
         }
     }
 }

@@ -5,6 +5,7 @@ using SMLHelper.V2.Crafting;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 using UWE;
 
 namespace AD3D_DeepEngineMod.BO.Patch.DeepEngine
@@ -48,9 +49,9 @@ namespace AD3D_DeepEngineMod.BO.Patch.DeepEngine
             _prefab.EnsureComponent<PrefabIdentifier>().ClassId = ClassID;
 
             //Collider for the turbine pole and builder tool
-            var collider = _prefab.AddComponent<BoxCollider>();
-            collider.center = new Vector3(-0.1f, 1.2f, 00f);
-            collider.size = new Vector3(3f, 2.35f, 2f);
+            //var collider = _prefab.AddComponent<BoxCollider>();
+            //collider.center = new Vector3(-0.1f, 1.2f, 00f);
+            //collider.size = new Vector3(3f, 2.35f, 2f);
 
             //Update all shaders
             ApplySubnauticaShaders(_prefab);
@@ -76,7 +77,6 @@ namespace AD3D_DeepEngineMod.BO.Patch.DeepEngine
 
             var deepEngineAnim = _prefab.AddComponent<DeepEngineAnim>();
             var deepEngineAction = _prefab.AddComponent<DeepEngineAction>();
-
 
             return _prefab;
         }
@@ -117,11 +117,12 @@ namespace AD3D_DeepEngineMod.BO.Patch.DeepEngine
 
         protected override Atlas.Sprite GetItemSprite()
         {
-            return Utils.Helper.GetSpriteFromBundle("Icon");
+            return AD3D_Common.Helper.GetSpriteFromBundle(Helper.Bundle, "Icon");
         }
+
         public static Atlas.Sprite GetItemIcon()
         {
-            return Utils.Helper.GetSpriteFromBundle("Icon");
+            return AD3D_Common.Helper.GetSpriteFromBundle(Helper.Bundle ,"Icon");
         }
 
         public override PDAEncyclopedia.EntryData EncyclopediaEntryData

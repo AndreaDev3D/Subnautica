@@ -37,6 +37,10 @@
     <Reference Include="0Harmony, Version=2.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Lib.Harmony.2.0.4\lib\net472\0Harmony.dll</HintPath>
     </Reference>
+    <Reference Include="AD3D_Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Steam\steamapps\common\Subnautica\QMods\AD3D_TechFabricator\AD3D_Common.dll</HintPath>
+    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>D:\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
@@ -86,7 +90,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BO\Utils\Constant.cs" />
-    <Compile Include="BO\Utils\GameObjectFinder.cs" />
     <Compile Include="BO\Utils\Helper.cs" />
     <Compile Include="BO\Patch\DeepEngine\DeepEngineAnim.cs" />
     <Compile Include="BO\Patch\DeepEngine\DeepEngineKit.cs" />
@@ -103,20 +106,18 @@
     <None Include="Assets\deepengineasset.manifest">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="config.json" />
     <None Include="mod.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>xcopy $(TargetPath) D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\
+xcopy $(ProjectDir)mod.json D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\
+xcopy $(ProjectDir)bin\Debug\Assets\deepengineasset  D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\
+xcopy $(ProjectDir)bin\Debug\Assets\deepengineasset.manifest D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\</PostBuildEvent>
   </PropertyGroup>
   <Target Name="AfterBuild">
-    <Copy SourceFiles="$(ProjectDir)\bin\Debug\AD3D_DeepEngineMod.dll" DestinationFolder="D:\Steam\steamapps\common\Subnautica\QMods\AD3D_DeepEngineMod" SkipUnchangedFiles="false" />
-    <Copy SourceFiles="$(ProjectDir)\bin\Debug\mod.json" DestinationFolder="D:\Steam\steamapps\common\Subnautica\QMods\AD3D_DeepEngineMod" SkipUnchangedFiles="false" />
-    <Copy SourceFiles="$(ProjectDir)bin\Debug\Assets\deepengineasset" DestinationFolder="D:\Steam\steamapps\common\Subnautica\QMods\AD3D_DeepEngineMod\Assets" SkipUnchangedFiles="false" />
-    <Copy SourceFiles="$(ProjectDir)\bin\Debug\Assets\deepengineasset.manifest" DestinationFolder="D:\Steam\steamapps\common\Subnautica\QMods\AD3D_DeepEngineMod\Assets" SkipUnchangedFiles="false" />
   </Target>
 </Project>
