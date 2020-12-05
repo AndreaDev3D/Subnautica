@@ -1,4 +1,5 @@
-﻿using AD3D_DeepEngineMod.BO.Utils;
+﻿using AD3D_Common;
+using AD3D_DeepEngineMod.BO.Utils;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,8 +28,6 @@ namespace AD3D_DeepEngineMod.BO.Patch.DeepEngine
             btnActivate.onClick.AddListener(() => StartNStop());
 
             StartNStop();
-
-            Utils.Helper.LogEvent("DeepEngineAnim Activate");
         }
 
         public void StartNStop()

@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AD3D_DeepEngineMod", "AD3D_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AD3D_TechFabricator", "AD3D_TechFabricator\AD3D_TechFabricator.csproj", "{B7D859A0-6313-4A80-B8A5-01733FEF76A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AD3D_HabitatSolutionMod", "AD3D_HabitatSolution\AD3D_HabitatSolutionMod.csproj", "{7A2F205C-B114-4265-B56E-B6460755EE09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AD3D_Common", "AD3D_Common\AD3D_Common.csproj", "{1168894D-14BB-4860-BCA2-C12BB2DB256C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{B7D859A0-6313-4A80-B8A5-01733FEF76A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7D859A0-6313-4A80-B8A5-01733FEF76A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7D859A0-6313-4A80-B8A5-01733FEF76A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A2F205C-B114-4265-B56E-B6460755EE09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A2F205C-B114-4265-B56E-B6460755EE09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A2F205C-B114-4265-B56E-B6460755EE09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A2F205C-B114-4265-B56E-B6460755EE09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1168894D-14BB-4860-BCA2-C12BB2DB256C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1168894D-14BB-4860-BCA2-C12BB2DB256C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1168894D-14BB-4860-BCA2-C12BB2DB256C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1168894D-14BB-4860-BCA2-C12BB2DB256C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

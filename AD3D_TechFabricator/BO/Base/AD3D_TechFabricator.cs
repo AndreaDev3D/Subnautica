@@ -1,5 +1,6 @@
 ﻿using System;
 using AD3D;
+using AD3D_Common;
 using DevExpress.Xpo;
 using SMLHelper.V2.Assets;
 using SMLHelper.V2.Crafting;
@@ -49,15 +50,12 @@ namespace AD3D.BO.Base
             // Instantiate Fabricator object
             var gObj = GameObject.Instantiate(CraftData.GetPrefabForTechType(TechType.Fabricator));
 
-
-            AD3D.Helper.LogEvent("Texture Search", true);
-            var customRenderTexture = Helper.GetTexture("TechFabricator_Texture");
+            var customRenderTexture = Helper.GetTexture(Constant.TechFabricator_ModName, "TechFabricator_Texture");
             // Set the custom texture
             if (customRenderTexture != null)
             {
                 SkinnedMeshRenderer skinnedMeshRenderer = gObj.GetComponentInChildren<SkinnedMeshRenderer>();
                 skinnedMeshRenderer.material.mainTexture = customRenderTexture;
-                AD3D.Helper.LogEvent($"Texture changed : {customRenderTexture.name}", true);
             }
 
             //// Change size
@@ -70,7 +68,7 @@ namespace AD3D.BO.Base
 
         protected override Atlas.Sprite GetItemSprite()
         {
-            return Helper.GetSprite("TechFabricator_Icon");
+            return Helper.GetSprite(Constant.TechFabricator_ModName, "TechFabricator_Icon");
         }
     }
 

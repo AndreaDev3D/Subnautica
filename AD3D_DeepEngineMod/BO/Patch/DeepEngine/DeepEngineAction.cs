@@ -1,5 +1,6 @@
-﻿using AD3D_DeepEngineMod.BO.Utils;
+﻿using AD3D_Common;
 using AD3D_DeepEngineMod.BO.Patch.DeepEngine;
+using AD3D_DeepEngineMod.BO.Utils;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -27,11 +28,10 @@ namespace AD3D_DeepEngineMod.Patch
 
         public Constructable Constructable => gameObject.GetComponent<Constructable>();
 
-        private bool _isEnabled => this.GetComponent<DeepEngineAnim>().IsEnabled;
+        public bool IsEnabled => this.GetComponent<DeepEngineAnim>().IsEnabled;
 
-        public void Start()
+        override public void Awake()
         {
-            PDAEncyclopedia.Add(Constant.ClassID, true);
             // Init UI
             lblStatus = GameObjectFinder.FindByName(this.gameObject, "lblStatus").gameObject.GetComponent<Text>();
             lblBattery = GameObjectFinder.FindByName(this.gameObject, "lblBattery").gameObject.GetComponent<Text>();
@@ -40,11 +40,16 @@ namespace AD3D_DeepEngineMod.Patch
             // Set Depth
             SetEmittedRate();
             lblDepth.text = $"{Mathf.RoundToInt(Mathf.Abs(this.gameObject.transform.position.y)).ToString()} m";
+        }
+
+        public void Start()
+        {
+            PDAEncyclopedia.Add(BO.Utils.Constant.ClassID, true);
             //Activate
             PowerRelay solarPowerRelay = CraftData.GetPrefabForTechType(TechType.SolarPanel).GetComponent<PowerRelay>();
 
             _powerSource = this.gameObject.AddComponent<PowerSource>();
-            _powerSource.maxPower = Helper.Config.MaxPowerAllowed;
+            _powerSource.maxPower = BO.Utils.Helper.Config.MaxPowerAllowed;
 
             _powerFX = this.gameObject.AddComponent<PowerFX>();
             _powerFX.vfxPrefab = solarPowerRelay.powerFX.vfxPrefab;
@@ -59,8 +64,6 @@ namespace AD3D_DeepEngineMod.Patch
             //Start the coroutine we define below named ExampleCoroutine.
             StartCoroutine(EmitEnergy());
             StartCoroutine(UpdateUI());
-
-            Helper.LogEvent("DeepEngineAction Activate");
         }
 
         IEnumerator EmitEnergy()
@@ -68,7 +71,7 @@ namespace AD3D_DeepEngineMod.Patch
             while (true)
             {
                 yield return new WaitForSeconds(1);
-                if(_isEnabled)
+                if(IsEnabled)
                     Emission();
             }
         }
@@ -78,19 +81,18 @@ namespace AD3D_DeepEngineMod.Patch
             while (true)
             {
                 yield return new WaitForSeconds(2);
-                if (_isEnabled)
+                if (IsEnabled)
                 {
                     var power = Mathf.RoundToInt(_powerSource.GetPower());
                     var powerMax = Mathf.RoundToInt(_powerSource.GetMaxPower());
-                    lblStatus.text = $"Power Status : <color={(_isEnabled ? "green": "red")}>{_isEnabled}</color>";
+                    lblStatus.text = $"Power Status : <color={(IsEnabled ? "green": "red")}>{IsEnabled}</color>";
                     lblBattery.text = $"Power {power}/{powerMax} Kw";
                     lblEmission.text = $"{Math.Round(CurrentEmitRate, 2)} w/sec";
-                    BO.Utils.Helper.LogEvent(power.ToString(), true);
                 }
                 else
                 {
                     lblStatus.text = $"Power Status : <color=yellow>N/A</color>";
-                    lblBattery.text = $"Power 0/0";
+                    lblBattery.text = $"Power 0/0  Kw";
                     lblEmission.text = $"0.0 w/sec";
                 }
             }
@@ -107,18 +109,16 @@ namespace AD3D_DeepEngineMod.Patch
 
                     _powerRelay.ModifyPower(CurrentEmitRate, out float num);
 
-                    //if (_config.TakesDamage && DeepEngineHealth.health - num > 0f)
-                    //    DeepEngineHealth.TakeDamage(num / 15f);
-
                     var power = Mathf.RoundToInt(_powerSource.GetPower());
                     var powerMax = Mathf.RoundToInt(_powerSource.GetMaxPower());
                     lblBattery.text = $"Power {power}/{powerMax}";
+                    //BO.Utils.Helper.LogEvent($"CurrentEmitRate {CurrentEmitRate}  GetPower {power.ToString()}", true);
                 }
             }
             catch (Exception ex)
             {
 
-                Helper.LogEvent($"Error Emitting {ex.Message}");
+                AD3D_Common.Helper.Log($"Error Emitting {ex.Message}");
             }
         }
 
@@ -128,9 +128,9 @@ namespace AD3D_DeepEngineMod.Patch
 
         void SetupAudio()
         {
-            if (!Helper.Config.MakesNoise) 
+            if (!BO.Utils.Helper.Config.MakesNoise) 
                 return;
-            AudioClip = Helper.Bundle.LoadAsset<AudioClip>("Engine_FX");
+            AudioClip = BO.Utils.Helper.Bundle.LoadAsset<AudioClip>("Engine_FX");
             AudioSource = this.gameObject.AddComponent<AudioSource>();
             AudioSource.clip = AudioClip;
             AudioSource.loop = true;
@@ -145,7 +145,7 @@ namespace AD3D_DeepEngineMod.Patch
         {
             var y = this.gameObject.transform.position.y;
             var baseEmission = 1.0f;
-            var multiplaier = 4.0f * (float)Helper.Config.PowerMultiplier;
+            var multiplaier = 4.0f * (float)BO.Utils.Helper.Config.PowerMultiplier;
             CurrentEmitRate = y >= 0 ? 0.0f : baseEmission + ((y *-1) / 1000.0f) * multiplaier;
         }
 
