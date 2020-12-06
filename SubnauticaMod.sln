@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AD3D_DeepEngineMod", "AD3D_DeepEngineMod\AD3D_DeepEngineMod.csproj", "{D2D8049B-BD4E-4766-A193-437C01C922D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AD3D_TechFabricator", "AD3D_TechFabricator\AD3D_TechFabricator.csproj", "{B7D859A0-6313-4A80-B8A5-01733FEF76A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AD3D_TechFabricatorMod", "AD3D_TechFabricator\AD3D_TechFabricatorMod.csproj", "{B7D859A0-6313-4A80-B8A5-01733FEF76A7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AD3D_HabitatSolutionMod", "AD3D_HabitatSolution\AD3D_HabitatSolutionMod.csproj", "{7A2F205C-B114-4265-B56E-B6460755EE09}"
 EndProject

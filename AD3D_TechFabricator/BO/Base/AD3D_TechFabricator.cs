@@ -1,5 +1,5 @@
 ﻿using System;
-using AD3D;
+using AD3D_TechFabricatorMod;
 using AD3D_Common;
 using DevExpress.Xpo;
 using SMLHelper.V2.Assets;
@@ -8,7 +8,7 @@ using SMLHelper.V2.Utility;
 using UnityEngine;
 using UWE;
 
-namespace AD3D.BO.Base
+namespace AD3D_TechFabricatorMod.BO.Base
 {
     public class AD3D_TechFabricator : CustomFabricator
     {
@@ -50,7 +50,7 @@ namespace AD3D.BO.Base
             // Instantiate Fabricator object
             var gObj = GameObject.Instantiate(CraftData.GetPrefabForTechType(TechType.Fabricator));
 
-            var customRenderTexture = Helper.GetTexture(Constant.TechFabricator_ModName, "TechFabricator_Texture");
+            var customRenderTexture = Helper.GetTexture("AD3D_TechFabricatorMod", "TechFabricator_Texture");
             // Set the custom texture
             if (customRenderTexture != null)
             {
@@ -68,7 +68,7 @@ namespace AD3D.BO.Base
 
         protected override Atlas.Sprite GetItemSprite()
         {
-            return Helper.GetSprite(Constant.TechFabricator_ModName, "TechFabricator_Icon");
+            return Helper.GetSprite("AD3D_TechFabricatorMod", "TechFabricator_Icon");
         }
     }
 

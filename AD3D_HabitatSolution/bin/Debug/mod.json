@@ -1,12 +1,12 @@
 {
   "Enable": true,
   "Version": "1.0.0",
-  "Id": "HabitatSolutionMod",
+  "Id": "AD3D_HabitatSolutionMod",
   "DisplayName": "Habitat Solution Mod",
   "Author": "AndreaDev3D",
   "Game": "Subnautica",
-  "AssemblyName": "AD3D_HabitatSolution.dll",
-  "EntryMethod": "AD3D_HabitatSolution.QPatch.Patch",
+  "AssemblyName": "AD3D_HabitatSolutionMod.dll",
+  "EntryMethod": "AD3D_HabitatSolutionMod.QPatch.Patch",
   "Config": {},
   "Requires": []
 }

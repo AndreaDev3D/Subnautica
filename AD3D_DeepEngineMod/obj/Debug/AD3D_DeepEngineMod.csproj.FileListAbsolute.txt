@@ -76,6 +76,3 @@ E:\Mods\Subnautica\AD3D_DeepEngineMod\obj\Debug\AD3D_DeepEngineMod.csproj.CopyCo
 E:\Mods\Subnautica\AD3D_DeepEngineMod\obj\Debug\AD3D_DeepEngineMod.dll
 E:\Mods\Subnautica\AD3D_DeepEngineMod\obj\Debug\AD3D_DeepEngineMod.pdb
 E:\Mods\Subnautica\AD3D_DeepEngineMod\obj\Debug\AD3D_DeepEngineMod.csprojAssemblyReference.cache
-E:\Mods\Subnautica\AD3D_DeepEngineMod\bin\Debug\Assets\deepengineasset
-E:\Mods\Subnautica\AD3D_DeepEngineMod\bin\Debug\Assets\deepengineasset.manifest
-E:\Mods\Subnautica\AD3D_DeepEngineMod\bin\Debug\AD3D_Common.dll

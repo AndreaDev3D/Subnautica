@@ -17,7 +17,7 @@ namespace AD3D_HabitatSolution
 
             HabitatTest.Patch();
 
-            Helper.LogEvent($"Patched successfully [v{Constant.Mod_Version}]");
+            Helper.LogEvent($"Patched successfully [v1.0.0]");
         }
     }
 }

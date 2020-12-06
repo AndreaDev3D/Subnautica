@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 292943360
+CRC: 1605765570
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 978797759eae059a5afa4c79296e5d68
+    Hash: ab57c35ade72b6b2579bdd809ad62e85
   TypeTreeHash:
     serializedVersion: 2
     Hash: 323badd705202b16784f5fcc9ac73388
@@ -63,7 +63,7 @@ Assets:
 - Assets/DeepEngine/Prefabs/DeepEngine.prefab
 - Assets/DeepEngine/Icons/Icon_Kit.png
 - Assets/DeepEngine/Icons/Main_BG.png
-- Assets/DeepEngine/Models/DeepEngine_Kit.mat
+- Assets/PrefabKit/Models/DeepEngine_Kit.mat
 - Assets/DeepEngine/Icons/Battery.png
 - Assets/DeepEngine/Icons/Wifi.png
 - Assets/DeepEngine/Sounds/Engine_FX.mp3
