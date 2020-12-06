@@ -1,10 +1,10 @@
-﻿using AD3D.BO.Base;
+﻿using AD3D_TechFabricatorMod.BO.Base;
 using AD3D_Common;
 using QModManager.API.ModLoading;
 using QModManager.Utility;
 using SMLHelper.V2.Handlers;
 
-namespace AD3D
+namespace AD3D_TechFabricatorMod
 {
     [QModCore]
     public class QPatch
@@ -21,7 +21,7 @@ namespace AD3D
 
             techFabricator.Patch();
 
-            Helper.Log($"Patched successfully [v{Constant.TechFabricator_Version}]");
+            Helper.Log($"Patched successfully [v1.0.0]");
         }
     }
 }

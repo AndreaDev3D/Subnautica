@@ -89,23 +89,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BO\Utils\Constant.cs" />
     <Compile Include="BO\Utils\Helper.cs" />
-    <Compile Include="BO\Patch\DeepEngine\DeepEngineAnim.cs" />
-    <Compile Include="BO\Patch\DeepEngine\DeepEngineKit.cs" />
+    <Compile Include="BO\InGame\DeepEngineAnim.cs" />
+    <Compile Include="BO\Base\DeepEngine\DeepEngineKit.cs" />
     <Compile Include="QPatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BO\Patch\DeepEngine\DeepEngineAction.cs" />
-    <Compile Include="BO\Patch\DeepEngine\DeepEngine.cs" />
-    <Compile Include="BO\Base\DeepEngineConfig.cs" />
+    <Compile Include="BO\InGame\DeepEngineAction.cs" />
+    <Compile Include="BO\Base\DeepEngine\DeepEngine.cs" />
+    <Compile Include="BO\Config\DeepEngineConfig.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\deepengineasset">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\deepengineasset.manifest">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Assets\deepengineasset" />
+    <None Include="Assets\deepengineasset.manifest" />
     <None Include="config.json" />
     <None Include="mod.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -113,10 +108,11 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy $(TargetPath) D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\
-xcopy $(ProjectDir)mod.json D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\
-xcopy $(ProjectDir)bin\Debug\Assets\deepengineasset  D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\
-xcopy $(ProjectDir)bin\Debug\Assets\deepengineasset.manifest D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetPath)" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
+xcopy "$(ProjectDir)mod.json" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
+xcopy "$(ProjectDir)config.json" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
+xcopy "$(ProjectDir)Assets\deepengineasset" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
+xcopy "$(ProjectDir)Assets\deepengineasset.manifest" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y</PostBuildEvent>
   </PropertyGroup>
   <Target Name="AfterBuild">
   </Target>

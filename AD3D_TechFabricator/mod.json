@@ -1,12 +1,12 @@
 {
   "Enable": true,
   "Version": "1.0.0",
-  "Id": "AD3DTechFabricator",
-  "DisplayName": "AD3D Tech Fabricator",
+  "Id": "AD3D_TechFabricatorMod",
+  "DisplayName": "AD3D Tech Fabricator Mod",
   "Author": "AndreaDev3D",
   "Game": "Subnautica",
-  "AssemblyName": "AD3D_TechFabricator.dll",
-  "EntryMethod": "AD3D.QPatch.Patch",
+  "AssemblyName": "AD3D_TechFabricatorMod.dll",
+  "EntryMethod": "AD3D_TechFabricatorMod.QPatch.Patch",
   "Config": {},
   "Requires": []
 }

@@ -268,8 +268,15 @@
     <Compile Include="BO\Utils\Helper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Assets\common" />
+    <None Include="Assets\common.manifest" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy $(TargetPath) D:\Steam\steamapps\common\Subnautica\QMods\AD3D_TechFabricator\</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetPath)" "D:\Steam\steamapps\common\Subnautica\QMods\AD3D_TechFabricatorMod\" /y
+xcopy "$(ProjectDir)Assets\common" "D:\Steam\steamapps\common\Subnautica\QMods\AD3D_TechFabricatorMod\Assets\" /y
+xcopy "$(ProjectDir)Assets\common.manifest" "D:\Steam\steamapps\common\Subnautica\QMods\AD3D_TechFabricatorMod\Assets\" /y</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -1,4 +1,4 @@
-﻿using AD3D_DeepEngineMod.BO;
+﻿using AD3D_DeepEngineMod.BO.Config;
 using AD3D_DeepEngineMod.BO.Patch.DeepEngine;
 using AD3D_DeepEngineMod.BO.Utils;
 using QModManager.API.ModLoading;
@@ -10,14 +10,16 @@ namespace AD3D_DeepEngineMod
     public class QPatch
     {
         //public static TechType DeepEngineKit;
-        internal static DeepEngineConfig Config { get; set; } = OptionsPanelHandler.Main.RegisterModOptions<DeepEngineConfig>();
+        internal static DeepEngineConfig Config { get; set; } = new DeepEngineConfig();
+
         internal static DeepEngineKit DeepEngineKit { get; } = new DeepEngineKit();
         internal static DeepEngine DeepEngine { get; } = new DeepEngine();
 
         [QModPatch]
         public static void Patch()
         {
-            Helper.LoadConfig();
+            Config = OptionsPanelHandler.Main.RegisterModOptions<DeepEngineConfig>();
+            Config.Load();
 
             DeepEngineKit.Patch();
             DeepEngine.Patch();
@@ -25,10 +27,10 @@ namespace AD3D_DeepEngineMod
             //CraftTreeHandler.AddCraftingNode(CraftTree.Type.Fabricator, DeepEngineKit.TechType, "Energy Solution");
 
             //Add the databank entry.
-            LanguageHandler.SetLanguageLine($"Ency_{Constant.ClassID}", Constant.FriendlyName);
-            LanguageHandler.SetLanguageLine($"EncyDesc_{Constant.ClassID}", Constant.PDADescription(Helper.Config.MaxPowerAllowed));
+            LanguageHandler.SetLanguageLine($"Ency_{DeepEngine.ClassID}", DeepEngine.FriendlyName);
+            LanguageHandler.SetLanguageLine($"EncyDesc_{DeepEngine.ClassID}", DeepEngine.PDADescription(Config.MaxPowerAllowed));
 
-            AD3D_Common.Helper.Log($"Patched successfully [v{Constant.DeepEngineMod_Version}]");
+            AD3D_Common.Helper.Log($"Patched successfully [v1.3.0]");
         }
     }
 }

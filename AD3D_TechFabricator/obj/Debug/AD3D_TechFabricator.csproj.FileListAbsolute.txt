@@ -100,7 +100,3 @@ E:\Mods\Subnautica\AD3D_TechFabricator\obj\Debug\AD3D_TechFabricator.csproj.Core
 E:\Mods\Subnautica\AD3D_TechFabricator\obj\Debug\AD3D_TechFabricator.csproj.CopyComplete
 E:\Mods\Subnautica\AD3D_TechFabricator\obj\Debug\AD3D_TechFabricator.dll
 E:\Mods\Subnautica\AD3D_TechFabricator\obj\Debug\AD3D_TechFabricator.pdb
-E:\Mods\Subnautica\AD3D_TechFabricator\bin\Debug\Assets\deepengineasset
-E:\Mods\Subnautica\AD3D_TechFabricator\bin\Debug\Assets\deepengineasset.manifest
-E:\Mods\Subnautica\AD3D_TechFabricator\bin\Debug\AD3D_Common.dll
-E:\Mods\Subnautica\AD3D_TechFabricator\bin\Debug\AD3D_Common.pdb
