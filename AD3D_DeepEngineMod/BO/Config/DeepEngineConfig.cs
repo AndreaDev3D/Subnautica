@@ -1,4 +1,4 @@
-﻿using AD3D_DeepEngineMod.BO.Utils;
+﻿using AD3D_LightSolutionMod.BO.Utils;
 using QModManager.Utility;
 using SMLHelper.V2.Json;
 using SMLHelper.V2.Options;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AD3D_DeepEngineMod.BO.Config
+namespace AD3D_LightSolutionMod.BO.Config
 {
     [Menu("DeepEngine Settings")]
     public class DeepEngineConfig : ConfigFile
@@ -19,13 +19,13 @@ namespace AD3D_DeepEngineMod.BO.Config
         [Slider("Power Multiplier", 1, 3, DefaultValue = 1, Tooltip = "Power multiplier for depth algo")]
         public int PowerMultiplier { get; set; }
 
-        [Toggle("Makes Noise"), OnChange(nameof(MyCheckboxToggleEvent))]
+        [Toggle("Makes Noise"), OnChange(nameof(ConfigChanged))]
         public bool MakesNoise { get; set; } = false;
-        [Toggle("Verboso",Tooltip ="Log info in QMod log"), OnChange(nameof(MyCheckboxToggleEvent))]
+        [Toggle("Verboso",Tooltip ="Log info in QMod log"), OnChange(nameof(ConfigChanged))]
         public bool LogEvent { get; set; } = true;
 
 
-        private void MyCheckboxToggleEvent(ToggleChangedEventArgs e)
+        private void ConfigChanged(ToggleChangedEventArgs e)
         {
             // Reload if value changed
             QPatch.Config.Load();

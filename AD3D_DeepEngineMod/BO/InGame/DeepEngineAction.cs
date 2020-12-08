@@ -1,12 +1,12 @@
 ﻿using AD3D_Common;
-using AD3D_DeepEngineMod.BO.Patch.DeepEngine;
-using AD3D_DeepEngineMod.BO.Utils;
+using AD3D_LightSolutionMod.BO.Patch.DeepEngine;
+using AD3D_LightSolutionMod.BO.Utils;
 using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace AD3D_DeepEngineMod.BO.InGame
+namespace AD3D_LightSolutionMod.BO.InGame
 {
     public class DeepEngineAction : HandTarget, IHandTarget 
     {

@@ -1,22 +1,28 @@
 ﻿using AD3D_Common;
-using AD3D_HabitatSolution.BO.Utils;
 using SMLHelper.V2.Assets;
 using SMLHelper.V2.Crafting;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using UnityEngine;
-using Constant = AD3D_HabitatSolution.BO.Utils.Constant;
 
-namespace AD3D_HabitatSolution.BO.Patch
+namespace AD3D_LightSolutionMod.BO.Base
 {
-    public class HabitatTest : Buildable
+    public class LightSource_2 : Buildable
     {
-        public HabitatTest() : base(Constant.HabitatTest_ClassID, Constant.HabitatTest_FriendlyName, Constant.HabitatTest_ShortDescription)
+        public const string _AssetName = "lightsolutionasset";
+        public const string _ClassID = "LightSource_2";
+        public const string _FriendlyName = "Light Source 2";
+        public const string _Description = "The light source item can be linked and handled by the \"Light Switch\"";
+
+        public LightSource_2() : base(_ClassID, _FriendlyName, _Description)
         {
         }
 
-        public override TechGroup GroupForPDA => TechGroup.BasePieces;
-        public override TechCategory CategoryForPDA => TechCategory.BaseRoom;
+        public override TechGroup GroupForPDA => TechGroup.Miscellaneous;
+        public override TechCategory CategoryForPDA => TechCategory.Misc;
         //public override TechType RequiredForUnlock => TechType.WiringKit;
 
         protected override TechData GetBlueprintRecipe()
@@ -33,9 +39,9 @@ namespace AD3D_HabitatSolution.BO.Patch
 
         public override GameObject GetGameObject()
         {
-            //Instantiates a copy of the prefab that is loaded from the AssetBundle loaded above.
-            GameObject _prefab = GameObject.Instantiate(Utils.Helper.Bundle.LoadAsset<GameObject>("HabitatTest.prefab"));
-            _prefab.name = Constant.HabitatTest_ClassID;
+            // Instantiates a copy of the prefab that is loaded from the AssetBundle loaded above.
+            GameObject _prefab = GameObject.Instantiate(Utils.Helper.Bundle.LoadAsset<GameObject>("LightSource_2.prefab"));
+            _prefab.name = _ClassID;
             //Need a tech tag for most prefabs
             var techTag = _prefab.AddComponent<TechTag>();
             techTag.type = TechType;
@@ -43,56 +49,29 @@ namespace AD3D_HabitatSolution.BO.Patch
             _prefab.EnsureComponent<LargeWorldEntity>().cellLevel = LargeWorldEntity.CellLevel.Global;
             _prefab.EnsureComponent<PrefabIdentifier>().ClassId = ClassID;
 
-            //Collider for the turbine pole and builder tool
-            //var collider = _prefab.AddComponent<BoxCollider>();
-            //collider.center = new Vector3(-0.1f, 1.2f, 00f);
-            //collider.size = new Vector3(3f, 2.35f, 2f);
-
-            //Update all shaders
+            // Update all shaders
             ApplySubnauticaShaders(_prefab);
 
             // Add constructable - This prefab normally isn't constructed.
-            ConstructableBase constructible = _prefab.AddComponent<ConstructableBase>();
+            Constructable constructible = _prefab.AddComponent<Constructable>();
             constructible.constructedAmount = 1;
-            constructible.allowedInBase = false;
-            constructible.allowedInSub = false;
+            constructible.allowedInBase = true;
+            constructible.allowedInSub = true;
             constructible.allowedOutside = true;
-            constructible.allowedOnCeiling = false;
+            constructible.allowedOnCeiling = true;
             constructible.allowedOnGround = true;
-            constructible.allowedOnWall = false;
+            constructible.allowedOnWall = true;
             constructible.allowedOnConstructables = false;
             constructible.techType = this.TechType;
             constructible.rotationEnabled = true;
-            constructible.placeDefaultDistance = 6f;
-            constructible.placeMinDistance = 0.5f;
-            constructible.placeMaxDistance = 15f;
+            constructible.placeDefaultDistance = 1f;
+            constructible.placeMinDistance = 0.1f;
+            constructible.placeMaxDistance = 5f;
             constructible.surfaceType = VFXSurfaceTypes.metal;
-            constructible.model = _prefab;//.transform.GetChild(0).gameObject;
+            constructible.model = _prefab.FindChild("Model").gameObject;//.transform.GetChild(0).gameObject;
             constructible.forceUpright = true;
-            //_prefab.AddComponent<LayerSelector>();
 
-            //_prefab.AddComponent<Rigidbody>();
-            //var constructableBase = _prefab.AddComponent<ConstructableBase>();
-            //var prefabIdentifier = _prefab.AddComponent<PrefabIdentifier>();
-
-
-            PowerRelay baseRoom = CraftData.GetPrefabForTechType(TechType.BaseRoom).GetComponent<PowerRelay>();
-            var baseGhost = GameObjectFinder.FindByName(_prefab, "Habitat_Proxy");
-            var baseG = baseGhost.AddComponent<Base>();
-            baseG = baseRoom.GetComponent<Base>();
-            //baseG.isGhost = false;
-            var baseGC = baseGhost.AddComponent<BaseAddCellGhost>();
-            baseGC = baseRoom.GetComponent<BaseAddCellGhost>();
-            //baseGC.cellType = Base.CellType.Moonpool;
-            //baseGC.minHeightFromTerrain = 2;
-            //baseGC.maxHeightFromTerrain = 10;
-            //_prefab.AddComponent<BehaviourLOD>();
-            //_prefab.AddComponent<PowerRelay>();
-            //_prefab.AddComponent<LiveMixin>();
-            //_prefab.AddComponent<Stabilizer>();
-            //_prefab.AddComponent<DealDamageOnImpact>();
-            //_prefab.AddComponent<SubWaterPlane>();
-            //_prefab.AddComponent<CrushDamage>();
+            _prefab.AddComponent<InGame.LightSource>();
 
             return _prefab;
         }
@@ -121,7 +100,7 @@ namespace AD3D_HabitatSolution.BO.Patch
                     material.EnableKeyword("MARMO_EMISSION");
                     material.SetFloat(ShaderPropertyID._EnableGlow, 1f);
                     material.SetTexture(ShaderPropertyID._Illum, emissionTexture);
-                    material.SetColor(ShaderPropertyID._GlowColor, new Color(1, 1f, 1, 1));
+                    material.SetColor(ShaderPropertyID._GlowColor, new Color(1f, 1f, 1f, 1f));
                 }
             }
 
@@ -132,7 +111,7 @@ namespace AD3D_HabitatSolution.BO.Patch
         }
         protected override Atlas.Sprite GetItemSprite()
         {
-            return Utils.Helper.GetSpriteFromBundle("Icon");
+            return Helper.GetSpriteFromBundle(Utils.Helper.Bundle, "Icon");
         }
     }
 }

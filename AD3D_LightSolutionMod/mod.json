@@ -1,0 +1,12 @@
+ {
+  "Enable": true,
+  "Version": "1.0.0",
+  "Id": "AD3D_LightSolutionMod",
+  "DisplayName": "Light Solution Mod",
+  "Author": "AndreaDev3D",
+  "Game": "Subnautica",
+  "AssemblyName": "AD3D_LightSolutionMod.dll",
+  "EntryMethod": "AD3D_LightSolutionMod.QPatch.Patch",
+  "Config": {},
+  "Requires": []
+}

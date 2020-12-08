@@ -1,10 +1,11 @@
-﻿using AD3D_DeepEngineMod.BO.Config;
+﻿using AD3D_LightSolutionMod.BO.Config;
+using AD3D_LightSolutionMod.BO.Patch.DeepEngine;
 using SMLHelper.V2.Utility;
 using System.IO;
 using System.Reflection;
 using UnityEngine;
 
-namespace AD3D_DeepEngineMod.BO.Utils
+namespace AD3D_LightSolutionMod.BO.Utils
 {
     public class Helper
     {
@@ -15,9 +16,8 @@ namespace AD3D_DeepEngineMod.BO.Utils
             {
                 if (_bundle == null)
                 {
-                    var mainDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                    var assetsFolder = Path.Combine(mainDirectory, "Assets");
-                    _bundle = AssetBundle.LoadFromFile(Path.Combine(assetsFolder, "deepengineasset"));
+                    var assetsFolder = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Assets");
+                    _bundle = AssetBundle.LoadFromFile(Path.Combine(assetsFolder, DeepEngine._AssetName));
                 }
                 return _bundle;
             }

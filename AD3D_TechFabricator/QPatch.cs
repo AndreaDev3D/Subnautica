@@ -16,7 +16,7 @@ namespace AD3D_TechFabricatorMod
             var techFabricator = new AD3D_TechFabricator();
             // add Tabs
             var energySolutionTab = "EnergySolutionID";
-            techFabricator.AddTabNode(energySolutionTab, "Energy Solution", AD3D_DeepEngineMod.BO.Patch.DeepEngine.DeepEngine.GetItemIcon()); // add EnergySolutionID tab
+            techFabricator.AddTabNode(energySolutionTab, "Energy Solution", AD3D_LightSolutionMod.BO.Patch.DeepEngine.DeepEngine.GetItemIcon()); // add EnergySolutionID tab
             techFabricator.AddCraftNode("DeepEngine_Kit", energySolutionTab);
 
             techFabricator.Patch();

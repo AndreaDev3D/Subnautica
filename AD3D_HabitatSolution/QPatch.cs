@@ -1,4 +1,4 @@
-﻿using AD3D_HabitatSolution.BO.Patch;
+﻿using AD3D_HabitatSolution.BO.Base;
 using AD3D_HabitatSolution.BO.Utils;
 using QModManager.API.ModLoading;
 using SMLHelper.V2.Handlers;
