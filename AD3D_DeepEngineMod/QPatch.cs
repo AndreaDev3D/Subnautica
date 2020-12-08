@@ -1,17 +1,16 @@
-﻿using AD3D_DeepEngineMod.BO.Config;
-using AD3D_DeepEngineMod.BO.Patch.DeepEngine;
-using AD3D_DeepEngineMod.BO.Utils;
+﻿using AD3D_LightSolutionMod.BO.Config;
+using AD3D_LightSolutionMod.BO.Patch.DeepEngine;
+using AD3D_LightSolutionMod.BO.Utils;
 using QModManager.API.ModLoading;
 using SMLHelper.V2.Handlers;
 
-namespace AD3D_DeepEngineMod
+namespace AD3D_LightSolutionMod
 {
     [QModCore]
     public class QPatch
     {
         //public static TechType DeepEngineKit;
         internal static DeepEngineConfig Config { get; set; } = new DeepEngineConfig();
-
         internal static DeepEngineKit DeepEngineKit { get; } = new DeepEngineKit();
         internal static DeepEngine DeepEngine { get; } = new DeepEngine();
 

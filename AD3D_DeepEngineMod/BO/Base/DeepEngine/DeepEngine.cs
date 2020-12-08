@@ -1,5 +1,5 @@
-﻿using AD3D_DeepEngineMod.BO.InGame;
-using AD3D_DeepEngineMod.BO.Utils;
+﻿using AD3D_LightSolutionMod.BO.InGame;
+using AD3D_LightSolutionMod.BO.Utils;
 using SMLHelper.V2.Assets;
 using SMLHelper.V2.Crafting;
 using System;
@@ -8,7 +8,7 @@ using System.Linq;
 using UnityEngine;
 using UWE;
 
-namespace AD3D_DeepEngineMod.BO.Patch.DeepEngine
+namespace AD3D_LightSolutionMod.BO.Patch.DeepEngine
 {
     public class DeepEngine : Buildable
     {
@@ -27,8 +27,7 @@ namespace AD3D_DeepEngineMod.BO.Patch.DeepEngine
 
         public override TechGroup GroupForPDA => TechGroup.ExteriorModules;
         public override TechCategory CategoryForPDA => TechCategory.ExteriorModule;
-        
-        public override TechType RequiredForUnlock => TechType.WiringKit;
+        //public override TechType RequiredForUnlock => TechType.;
 
         protected override TechData GetBlueprintRecipe()
         {

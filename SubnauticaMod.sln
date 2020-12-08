@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AD3D_HabitatSolutionMod", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AD3D_Common", "AD3D_Common\AD3D_Common.csproj", "{1168894D-14BB-4860-BCA2-C12BB2DB256C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AD3D_LightSolutionMod", "AD3D_LightSolutionMod\AD3D_LightSolutionMod.csproj", "{CDEC77D7-F93A-41A7-8F1E-E0DFC53916E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{1168894D-14BB-4860-BCA2-C12BB2DB256C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1168894D-14BB-4860-BCA2-C12BB2DB256C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1168894D-14BB-4860-BCA2-C12BB2DB256C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDEC77D7-F93A-41A7-8F1E-E0DFC53916E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDEC77D7-F93A-41A7-8F1E-E0DFC53916E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDEC77D7-F93A-41A7-8F1E-E0DFC53916E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDEC77D7-F93A-41A7-8F1E-E0DFC53916E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

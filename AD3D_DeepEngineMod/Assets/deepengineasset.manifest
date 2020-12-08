@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1605765570
+CRC: 227882896
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: ab57c35ade72b6b2579bdd809ad62e85
+    Hash: 26861cfacb6e87f6bac65cbede69f6c0
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 323badd705202b16784f5fcc9ac73388
+    Hash: ae414efea461aff6272a97ebcc97098d
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -31,10 +31,6 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 83
   Script: {instanceID: 0}
-- Class: 90
-  Script: {instanceID: 0}
-- Class: 95
-  Script: {instanceID: 0}
 - Class: 111
   Script: {instanceID: 0}
 - Class: 114
@@ -49,8 +45,6 @@ ClassTypes:
   Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
 - Class: 115
   Script: {instanceID: 0}
-- Class: 128
-  Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
 - Class: 222
@@ -61,20 +55,19 @@ ClassTypes:
   Script: {instanceID: 0}
 Assets:
 - Assets/DeepEngine/Prefabs/DeepEngine.prefab
-- Assets/DeepEngine/Icons/Icon_Kit.png
-- Assets/DeepEngine/Icons/Main_BG.png
+- Assets/Icons/Main_BG.png
 - Assets/PrefabKit/Models/DeepEngine_Kit.mat
-- Assets/DeepEngine/Icons/Battery.png
-- Assets/DeepEngine/Icons/Wifi.png
+- Assets/Icons/Battery.png
+- Assets/Icons/Wifi.png
 - Assets/DeepEngine/Sounds/Engine_FX.mp3
 - Assets/DeepEngine/Textures/DeepEngine_DeepEngine_MaskMap.png
 - Assets/DeepEngine/Textures/DeepEngine_DeepEngine_BaseMap.png
 - Assets/DeepEngine/Textures/DeepEngine_DeepEngine_Emissive.png
-- Assets/DeepEngine/Icons/Power.png
+- Assets/Icons/Power.png
 - Assets/DeepEngine/Textures/DeepEngine_DeepEngine_Normal.png
 - Assets/DeepEngine/Icons/Icon.png
 - Assets/DeepEngine/Models/DeepEngine.mat
-- Assets/DeepEngine/Icons/Depth.png
+- Assets/Icons/Depth.png
 - Assets/DeepEngine/Prefabs/DeepEngine_Kit.prefab
 - Assets/DeepEngine/Animation/Drilling.anim
 Dependencies: []

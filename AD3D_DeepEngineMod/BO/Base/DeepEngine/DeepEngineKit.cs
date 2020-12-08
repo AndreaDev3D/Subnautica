@@ -1,4 +1,4 @@
-﻿using AD3D_DeepEngineMod.BO.Utils;
+﻿using AD3D_LightSolutionMod.BO.Utils;
 using SMLHelper.V2.Assets;
 using SMLHelper.V2.Crafting;
 using System;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UWE;
 
-namespace AD3D_DeepEngineMod.BO.Patch.DeepEngine
+namespace AD3D_LightSolutionMod.BO.Patch.DeepEngine
 {
     public class DeepEngineKit : Craftable
     {
@@ -47,12 +47,20 @@ namespace AD3D_DeepEngineMod.BO.Patch.DeepEngine
             GameObject _prefab = GameObject.Instantiate(Utils.Helper.Bundle.LoadAsset<GameObject>("DeepEngine_Kit.prefab"));
             _prefab.name = _ClassID;
             //Need a tech tag for most prefabs
-            var techTag = _prefab.AddComponent<TechTag>();
+            var techTag = _prefab.EnsureComponent<TechTag>();
             techTag.type = TechType;
 
             _prefab.EnsureComponent<LargeWorldEntity>().cellLevel = LargeWorldEntity.CellLevel.Global;
             _prefab.EnsureComponent<PrefabIdentifier>().ClassId = _ClassID;
             _prefab.EnsureComponent<Pickupable>().isPickupable = true;
+
+            // Add fabricating animation
+            var fabricatingA = _prefab.EnsureComponent<VFXFabricating>();
+            fabricatingA.localMinY = -0.1f;
+            fabricatingA.localMaxY = 0.6f;
+            fabricatingA.posOffset = new Vector3(0f, 0f, 0f);
+            fabricatingA.eulerOffset = new Vector3(0f, 0f, 0f);
+            fabricatingA.scaleFactor = 0.4f;
 
             //Update all shaders
             ApplySubnauticaShaders(_prefab);
