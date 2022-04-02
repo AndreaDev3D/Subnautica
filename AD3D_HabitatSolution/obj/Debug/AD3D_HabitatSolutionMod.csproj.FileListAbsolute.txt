@@ -1,5 +1,3 @@
-E:\Mods\Subnautica\AD3D_HabitatSolution\bin\Debug\Assembly-CSharp-firstpass.dll
-E:\Mods\Subnautica\AD3D_HabitatSolution\bin\Debug\Assembly-CSharp.dll
 E:\Mods\Subnautica\AD3D_HabitatSolution\bin\Debug\QModInstaller.dll
 E:\Mods\Subnautica\AD3D_HabitatSolution\bin\Debug\SMLHelper.dll
 E:\Mods\Subnautica\AD3D_HabitatSolution\bin\Debug\Unity.MemoryProfiler.dll
@@ -76,7 +74,6 @@ E:\Mods\Subnautica\AD3D_HabitatSolution\bin\Debug\PlatformUtilsDefault.dll
 E:\Mods\Subnautica\AD3D_HabitatSolution\bin\Debug\LibNoise.dll
 E:\Mods\Subnautica\AD3D_HabitatSolution\bin\Debug\QModInstaller.xml
 E:\Mods\Subnautica\AD3D_HabitatSolution\bin\Debug\SMLHelper.xml
-E:\Mods\Subnautica\AD3D_HabitatSolution\obj\Debug\AD3D_HabitatSolutionMod.csprojAssemblyReference.cache
 E:\Mods\Subnautica\AD3D_HabitatSolution\obj\Debug\AD3D_HabitatSolutionMod.csproj.CoreCompileInputs.cache
 E:\Mods\Subnautica\AD3D_HabitatSolution\obj\Debug\AD3D_HabitatSolutionMod.csproj.CopyComplete
 E:\Mods\Subnautica\AD3D_HabitatSolution\bin\Debug\mod.json
@@ -98,3 +95,6 @@ E:\Mods\Subnautica\AD3D_HabitatSolution\bin\Debug\de\DevExpress.Xpo.v19.2.resour
 E:\Mods\Subnautica\AD3D_HabitatSolution\bin\Debug\es\DevExpress.Xpo.v19.2.resources.dll
 E:\Mods\Subnautica\AD3D_HabitatSolution\bin\Debug\ja\DevExpress.Xpo.v19.2.resources.dll
 E:\Mods\Subnautica\AD3D_HabitatSolution\bin\Debug\ru\DevExpress.Xpo.v19.2.resources.dll
+E:\Mods\Subnautica\AD3D_HabitatSolution\bin\Debug\Assembly-CSharp-firstpass_publicized.dll
+E:\Mods\Subnautica\AD3D_HabitatSolution\bin\Debug\Assembly-CSharp_publicized.dll
+E:\Mods\Subnautica\AD3D_HabitatSolution\obj\Debug\AD3D_HabitatSolutionMod.csproj.AssemblyReference.cache

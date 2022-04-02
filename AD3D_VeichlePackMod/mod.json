@@ -1,0 +1,16 @@
+{
+  "Enable": true,
+  "Version": "1.0.0",
+  "Id": "AD3D_VeichlePackMod",
+  "DisplayName": "AD3D_VeichlePackMod",
+  "Author": "AndreaDev3D",
+  "Game": "Subnautica",
+  "AssemblyName": "AD3D_VeichlePackMod.dll",
+  "Dependencies": [
+    "SMLHelper",
+    "VehicleFramework"
+  ],
+  "LoadAfter": [
+    "AD3D_TechFabricatorMod"
+  ]
+}

@@ -31,10 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AD3D_Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\Steam\steamapps\common\Subnautica\QMods\AD3D_TechFabricator\AD3D_Common.dll</HintPath>
-    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>D:\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
@@ -254,6 +250,10 @@
     <Compile Include="QPatch.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AD3D_Common\AD3D_Common.csproj">
+      <Project>{1168894d-14bb-4860-bca2-c12bb2db256c}</Project>
+      <Name>AD3D_Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AD3D_DeepEngineMod\AD3D_DeepEngineMod.csproj">
       <Project>{d2d8049b-bd4e-4766-a193-437c01c922d3}</Project>
       <Name>AD3D_DeepEngineMod</Name>
@@ -279,7 +279,11 @@
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(TargetPath)" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
 xcopy "$(ProjectDir)mod.json" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
-xcopy "$(ProjectDir)Assets\TechFabricator_Icon.png" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
-xcopy "$(ProjectDir)Assets\TechFabricator_Texture.png" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y</PostBuildEvent>
+xcopy "$(ProjectDir)Assets\*.png" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
+
+
+xcopy "$(TargetDir)AD3D_Common.dll" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
+xcopy "E:\Mods\Subnautica\AD3D_Common\Assets\common" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
+xcopy "E:\Mods\Subnautica\AD3D_Common\Assets\common.manifest" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y</PostBuildEvent>
   </PropertyGroup>
 </Project>

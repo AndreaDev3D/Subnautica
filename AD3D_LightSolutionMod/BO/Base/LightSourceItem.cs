@@ -85,7 +85,7 @@ namespace AD3D_LightSolutionMod.BO.Base
                     break;
             }
 
-            constructible.allowedOnConstructables = false;
+            constructible.allowedOnConstructables = true;
             constructible.techType = this.TechType;
             constructible.rotationEnabled = true;
             constructible.placeDefaultDistance = 1f;

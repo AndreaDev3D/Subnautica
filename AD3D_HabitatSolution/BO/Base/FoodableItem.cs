@@ -23,9 +23,9 @@ namespace AD3D_HabitatSolutionMod.BO.Base
         public int KDecayRate = 0;
 
         internal ICraftTreeHandler CraftTreeHandler { get; set; } = SMLHelper.V2.Handlers.CraftTreeHandler.Main;
-        public virtual CraftTree.Type FabricatorType => CraftTree.Type.Fabricator;
-        public virtual string[] StepsToFabricatorTab => new string[]{"Sustenance",""}; 
-        public virtual float CraftingTime => 0.5f;
+        public override CraftTree.Type FabricatorType => CraftTree.Type.Fabricator;
+        public override string[] StepsToFabricatorTab => new[] { "Sustenance" };
+        public override float CraftingTime => 0.5f;
 
         protected override TechData GetBlueprintRecipe()
         {
@@ -42,11 +42,11 @@ namespace AD3D_HabitatSolutionMod.BO.Base
 
         public FoodableItem(string classId, string friendlyName, string description) : base(classId, friendlyName, description)
         {
-            CraftDataHandler.SetCraftingTime(this.TechType, this.CraftingTime); 
+            CraftDataHandler.SetCraftingTime(this.TechType, this.CraftingTime);
             CraftTreeHandler.AddCraftingNode(this.FabricatorType, this.TechType, this.StepsToFabricatorTab);
         }
 
-        public override GameObject GetGameObject() 
+        public override GameObject GetGameObject()
         {
             var _prefab = GameObject.Instantiate(Utils.Helper.Bundle.LoadAsset<GameObject>($"{ClassID}.prefab"));
 

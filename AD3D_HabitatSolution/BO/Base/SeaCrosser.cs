@@ -80,12 +80,15 @@ namespace AD3D_HabitatSolutionMod.BO
             constructible.placeMaxDistance = 20f;
             constructible.surfaceType = VFXSurfaceTypes.metal;
 
+
+            _prefab.SetActive(false);
+
             var seamothRef = CraftData.GetPrefabForTechType(TechType.Seamoth);
             // SeaMoth
             var seaMoth = _prefab.AddComponent<SeaMoth>();
-            seaMoth.handLabel = "EnterSeaCrosser";
+            seaMoth.handLabel = "Enter SeaCrosser";
 
-             var BatterySlot = GameObjectFinder.FindByName(_prefab, "BatterySlot");
+            var BatterySlot = GameObjectFinder.FindByName(_prefab, "BatterySlot");
             BatterySlot.AddComponent<ChildObjectIdentifier>();
             var BatteryInput = GameObjectFinder.FindByName(_prefab, "BatteryInput");
             // GenericHandTarget
@@ -95,7 +98,7 @@ namespace AD3D_HabitatSolutionMod.BO
             // DealDamageOnImpact
             _prefab.AddComponent<DealDamageOnImpact>();
             // LiveMixin
-            var liveMixin = _prefab.AddComponent<LiveMixin>(); 
+            var liveMixin = _prefab.AddComponent<LiveMixin>();
             liveMixin.data = ScriptableObject.CreateInstance<LiveMixinData>();
             liveMixin.data.maxHealth = 300;
             liveMixin = seamothRef.GetComponent<LiveMixin>();
@@ -105,14 +108,13 @@ namespace AD3D_HabitatSolutionMod.BO
             vFXConstructing = seamothRef.GetComponent<VFXConstructing>();
             // FMOD_StudioEventEmitter
             _prefab.AddComponent<FMOD_StudioEventEmitter>();
-            var eMx = _prefab.AddComponent<EnergyMixin>();
-            eMx = seamothRef.GetComponent<EnergyMixin>();
-            eMx.storageRoot = BatterySlot.GetComponent<ChildObjectIdentifier>();
-            eMx.compatibleBatteries.Add(TechType.PowerCell);
-            eMx.compatibleBatteries.Add(TechType.PrecursorIonBattery);
-            eMx.allowBatteryReplacement = true;
+            var EnergyMixin = _prefab.AddComponent<EnergyMixin>();
+            EnergyMixin = seamothRef.GetComponent<EnergyMixin>();
+            EnergyMixin.storageRoot = BatterySlot.GetComponent<ChildObjectIdentifier>();
+            EnergyMixin.compatibleBatteries.Add(TechType.PowerCell);
+            EnergyMixin.compatibleBatteries.Add(TechType.PrecursorIonBattery);
+            EnergyMixin.allowBatteryReplacement = true;
             //eMx.batteryModels.ToList().Add(new GameObject(new GameObject(), TechType.PowerCell)));
-
             //genericHandTarget.onHandHover.AddListener(eMx.HandHover);
             // WorldForces
             var WorldForces = _prefab.AddComponent<WorldForces>();
@@ -121,14 +123,14 @@ namespace AD3D_HabitatSolutionMod.BO
             var gameInfoIcon = _prefab.AddComponent<GameInfoIcon>();
             gameInfoIcon.techType = TechType.Seamoth;
             // CrushDamage
-            var crushDamage =  _prefab.AddComponent<CrushDamage>();
+            var crushDamage = _prefab.AddComponent<CrushDamage>();
             crushDamage.liveMixin = liveMixin;
             crushDamage.vehicle = seaMoth;
 #warning add CrushDepth and Notification
             // ConditionRules
             var conditionRules = _prefab.AddComponent<ConditionRules>();
             // DepthAlarms
-           var depthAlarms = _prefab.AddComponent<DepthAlarms>();
+            var depthAlarms = _prefab.AddComponent<DepthAlarms>();
             // FMOD_CustomEmitter
             var fMOD_CustomEmitter = _prefab.AddComponent<FMOD_CustomEmitter>();
             fMOD_CustomEmitter = seamothRef.GetComponent<FMOD_CustomEmitter>();
@@ -137,9 +139,13 @@ namespace AD3D_HabitatSolutionMod.BO
             // EnergyEffect
             var energyEffect = _prefab.AddComponent<EnergyEffect>();
 
+            // EnergyInterface
+            var EnergyInterface = _prefab.AddComponent<EnergyInterface>();
+            EnergyInterface.sources = new EnergyMixin[] { EnergyMixin };
 
 
 
+            _prefab.SetActive(true);
             return _prefab;
         }
 
@@ -165,6 +171,32 @@ namespace AD3D_HabitatSolutionMod.BO
                         material.SetTexture(ShaderPropertyID._Illum, emissionTexture);
                         material.SetColor(ShaderPropertyID._GlowColor, new Color(1, 1f, 1, 1));
                     }
+                    if (material.name.Contains("Transparent") || material.name.Contains("Glass"))
+                    {
+
+                        material.EnableKeyword("MARMO_ALPHA_CLIP");
+                        material.EnableKeyword("MARMO_SIMPLE_GLASS");
+                        material.EnableKeyword("MARMO_SPECMAP");
+                        material.EnableKeyword("_ZWRITE_ON");
+                        material.EnableKeyword("WBOIT");
+
+                        material.SetFloat("_Fresnel", 1.0f);
+                        material.SetFloat("_Shininess", 6.0f);
+                        material.SetFloat("_SpecInt", 10.0f);
+                        material.SetInt("_ZWrite", 0);
+                        material.SetInt("_Cutoff", 0);
+                        material.SetFloat("_SrcBlend", 1f);
+                        material.SetFloat("_DstBlend", 1f);
+                        material.SetFloat("_SrcBlend2", 0f);
+                        material.SetFloat("_DstBlend2", 10f);
+                        material.SetFloat("_AddSrcBlend", 1f);
+                        material.SetFloat("_AddDstBlend", 1f);
+                        material.SetFloat("_AddSrcBlend2", 0f);
+                        material.SetFloat("_AddDstBlend2", 10f);
+                        material.globalIlluminationFlags = MaterialGlobalIlluminationFlags.EmissiveIsBlack | MaterialGlobalIlluminationFlags.RealtimeEmissive;
+                        material.renderQueue = 3101;
+                        material.enableInstancing = true;
+                    }
                 }
             }
 
@@ -187,7 +219,7 @@ namespace AD3D_HabitatSolutionMod.BO
 
         protected override Atlas.Sprite GetItemSprite()
         {
-            return AD3D_Common.Helper.GetSpriteFromBundle(Utils.Helper.Bundle, $"{_ClassID}_Icon");
+            return AD3D_Common.Helper.GetSpriteFromBundle(Utils.Helper.Bundle, $"{_ClassID}");
         }
     }
 }

@@ -13,6 +13,7 @@ namespace AD3D_HabitatSolutionMod
         public const string _Mod_Version = "1.0.0";
 
         internal static HabitatTest HabitatTest { get; } = new HabitatTest();
+        internal static HabitatFoundation HabitatFoundation { get; } = new HabitatFoundation();
         internal static AlterraVendingMachine AlterraVendingMachine { get; } = new AlterraVendingMachine();
         internal static AutoBreederTank AutoBreederTank { get; } = new AutoBreederTank();
 
@@ -21,19 +22,25 @@ namespace AD3D_HabitatSolutionMod
         internal static SeaCrosser SeaCrosser { get; } = new SeaCrosser();
 
         internal static FoodableItem Bar1 { get; set; }
+        internal static StoragebaleItem StoragebaleItem { get; set; } = new StoragebaleItem();
+        internal static JuckBox JuckBox { get; set; } = new JuckBox();
+
 
         [QModPatch]
         public static void Patch()
         {
             //Helper.LoadConfig();
-
+            // Building
             HabitatTest.Patch();
+            HabitatFoundation.Patch();
+            // Utility Machine
             AlterraVendingMachine.Patch();
             AutoBreederTank.Patch();
-
+            JuckBox.Patch();
+            // Weapon
             AdamantioBlade.Patch();
-            CraftTreeHandler.AddCraftingNode(CraftTree.Type.Fabricator, AdamantioBlade.TechType, "Personal", "Tools");
-
+            // Storage
+            StoragebaleItem.Patch();
             // Food
             Bar1 = new FoodableItem("Bar1", "Bar1", "Alterra Nutrient Bar");
             Bar1.FoodValue = 75;

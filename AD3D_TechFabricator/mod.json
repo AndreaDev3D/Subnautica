@@ -6,7 +6,7 @@
   "Author": "AndreaDev3D",
   "Game": "Subnautica",
   "AssemblyName": "AD3D_TechFabricatorMod.dll",
-  "EntryMethod": "AD3D_TechFabricatorMod.QPatch.Patch",
-  "Config": {},
-  "Requires": []
+  "Dependencies": [
+    "SMLHelper"
+  ]
 }

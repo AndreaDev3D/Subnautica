@@ -37,10 +37,6 @@
     <Reference Include="0Harmony, Version=2.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Lib.Harmony.2.0.4\lib\net472\0Harmony.dll</HintPath>
     </Reference>
-    <Reference Include="AD3D_Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\Steam\steamapps\common\Subnautica\QMods\AD3D_TechFabricator\AD3D_Common.dll</HintPath>
-    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>D:\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
@@ -107,13 +103,24 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AD3D_Common\AD3D_Common.csproj">
+      <Project>{1168894D-14BB-4860-BCA2-C12BB2DB256C}</Project>
+      <Name>AD3D_Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(TargetPath)" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
 xcopy "$(ProjectDir)mod.json" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
 xcopy "$(ProjectDir)config.json" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
 xcopy "$(ProjectDir)Assets\deepengineasset" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
-xcopy "$(ProjectDir)Assets\deepengineasset.manifest" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y</PostBuildEvent>
+xcopy "$(ProjectDir)Assets\deepengineasset.manifest" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
+
+
+xcopy "$(TargetDir)AD3D_Common.dll" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
+xcopy "E:\Mods\Subnautica\AD3D_Common\Assets\common" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
+xcopy "E:\Mods\Subnautica\AD3D_Common\Assets\common.manifest" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y</PostBuildEvent>
   </PropertyGroup>
   <Target Name="AfterBuild">
   </Target>

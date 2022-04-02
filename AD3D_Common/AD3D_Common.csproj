@@ -275,8 +275,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetPath)" "D:\Steam\steamapps\common\Subnautica\QMods\AD3D_TechFabricatorMod\" /y
-xcopy "$(ProjectDir)Assets\common" "D:\Steam\steamapps\common\Subnautica\QMods\AD3D_TechFabricatorMod\Assets\" /y
-xcopy "$(ProjectDir)Assets\common.manifest" "D:\Steam\steamapps\common\Subnautica\QMods\AD3D_TechFabricatorMod\Assets\" /y</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

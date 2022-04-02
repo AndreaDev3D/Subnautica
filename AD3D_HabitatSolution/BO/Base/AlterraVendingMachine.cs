@@ -13,6 +13,7 @@ namespace AD3D_HabitatSolutionMod.BO
         public const string _ClassID = "AlterraVendingMachine";
         public const string _FriendlyName = "Alterra Vending Machine";
         public const string _ShortDescription = "Alterra Vending Machine.";
+
         public AlterraVendingMachine() : base(_ClassID, _FriendlyName, _ShortDescription)
         {
         }
@@ -110,7 +111,7 @@ namespace AD3D_HabitatSolutionMod.BO
         }
         protected override Atlas.Sprite GetItemSprite()
         {
-            return AD3D_Common.Helper.GetSpriteFromBundle(Utils.Helper.Bundle, $"{_ClassID}_Icon");
+            return AD3D_Common.Helper.GetSpriteFromBundle(Utils.Helper.Bundle, $"{_ClassID}");
         }
     }
 

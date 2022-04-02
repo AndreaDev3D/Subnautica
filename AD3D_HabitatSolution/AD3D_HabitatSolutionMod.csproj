@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,11 +36,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\Steam\steamapps\common\Subnautica\QMods\AD3D_TechFabricator\AD3D_Common.dll</HintPath>
     </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>D:\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\Assembly-CSharp.dll</HintPath>
+    <Reference Include="Assembly-CSharp-firstpass_publicized">
+      <HintPath>D:\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\publicized_assemblies\Assembly-CSharp-firstpass_publicized.dll</HintPath>
     </Reference>
-    <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>D:\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+    <Reference Include="Assembly-CSharp_publicized">
+      <HintPath>D:\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\publicized_assemblies\Assembly-CSharp_publicized.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Data.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpo.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -51,6 +52,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -252,9 +254,15 @@
     <Compile Include="BO\Base\AlterraVendingMachine.cs" />
     <Compile Include="BO\Base\AutoBreederTank.cs" />
     <Compile Include="BO\Base\FoodableItem.cs" />
+    <Compile Include="BO\Base\HabitatFoundation.cs" />
+    <Compile Include="BO\Base\JuckBox.cs" />
     <Compile Include="BO\Base\SeaCrosser.cs" />
+    <Compile Include="BO\Base\StoragebaleItem.cs" />
     <Compile Include="BO\InGame\HabitatBubble.cs" />
     <Compile Include="BO\Base\HabitatTest.cs" />
+    <Compile Include="BO\InGame\HabitatFoundationSystem.cs" />
+    <Compile Include="BO\InGame\JuckBoxAudioSystem.cs" />
+    <Compile Include="BO\InGame\StoragebaleItemSystem.cs" />
     <Compile Include="BO\InGame\Tooltip.cs" />
     <Compile Include="BO\InGame\VendingMachineItem.cs" />
     <Compile Include="BO\InGame\VendingMachineSystem.cs" />
@@ -272,12 +280,21 @@
     <None Include="mod.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\ReggaetonMix.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(TargetPath)" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
 xcopy "$(ProjectDir)mod.json" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
 xcopy "$(ProjectDir)Assets\habitatasset" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
-xcopy "$(ProjectDir)Assets\habitatasset.manifest" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y</PostBuildEvent>
+xcopy "$(ProjectDir)Assets\habitatasset.manifest" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
+
+
+xcopy "$(TargetDir)AD3D_Common.dll" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
+xcopy "E:\Mods\Subnautica\AD3D_Common\Assets\common" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
+xcopy "E:\Mods\Subnautica\AD3D_Common\Assets\common.manifest" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y</PostBuildEvent>
   </PropertyGroup>
 </Project>

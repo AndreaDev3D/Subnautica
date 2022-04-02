@@ -95,8 +95,10 @@ E:\Mods\Subnautica\AD3D_TechFabricator\bin\Debug\de\DevExpress.Xpo.v19.2.resourc
 E:\Mods\Subnautica\AD3D_TechFabricator\bin\Debug\es\DevExpress.Xpo.v19.2.resources.dll
 E:\Mods\Subnautica\AD3D_TechFabricator\bin\Debug\ja\DevExpress.Xpo.v19.2.resources.dll
 E:\Mods\Subnautica\AD3D_TechFabricator\bin\Debug\ru\DevExpress.Xpo.v19.2.resources.dll
-E:\Mods\Subnautica\AD3D_TechFabricator\obj\Debug\AD3D_TechFabricatorMod.csprojAssemblyReference.cache
 E:\Mods\Subnautica\AD3D_TechFabricator\obj\Debug\AD3D_TechFabricatorMod.csproj.CoreCompileInputs.cache
 E:\Mods\Subnautica\AD3D_TechFabricator\obj\Debug\AD3D_TechFabricatorMod.csproj.CopyComplete
 E:\Mods\Subnautica\AD3D_TechFabricator\obj\Debug\AD3D_TechFabricatorMod.dll
 E:\Mods\Subnautica\AD3D_TechFabricator\obj\Debug\AD3D_TechFabricatorMod.pdb
+E:\Mods\Subnautica\AD3D_TechFabricator\obj\Debug\AD3D_TechFabricatorMod.csproj.AssemblyReference.cache
+E:\Mods\Subnautica\AD3D_TechFabricator\bin\Debug\AD3D_Common.dll
+E:\Mods\Subnautica\AD3D_TechFabricator\bin\Debug\AD3D_Common.pdb

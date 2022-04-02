@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 370143088
+CRC: 1875426629
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 4f38e8245c7e1050689244daa3fe5e9c
+    Hash: b29639d09ecf8e520a8bccc8c2f5fae8
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 422f273d154ac50990fff1e43994fd96
+    Hash: 31a92ffa40bd88ef1ab0cf336084a056
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -30,6 +30,8 @@ ClassTypes:
 - Class: 64
   Script: {instanceID: 0}
 - Class: 65
+  Script: {instanceID: 0}
+- Class: 82
   Script: {instanceID: 0}
 - Class: 114
   Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
@@ -62,12 +64,19 @@ ClassTypes:
 Assets:
 - Assets/Habitat Solution/SeaCrosser/Prefabs/SeaCrosser.prefab
 - Assets/Habitat Solution/FoodSolution/Prefabs/Bar1.prefab
-- Assets/Habitat Solution/VendingMachine/Prefab/Vending Machine Plus.prefab
-- Assets/Habitat Solution/VendingMachine/Prefab/Item.prefab
-- Assets/Habitat Solution/Auto Fish-Tank/Icons/AutoBreederTank_Icon.png
-- Assets/Habitat Solution/Prefabs/HabitatTest.prefab
-- Assets/Habitat Solution/Auto Fish-Tank/Prefabs/AutoBreederTank.prefab
-- Assets/Habitat Solution/Icons/Icon.png
+- Assets/Habitat Solution/AlterraVendingMachine/Prefab/Vending Machine Plus.prefab
+- Assets/Habitat Solution/AlterraVendingMachine/Prefab/Item.prefab
+- Assets/Habitat Solution/HabitatFoundation/Icons/HabitatFoundation.png
+- Assets/Habitat Solution/JukeBox/Icons/JukeBox.png
+- Assets/Habitat Solution/SeaCrosser/Icons/SeaCrosser.png
+- Assets/Habitat Solution/QuantumStorage/Icons/QuantumStorage.png
+- Assets/Habitat Solution/HabitatTest/Prefabs/HabitatTest.prefab
+- Assets/Habitat Solution/AutoBreederTank/Prefabs/AutoBreederTank.prefab
+- Assets/Habitat Solution/HabitatFoundation/Prefabs/HabitatFoundation.prefab
+- Assets/Habitat Solution/QuantumStorage/Prefab/QuantumStorage.prefab
+- Assets/Habitat Solution/AlterraVendingMachine/Icons/AlterraVendingMachine.png
+- Assets/Habitat Solution/AutoBreederTank/Icons/AutoBreederTank.png
+- Assets/Habitat Solution/JukeBox/Prefabs/JukeBox.prefab
 - Assets/Habitat Solution/FoodSolution/Icons/Bar1.png
-- Assets/Habitat Solution/SeaCrosser/Icons/SeaCrosser_Icon.png
+- Assets/Habitat Solution/HabitatTest/Icons/HabitatTest.png
 Dependencies: []

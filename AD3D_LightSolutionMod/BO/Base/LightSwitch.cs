@@ -40,7 +40,7 @@ namespace AD3D_LightSolutionMod.BO.Base
         public override GameObject GetGameObject()
         {
             // Instantiates a copy of the prefab that is loaded from the AssetBundle loaded above.
-            GameObject _prefab = GameObject.Instantiate(Utils.Helper.Bundle.LoadAsset<GameObject>("LightSwitch.prefab"));
+            GameObject _prefab = GameObject.Instantiate(Utils.Helper.Bundle.LoadAsset<GameObject>($"{_ClassID}.prefab"));
             _prefab.name = _ClassID;
             //Need a tech tag for most prefabs
             var techTag = _prefab.AddComponent<TechTag>();

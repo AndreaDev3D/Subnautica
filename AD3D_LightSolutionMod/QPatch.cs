@@ -1,6 +1,8 @@
-﻿using AD3D_LightSolutionMod.BO.Base;
+﻿using AD3D_Common;
+using AD3D_LightSolutionMod.BO.Base;
 using AD3D_LightSolutionMod.BO.Config;
 using QModManager.API.ModLoading;
+using System.Collections.Generic;
 
 namespace AD3D_LightSolutionMod
 {
@@ -23,8 +25,11 @@ namespace AD3D_LightSolutionMod
         [QModPatch]
         public static void Patch()
         {
+            Database.SwitchItemList = new List<DataItem>();
             //Config.Load();
             Database.Load();
+            AD3D_Common.Helper.Log($"Loaded {Database.SwitchItemList.Count} elements.", true);
+            QPatch.Database.SwitchItemList.ForEach(w => Helper.Log($"SWL Item : {w.SyncCode} | {w.IsEnable} @ {w.Intensity}", true));
 
             LightSource_1 = new LightSourceItem("LightSource_1", "LightSource_1", LightSourceItemType.Roof);
             LightSource_2 = new LightSourceItem("LightSource_2", "LightSource_2", LightSourceItemType.Roof);

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AD3D_Common", "AD3D_Common\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AD3D_LightSolutionMod", "AD3D_LightSolutionMod\AD3D_LightSolutionMod.csproj", "{CDEC77D7-F93A-41A7-8F1E-E0DFC53916E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AD3D_VeichlePackMod", "AD3D_VeichlePackMod\AD3D_VeichlePackMod.csproj", "{3C0C9EAC-0DD1-46B9-831A-80378CE37E2D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{CDEC77D7-F93A-41A7-8F1E-E0DFC53916E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDEC77D7-F93A-41A7-8F1E-E0DFC53916E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDEC77D7-F93A-41A7-8F1E-E0DFC53916E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C0C9EAC-0DD1-46B9-831A-80378CE37E2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C0C9EAC-0DD1-46B9-831A-80378CE37E2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C0C9EAC-0DD1-46B9-831A-80378CE37E2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C0C9EAC-0DD1-46B9-831A-80378CE37E2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

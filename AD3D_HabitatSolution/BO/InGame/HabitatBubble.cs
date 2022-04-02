@@ -5,14 +5,14 @@ using UWE;
 
 namespace AD3D_HabitatSolutionMod.BO.InGame
 {
-    public class HabitatBubble : SubRoot
+    public class HabitatBubble : MonoBehaviour
     {
+        bool IsInside = false;
         public void Start()
         {
             try
             {
                 var _prefab = this.gameObject;
-
                 var seamothRef = CraftData.GetPrefabForTechType(TechType.Seamoth);
                 // SeaMoth
                 //var seaMoth = _prefab.AddComponent<SeaMoth>();
@@ -26,49 +26,49 @@ namespace AD3D_HabitatSolutionMod.BO.InGame
                 // OxygenManager
                 var oxygenManager = _prefab.AddComponent<OxygenManager>();
                 // DealDamageOnImpact
-                _prefab.AddComponent<DealDamageOnImpact>();
-                // LiveMixin
-                var liveMixin = _prefab.AddComponent<LiveMixin>();
-                liveMixin.data = ScriptableObject.CreateInstance<LiveMixinData>();
-                liveMixin.data.maxHealth = 300;
-                liveMixin = seamothRef.GetComponent<LiveMixin>();
-                //seaMoth.liveMixin = liveMixin;
-                // VFXConstructing
-                var vFXConstructing = _prefab.AddComponent<VFXConstructing>();
-                vFXConstructing = seamothRef.GetComponent<VFXConstructing>();
-                // FMOD_StudioEventEmitter
-                _prefab.AddComponent<FMOD_StudioEventEmitter>();
-                var eMx = _prefab.AddComponent<EnergyMixin>();
-                eMx = seamothRef.GetComponent<EnergyMixin>();
-                //eMx.storageRoot = BatterySlot.GetComponent<ChildObjectIdentifier>();
-                eMx.compatibleBatteries.Add(TechType.PowerCell);
-                eMx.compatibleBatteries.Add(TechType.PrecursorIonBattery);
-                eMx.allowBatteryReplacement = true;
-                //eMx.batteryModels.ToList().Add(new GameObject(new GameObject(), TechType.PowerCell)));
+//                _prefab.AddComponent<DealDamageOnImpact>();
+//                // LiveMixin
+//                var liveMixin = _prefab.AddComponent<LiveMixin>();
+//                liveMixin.data = ScriptableObject.CreateInstance<LiveMixinData>();
+//                liveMixin.data.maxHealth = 300;
+//                liveMixin = seamothRef.GetComponent<LiveMixin>();
+//                //seaMoth.liveMixin = liveMixin;
+//                // VFXConstructing
+//                var vFXConstructing = _prefab.AddComponent<VFXConstructing>();
+//                vFXConstructing = seamothRef.GetComponent<VFXConstructing>();
+//                // FMOD_StudioEventEmitter
+//                _prefab.AddComponent<FMOD_StudioEventEmitter>();
+//                var eMx = _prefab.AddComponent<EnergyMixin>();
+//                eMx = seamothRef.GetComponent<EnergyMixin>();
+//                //eMx.storageRoot = BatterySlot.GetComponent<ChildObjectIdentifier>();
+//                eMx.compatibleBatteries.Add(TechType.PowerCell);
+//                eMx.compatibleBatteries.Add(TechType.PrecursorIonBattery);
+//                eMx.allowBatteryReplacement = true;
+//                //eMx.batteryModels.ToList().Add(new GameObject(new GameObject(), TechType.PowerCell)));
 
-                //genericHandTarget.onHandHover.AddListener(eMx.HandHover);
-                // WorldForces
-                var WorldForces = _prefab.AddComponent<WorldForces>();
-                WorldForces.useRigidbody = _prefab.GetComponent<Rigidbody>();
-                // GameInfoIcon
-                var gameInfoIcon = _prefab.AddComponent<GameInfoIcon>();
-                gameInfoIcon.techType = TechType.Seamoth;
-                // CrushDamage
-                var crushDamage = _prefab.AddComponent<CrushDamage>();
-                crushDamage.liveMixin = liveMixin;
-                //crushDamage.vehicle = seaMoth;
-#warning add CrushDepth and Notification
-                // ConditionRules
-                var conditionRules = _prefab.AddComponent<ConditionRules>();
-                // DepthAlarms
-                var depthAlarms = _prefab.AddComponent<DepthAlarms>();
-                // FMOD_CustomEmitter
-                var fMOD_CustomEmitter = _prefab.AddComponent<FMOD_CustomEmitter>();
-                fMOD_CustomEmitter = seamothRef.GetComponent<FMOD_CustomEmitter>();
-                // FMOD_StudioEventEmitter
-                _prefab.AddComponent<FMOD_StudioEventEmitter>();
-                // EnergyEffect
-                var energyEffect = _prefab.AddComponent<EnergyEffect>();
+//                //genericHandTarget.onHandHover.AddListener(eMx.HandHover);
+//                // WorldForces
+//                var WorldForces = _prefab.AddComponent<WorldForces>();
+//                WorldForces.useRigidbody = _prefab.GetComponent<Rigidbody>();
+//                // GameInfoIcon
+//                var gameInfoIcon = _prefab.AddComponent<GameInfoIcon>();
+//                gameInfoIcon.techType = TechType.Seamoth;
+//                // CrushDamage
+//                var crushDamage = _prefab.AddComponent<CrushDamage>();
+//                crushDamage.liveMixin = liveMixin;
+//                //crushDamage.vehicle = seaMoth;
+//#warning add CrushDepth and Notification
+//                // ConditionRules
+//                var conditionRules = _prefab.AddComponent<ConditionRules>();
+//                // DepthAlarms
+//                var depthAlarms = _prefab.AddComponent<DepthAlarms>();
+//                // FMOD_CustomEmitter
+//                var fMOD_CustomEmitter = _prefab.AddComponent<FMOD_CustomEmitter>();
+//                fMOD_CustomEmitter = seamothRef.GetComponent<FMOD_CustomEmitter>();
+//                // FMOD_StudioEventEmitter
+//                _prefab.AddComponent<FMOD_StudioEventEmitter>();
+//                // EnergyEffect
+//                var energyEffect = _prefab.AddComponent<EnergyEffect>();
 
 
                 //Spawn a seamoth for reference.
@@ -76,17 +76,14 @@ namespace AD3D_HabitatSolutionMod.BO.InGame
                 //Get the seamoth's water clip proxy component. This is what displaces the water.
                 var seamothProxy = seamothRef.GetComponentInChildren<WaterClipProxy>();
                 //Find the parent of all the ship's clip proxys.
-                Transform proxyParent = GameObjectFinder.FindByName(this.gameObject, "Root").transform;
+                Transform proxyParent = GameObjectFinder.FindByName(this.gameObject, "Habitat_Proxy").transform;
                 //Loop through them all
-                foreach (Transform child in proxyParent)
-                {
-                    var waterClip = child.gameObject.AddComponent<WaterClipProxy>();
-                    waterClip.shape = WaterClipProxy.Shape.Box;
-                    //Apply the seamoth's clip material. No idea what shader it uses or what settings it actually has, so this is an easier option. Reuse the game's assets.
-                    waterClip.clipMaterial = seamothProxy.clipMaterial;
-                    //You need to do this. By default the layer is 0. This makes it displace everything in the default rendering layer. We only want to displace water.
-                    waterClip.gameObject.layer = 28;// SeaMoth layer is 28
-                }
+
+                //this.depthClearer = proxyParent.gameObject.GetComponent<Renderer>();
+                var waterClip = proxyParent.gameObject.AddComponent<WaterClipProxy>();
+                waterClip.shape = WaterClipProxy.Shape.Box;
+                waterClip.clipMaterial = seamothProxy.clipMaterial;
+                waterClip.gameObject.layer = 28;
                 //Unload the prefab to save on resources.
                 //Resources.UnloadAsset(seamothRef);
             }
@@ -96,12 +93,40 @@ namespace AD3D_HabitatSolutionMod.BO.InGame
             }
         }
 
+        private void FixedUpdate()
+        {
+            if (IsInside)
+            {
+                Player.main.SetMotorMode(Player.MotorMode.Walk);
+                return;
+            }
+
+            Player.main.SetMotorMode(Player.MotorMode.Dive);
+        }
+
+        private void Update()
+        {
+            if(IsInside)
+                Player.main.SetMotorMode(Player.MotorMode.Walk);
+
+            Player.main.SetMotorMode(Player.MotorMode.Dive);
+        }
+
+        private void LateUpdate()
+        {
+            if (IsInside)
+                Player.main.SetMotorMode(Player.MotorMode.Walk);
+
+            Player.main.SetMotorMode(Player.MotorMode.Dive);
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.tag == Player.main.tag) 
             {
                 Helper.Log("PlayerIn", showOnScreen: true);
-                Player.main.SetCurrentSub(this);
+                //Player.main.SetMotorMode(Player.MotorMode.Walk);
+                IsInside = true;
             }
         }
 
@@ -109,8 +134,17 @@ namespace AD3D_HabitatSolutionMod.BO.InGame
         {
             if (other.tag == Player.main.tag)
             {
-                Helper.Log("PlayerOut", showOnScreen: true);
-                Player.main.SetCurrentSub(null);
+                Helper.Log("PlayerOut", showOnScreen: true); IsInside = false;
+                //Player.main.SetMotorMode(Player.MotorMode.Dive);
+                IsInside = false;
+            }
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.tag == Player.main.tag)
+            {
+                Player.main.oxygenMgr.AddOxygen(1);
             }
         }
     }

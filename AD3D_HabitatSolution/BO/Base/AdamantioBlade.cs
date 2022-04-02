@@ -15,18 +15,25 @@ namespace AD3D_HabitatSolutionMod.BO
         public const string _ClassID = "AdamantioBlade";
         public const string _FriendlyName = "Adamantio Blade";
         public const string _Description = "We all know WTF is going on.";
+
         public AdamantioBlade() : base(_ClassID, _FriendlyName, _Description)
         {
+
         }
 
-        public override WorldEntityInfo EntityInfo => new WorldEntityInfo() 
-        { 
-            cellLevel = LargeWorldEntity.CellLevel.Global, 
-            classId = this.ClassID, 
-            localScale = Vector3.one, 
-            prefabZUp = false, slotType = EntitySlot.Type.Small, 
-            techType = this.TechType 
+        public override WorldEntityInfo EntityInfo => new WorldEntityInfo()
+        {
+            cellLevel = LargeWorldEntity.CellLevel.Global,
+            classId = this.ClassID,
+            localScale = Vector3.one,
+            prefabZUp = false,
+            slotType = EntitySlot.Type.Small,
+            techType = this.TechType
         };
+
+        public override CraftTree.Type FabricatorType => CraftTree.Type.Fabricator;
+
+        public override string[] StepsToFabricatorTab => new[] { "Personal", "Tools" };
 
         public override EquipmentType EquipmentType => EquipmentType.Hand;
         public override QuickSlotType QuickSlotType => QuickSlotType.None;

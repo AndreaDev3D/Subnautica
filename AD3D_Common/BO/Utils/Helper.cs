@@ -14,7 +14,7 @@ namespace AD3D_Common
             {
                 if (_bundle == null)
                 {
-                    var mainDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                    var mainDirectory = Path.GetDirectoryName(Assembly.GetCallingAssembly().Location);
                     var assetsFolder = Path.Combine(mainDirectory, "Assets");
                     _bundle = AssetBundle.LoadFromFile(Path.Combine(assetsFolder, "common"));
                 }
@@ -43,12 +43,12 @@ namespace AD3D_Common
 
         public static Atlas.Sprite GetSprite(string modName, string filename, string format = "png")
         {
-            return ImageUtils.LoadSpriteFromFile($"./QMods/{modName}/Assets/{filename}.{format}");
+            return ImageUtils.LoadSpriteFromFile($"{Path.GetDirectoryName(Assembly.GetCallingAssembly().Location)}/Assets/{filename}.{format}");
         }
 
-        public static Texture2D GetTexture(string modName, string filename)
+        public static Texture2D GetTexture(string modName, string filename, string format = "png")
         {
-            return ImageUtils.LoadTextureFromFile($"./QMods/{modName}/Assets/{filename}.png");
+            return ImageUtils.LoadTextureFromFile($"{Path.GetDirectoryName(Assembly.GetCallingAssembly().Location)}/Assets/{filename}.{format}");
         }
 
         public static void Log(string text, bool showOnScreen = false, QModManager.Utility.Logger.Level loggerLevel = QModManager.Utility.Logger.Level.Info)
@@ -67,11 +67,11 @@ namespace AD3D_Common
             {
                 get
                 {
-                    return GUIUtility.systemCopyBuffer;
+                    return UnityEngine.GUIUtility.systemCopyBuffer;
                 }
                 set
                 {
-                    GUIUtility.systemCopyBuffer = value;
+                    UnityEngine.GUIUtility.systemCopyBuffer = value;
                 }
             }
         }

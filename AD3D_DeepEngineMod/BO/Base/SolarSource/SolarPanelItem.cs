@@ -2,6 +2,7 @@
 using AD3D_LightSolutionMod.BO.InGame;
 using SMLHelper.V2.Assets;
 using SMLHelper.V2.Crafting;
+using SMLHelper.V2.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,6 +72,8 @@ namespace AD3D_DeepEngineMod.BO.Base.SolarSource
             constructible.model = GameObjectFinder.FindByName(_prefab, "Ghost");//.transform.GetChild(0).gameObject;
             constructible.forceUpright = false;
 
+            _prefab.SetActive(false);
+
             var solarPower = CraftData.GetPrefabForTechType(TechType.SolarPanel);
             PowerRelay solarPowerRelay = solarPower.GetComponent<PowerRelay>();
             var PowerSource = _prefab.AddComponent<PowerSource>();
@@ -104,6 +107,7 @@ namespace AD3D_DeepEngineMod.BO.Base.SolarSource
 
             var SubModuleHandler = _prefab.AddComponent<SubModuleHandler>();
 
+            _prefab.SetActive(true);
             return _prefab;
         }
 
@@ -123,7 +127,7 @@ namespace AD3D_DeepEngineMod.BO.Base.SolarSource
                     material.shader = shader;
 
                     //These enable the item to emit a glow of its own using Subnauticas shader system.
-                    material.EnableKeyword("MARMO_EMISSION");
+                    //material.EnableKeyword("MARMO_EMISSION");
                     material.SetFloat(ShaderPropertyID._EnableGlow, 1f);
                     material.SetTexture(ShaderPropertyID._Illum, emissionTexture);
                     material.SetColor(ShaderPropertyID._GlowColor, new Color(1, 1f, 1, 1));
@@ -138,7 +142,7 @@ namespace AD3D_DeepEngineMod.BO.Base.SolarSource
 
         protected override Atlas.Sprite GetItemSprite()
         {
-            return AD3D_Common.Helper.GetSpriteFromBundle(AD3D_DeepEngineMod.BO.Utils.Helper.Bundle, "Icon");
+            return ImageUtils.LoadSpriteFromTexture(AD3D_DeepEngineMod.BO.Utils.Helper.Bundle.LoadAsset<Texture2D>("Icon"));
         }
     }
 }

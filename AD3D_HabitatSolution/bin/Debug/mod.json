@@ -6,7 +6,10 @@
   "Author": "AndreaDev3D",
   "Game": "Subnautica",
   "AssemblyName": "AD3D_HabitatSolutionMod.dll",
-  "EntryMethod": "AD3D_HabitatSolutionMod.QPatch.Patch",
-  "Config": {},
-  "Requires": []
+  "Dependencies": [
+    "SMLHelper"
+  ],
+  "LoadAfter": [
+    "AD3D_TechFabricatorMod"
+  ]
 }

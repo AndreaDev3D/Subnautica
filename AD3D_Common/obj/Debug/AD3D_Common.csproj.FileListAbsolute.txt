@@ -1,4 +1,3 @@
-E:\Mods\Subnautica\AD3D_Common\obj\Debug\AD3D_Common.csprojAssemblyReference.cache
 E:\Mods\Subnautica\AD3D_Common\obj\Debug\AD3D_Common.csproj.CoreCompileInputs.cache
 E:\Mods\Subnautica\AD3D_Common\bin\Debug\AD3D_Common.dll
 E:\Mods\Subnautica\AD3D_Common\bin\Debug\AD3D_Common.pdb
@@ -11,7 +10,6 @@ E:\Mods\Subnautica\AD3D_Common\bin\Debug\LumenWorks.dll
 E:\Mods\Subnautica\AD3D_Common\bin\Debug\Mono.Posix.dll
 E:\Mods\Subnautica\AD3D_Common\bin\Debug\Mono.Security.dll
 E:\Mods\Subnautica\AD3D_Common\bin\Debug\QModInstaller.dll
-E:\Mods\Subnautica\AD3D_Common\bin\Debug\QModManager.QMMLoader.dll
 E:\Mods\Subnautica\AD3D_Common\bin\Debug\SMLHelper.dll
 E:\Mods\Subnautica\AD3D_Common\bin\Debug\Unity.MemoryProfiler.dll
 E:\Mods\Subnautica\AD3D_Common\bin\Debug\Unity.Timeline.dll
@@ -82,8 +80,8 @@ E:\Mods\Subnautica\AD3D_Common\bin\Debug\Poly2Tri.dll
 E:\Mods\Subnautica\AD3D_Common\bin\Debug\PlatformIODefault.dll
 E:\Mods\Subnautica\AD3D_Common\bin\Debug\PlatformUtilsDefault.dll
 E:\Mods\Subnautica\AD3D_Common\bin\Debug\QModInstaller.xml
-E:\Mods\Subnautica\AD3D_Common\bin\Debug\QModManager.QMMLoader.xml
 E:\Mods\Subnautica\AD3D_Common\bin\Debug\SMLHelper.xml
 E:\Mods\Subnautica\AD3D_Common\obj\Debug\AD3D_Common.csproj.CopyComplete
 E:\Mods\Subnautica\AD3D_Common\obj\Debug\AD3D_Common.dll
 E:\Mods\Subnautica\AD3D_Common\obj\Debug\AD3D_Common.pdb
+E:\Mods\Subnautica\AD3D_Common\obj\Debug\AD3D_Common.csproj.AssemblyReference.cache

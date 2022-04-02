@@ -1,9 +1,7 @@
-E:\Mods\Subnautica\AD3D_LightSolutionMod\obj\Debug\AD3D_LightSolutionMod.csprojAssemblyReference.cache
 E:\Mods\Subnautica\AD3D_LightSolutionMod\obj\Debug\AD3D_LightSolutionMod.csproj.CoreCompileInputs.cache
 E:\Mods\Subnautica\AD3D_LightSolutionMod\bin\Debug\mod.json
 E:\Mods\Subnautica\AD3D_LightSolutionMod\bin\Debug\AD3D_LightSolutionMod.dll
 E:\Mods\Subnautica\AD3D_LightSolutionMod\bin\Debug\AD3D_LightSolutionMod.pdb
-E:\Mods\Subnautica\AD3D_LightSolutionMod\bin\Debug\AD3D_Common.dll
 E:\Mods\Subnautica\AD3D_LightSolutionMod\bin\Debug\QModInstaller.dll
 E:\Mods\Subnautica\AD3D_LightSolutionMod\bin\Debug\SMLHelper.dll
 E:\Mods\Subnautica\AD3D_LightSolutionMod\bin\Debug\QModInstaller.xml
@@ -97,3 +95,6 @@ E:\Mods\Subnautica\AD3D_LightSolutionMod\bin\Debug\de\DevExpress.Xpo.v19.2.resou
 E:\Mods\Subnautica\AD3D_LightSolutionMod\bin\Debug\es\DevExpress.Xpo.v19.2.resources.dll
 E:\Mods\Subnautica\AD3D_LightSolutionMod\bin\Debug\ja\DevExpress.Xpo.v19.2.resources.dll
 E:\Mods\Subnautica\AD3D_LightSolutionMod\bin\Debug\ru\DevExpress.Xpo.v19.2.resources.dll
+E:\Mods\Subnautica\AD3D_LightSolutionMod\obj\Debug\AD3D_LightSolutionMod.csproj.AssemblyReference.cache
+E:\Mods\Subnautica\AD3D_LightSolutionMod\bin\Debug\AD3D_Common.dll
+E:\Mods\Subnautica\AD3D_LightSolutionMod\bin\Debug\AD3D_Common.pdb

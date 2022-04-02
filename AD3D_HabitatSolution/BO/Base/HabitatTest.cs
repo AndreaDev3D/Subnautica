@@ -43,7 +43,7 @@ namespace AD3D_HabitatSolutionMod.BO
             var techTag = _prefab.AddComponent<TechTag>();
             techTag.type = TechType;
 
-            _prefab.EnsureComponent<LargeWorldEntity>().cellLevel = LargeWorldEntity.CellLevel.Global;
+            _prefab.EnsureComponent<LargeWorldEntity>().cellLevel = LargeWorldEntity.CellLevel.Far;
             _prefab.EnsureComponent<PrefabIdentifier>().ClassId = ClassID;
 
             //Collider for the turbine pole and builder tool
@@ -55,8 +55,8 @@ namespace AD3D_HabitatSolutionMod.BO
             ApplySubnauticaShaders(_prefab);
 
             // Add constructable - This prefab normally isn't constructed.
-            var rootModel = GameObjectFinder.FindByName(_prefab, "Root");
-            ConstructableBase constructible = _prefab.AddComponent<ConstructableBase>();
+            var rootModel = GameObjectFinder.FindByName(_prefab, "model");
+            Constructable constructible = _prefab.AddComponent<Constructable>();
             constructible.constructedAmount = 1;
             constructible.techType = this.TechType;
             constructible.model = rootModel;
@@ -69,13 +69,15 @@ namespace AD3D_HabitatSolutionMod.BO
             constructible.allowedInSub = false;
             constructible.allowedInBase = false;
             constructible.allowedOutside = true;
-            constructible.allowedOnConstructables = false;
+            constructible.allowedOnConstructables = true;
             constructible.forceUpright = true;
             constructible.rotationEnabled = true;
-            constructible.placeDefaultDistance = 10f;
-            constructible.placeMinDistance = 5f;
-            constructible.placeMaxDistance = 20f;
+            constructible.placeDefaultDistance = 15f;
+            constructible.placeMinDistance = 10f;
+            constructible.placeMaxDistance = 25f;
             constructible.surfaceType = VFXSurfaceTypes.metal;
+
+            _prefab.SetActive(false);
 
             //rootModel.AddComponent<Base>();
             //var baseGhost = rootModel.AddComponent<BaseAddCellGhost>();
@@ -87,6 +89,7 @@ namespace AD3D_HabitatSolutionMod.BO
 
             //_prefab.AddComponent<Rigidbody>();
             //var constructableBase = _prefab.AddComponent<ConstructableBase>();
+
             //var prefabIdentifier = _prefab.AddComponent<PrefabIdentifier>();
 
 
@@ -107,7 +110,7 @@ namespace AD3D_HabitatSolutionMod.BO
             //_prefab.AddComponent<DealDamageOnImpact>();
             //_prefab.AddComponent<SubWaterPlane>();
             //_prefab.AddComponent<CrushDamage>();
-
+            _prefab.SetActive(true);
             return _prefab;
         }
 
@@ -132,7 +135,7 @@ namespace AD3D_HabitatSolutionMod.BO
                     material.shader = shader;
 
                     //These enable the item to emit a glow of its own using Subnauticas shader system.
-                    material.EnableKeyword("MARMO_EMISSION");
+                    //material.EnableKeyword("MARMO_EMISSION");
                     material.SetFloat(ShaderPropertyID._EnableGlow, 1f);
                     material.SetTexture(ShaderPropertyID._Illum, emissionTexture);
                     material.SetColor(ShaderPropertyID._GlowColor, new Color(1, 1f, 1, 1));
@@ -146,7 +149,7 @@ namespace AD3D_HabitatSolutionMod.BO
         }
         protected override Atlas.Sprite GetItemSprite()
         {
-            return AD3D_Common.Helper.GetSpriteFromBundle(Utils.Helper.Bundle, $"{_ClassID}_Icon");
+            return AD3D_Common.Helper.GetSpriteFromBundle(Utils.Helper.Bundle, $"{_ClassID}");
         }
     }
 }

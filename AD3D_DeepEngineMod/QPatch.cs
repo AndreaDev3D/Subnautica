@@ -2,6 +2,7 @@
 using AD3D_DeepEngineMod.BO.Config;
 using AD3D_LightSolutionMod.BO.Patch.DeepEngine;
 using QModManager.API.ModLoading;
+using QModManager.Utility;
 using SMLHelper.V2.Handlers;
 
 namespace AD3D_DeepEngineMod
@@ -14,9 +15,9 @@ namespace AD3D_DeepEngineMod
         internal static DeepEngineConfig Config { get; set; } = new DeepEngineConfig();
         internal static DeepEngineKit DeepEngineKit { get; } = new DeepEngineKit();
         internal static DeepEngine DeepEngine { get; } = new DeepEngine();
-        internal static SolarPanelItem SolarPanelItem { get; } = new SolarPanelItem(); 
+        internal static SolarPanelItem SolarPanelItem { get; } = new SolarPanelItem();
 
-         [QModPatch]
+        [QModPatch]
         public static void Patch()
         {
             Config = OptionsPanelHandler.Main.RegisterModOptions<DeepEngineConfig>();
@@ -32,7 +33,7 @@ namespace AD3D_DeepEngineMod
 
             SolarPanelItem.Patch();
 
-            AD3D_Common.Helper.Log($"Patched successfully [v1.3.0]");
+            Logger.Log(Logger.Level.Info, $"Patched successfully [v1.3.0]");
         }
     }
 }

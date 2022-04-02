@@ -10,6 +10,6 @@ namespace AD3D_LightSolutionMod.BO.Config
 {
     public class DatabaseConfig : ConfigFile
     {
-        public List<DataItem> SwitchItemList { get; set; } = new List<DataItem>();
+        public List<DataItem> SwitchItemList { get; set; }
     }
 }
