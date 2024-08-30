@@ -15,7 +15,7 @@ namespace AD3D_EnergySolution.Items.Buildable
         public const string _Description = "High efficiency electric generator that runs in deep water.";
         
         public static PrefabInfo PrefabInfo { get; } = PrefabInfo
-            .WithTechType(_ClassID, _FriendlyName, _Description)
+            .WithTechType(_ClassID, _FriendlyName, _Description, unlockAtStart: true)
             .WithIcon(ImageUtils.LoadSpriteFromTexture(Plugin.AssetsBundle.LoadAsset<Texture2D>("DeepEngine.png")))
             .WithSizeInInventory(new Vector2int(2, 2));
 
