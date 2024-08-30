@@ -48,7 +48,7 @@ namespace AD3D_HabitatSolutionMod.BO.Base
 
         public override GameObject GetGameObject()
         {
-            var _prefab = GameObject.Instantiate(Utils.Helper.Bundle.LoadAsset<GameObject>($"{ClassID}.prefab"));
+            var _prefab = GameObject.Instantiate(QPatch.Bundle.LoadAsset<GameObject>($"{ClassID}.prefab"));
 
             var pick = _prefab.AddComponent<Pickupable>();
             pick.isPickupable = true;
@@ -120,7 +120,7 @@ namespace AD3D_HabitatSolutionMod.BO.Base
         }
         protected override Atlas.Sprite GetItemSprite()
         {
-            return Helper.GetSpriteFromBundle(Utils.Helper.Bundle, ClassID);
+            return Helper.GetSpriteFromBundle(QPatch.Bundle, ClassID);
         }
     }
 

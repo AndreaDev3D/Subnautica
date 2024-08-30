@@ -12,7 +12,6 @@ namespace AD3D_LightSolutionMod.BO.Base
 {
     public class LightSourceItem : Buildable
     {
-        public const string _AssetName = "lightsolutionasset";
         //public const string _ClassID = "LightSource_1";
         //public const string _FriendlyName = "Light Source 1";
         public const string _Description = "The light source item can be linked and handled by any \"Light Switch\". average use 0.06 W/s";
@@ -46,7 +45,7 @@ namespace AD3D_LightSolutionMod.BO.Base
         public override GameObject GetGameObject()
         {
             // Instantiates a copy of the prefab that is loaded from the AssetBundle loaded above.
-            GameObject _prefab = GameObject.Instantiate(Utils.Helper.Bundle.LoadAsset<GameObject>($"{ClassID}.prefab"));
+            GameObject _prefab = GameObject.Instantiate(QPatch.Bundle.LoadAsset<GameObject>($"{ClassID}.prefab"));
             _prefab.name = ClassID;
             //Need a tech tag for most prefabs
             var techTag = _prefab.AddComponent<TechTag>();
@@ -125,8 +124,9 @@ namespace AD3D_LightSolutionMod.BO.Base
                     material.SetFloat(ShaderPropertyID._EnableGlow, 1f);
                     material.SetTexture(ShaderPropertyID._Illum, emissionTexture);
                     material.SetColor(ShaderPropertyID._GlowColor, new Color(1f, 1f, 1f, 1f));
-                    material.SetFloat(ShaderPropertyID._GlowStrength, 0.0f);
-                    material.SetFloat(ShaderPropertyID._GlowStrengthNight, 0.0f);
+
+                    material.SetFloat(ShaderPropertyID._GlowStrength, 2.0f);
+                    material.SetFloat(ShaderPropertyID._GlowStrengthNight, 3.0f);
                 }
             }
 
@@ -137,11 +137,11 @@ namespace AD3D_LightSolutionMod.BO.Base
         }
         protected override Atlas.Sprite GetItemSprite()
         {
-            return Helper.GetSpriteFromBundle(Utils.Helper.Bundle, ClassID);
+            return Helper.GetSpriteFromBundle(QPatch.Bundle, ClassID);
         }
     }
 
-    public enum LightSourceItemType 
+    public enum LightSourceItemType
     {
         Wall, Roof, Floor
     }

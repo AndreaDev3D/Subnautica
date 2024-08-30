@@ -10,6 +10,7 @@
     <RootNamespace>AD3D_Common</RootNamespace>
     <AssemblyName>AD3D_Common</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <LangVersion>latest</LangVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -263,15 +264,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BO\Utils\Constant.cs" />
-    <Compile Include="BO\Utils\GameObjectFinder.cs" />
-    <Compile Include="BO\Utils\Helper.cs" />
+    <Compile Include="Utils\Constant.cs" />
+    <Compile Include="Utils\GameObjectFinder.cs" />
+    <Compile Include="Utils\Helper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <None Include="Assets\common" />
-    <None Include="Assets\common.manifest" />
+    <None Include="Assets\common.asset" />
+    <None Include="Assets\common.asset.manifest" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

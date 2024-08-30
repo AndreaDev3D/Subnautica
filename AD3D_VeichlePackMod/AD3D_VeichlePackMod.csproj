@@ -1,93 +1,99 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <!--Project was exported from assembly: C:\Users\admin\Downloads\Odyssey Vehicle-871-1-1-1-1637720569\OdysseyVehicle\OdysseyVehicle.dll-->
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3C0C9EAC-0DD1-46B9-831A-80378CE37E2D}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AssemblyName>AD3D_VeichlePackMod</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <ApplicationVersion>1.0.0.0</ApplicationVersion>
-    <FileAlignment>512</FileAlignment>
-    <RootNamespace>AD3D_VeichlePackMod</RootNamespace>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="0Harmony">
-      <HintPath>D:\Steam\steamapps\common\Subnautica\BepInEx\core\0Harmony.dll</HintPath>
-    </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>D:\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\Assembly-CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>D:\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
-    </Reference>
-    <Reference Include="QModInstaller">
-      <HintPath>D:\Steam\steamapps\common\Subnautica\BepInEx\plugins\QModManager\QModInstaller.dll</HintPath>
-    </Reference>
-    <Reference Include="SMLHelper">
-      <HintPath>D:\Steam\steamapps\common\Subnautica\QMods\Modding Helper\SMLHelper.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AssetBundleModule">
-      <HintPath>D:\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>D:\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>D:\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
-    </Reference>
-    <Reference Include="VehicleFramework">
-      <HintPath>D:\Steam\steamapps\common\Subnautica\QMods\VehicleFramework\VehicleFramework.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="BO\Kraken.cs" />
-    <Compile Include="Logger.cs" />
-    <Compile Include="QPatch.cs" />
-    <Compile Include="Utils\Helper.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\veichlepack.asset" />
-    <None Include="Assets\veichlepack.asset.manifest" />
-    <None Include="mod.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AD3D_Common\AD3D_Common.csproj">
-      <Project>{1168894d-14bb-4860-bca2-c12bb2db256c}</Project>
-      <Name>AD3D_Common</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetPath)" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
-xcopy "$(ProjectDir)mod.json" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
-xcopy "$(ProjectDir)Assets\*.asset" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
-xcopy "$(ProjectDir)Assets\*.manifest" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
-xcopy "$(ProjectDir)Assets\*.png" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
+	<!--Project was exported from assembly: C:\Users\admin\Downloads\Odyssey Vehicle-871-1-1-1-1637720569\OdysseyVehicle\OdysseyVehicle.dll-->
+	<PropertyGroup>
+		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+		<ProjectGuid>{3C0C9EAC-0DD1-46B9-831A-80378CE37E2D}</ProjectGuid>
+		<OutputType>Library</OutputType>
+		<AssemblyName>AD3D_VeichlePackMod</AssemblyName>
+		<TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+		<LangVersion>latest</LangVersion>
+		<ApplicationVersion>1.0.0.0</ApplicationVersion>
+		<FileAlignment>512</FileAlignment>
+		<RootNamespace>AD3D_VeichlePackMod</RootNamespace>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		<PlatformTarget>AnyCPU</PlatformTarget>
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>full</DebugType>
+		<Optimize>false</Optimize>
+		<OutputPath>bin\Debug\</OutputPath>
+		<DefineConstants>DEBUG;TRACE</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<PlatformTarget>AnyCPU</PlatformTarget>
+		<DebugType>pdbonly</DebugType>
+		<Optimize>true</Optimize>
+		<OutputPath>bin\Release\</OutputPath>
+		<DefineConstants>TRACE</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+	</PropertyGroup>
+	<ItemGroup>
+		<Reference Include="0Harmony">
+			<HintPath>D:\Steam\steamapps\common\Subnautica\BepInEx\core\0Harmony.dll</HintPath>
+		</Reference>
+		<Reference Include="Assembly-CSharp">
+			<HintPath>D:\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\Assembly-CSharp.dll</HintPath>
+		</Reference>
+		<Reference Include="Assembly-CSharp-firstpass">
+			<HintPath>D:\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+		</Reference>
+		<Reference Include="QModInstaller">
+			<HintPath>D:\Steam\steamapps\common\Subnautica\BepInEx\plugins\QModManager\QModInstaller.dll</HintPath>
+		</Reference>
+		<Reference Include="SMLHelper">
+			<HintPath>D:\Steam\steamapps\common\Subnautica\QMods\Modding Helper\SMLHelper.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AssetBundleModule">
+			<HintPath>D:\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.CoreModule">
+			<HintPath>D:\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.TextRenderingModule">
+			<HintPath>D:\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+		</Reference>
+		<Reference Include="VehicleFramework">
+			<HintPath>D:\Steam\steamapps\common\Subnautica\QMods\VehicleFramework\VehicleFramework.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Include="BO\Kraken.cs" />
+		<Compile Include="QPatch.cs" />
+		<Compile Include="Utils\Helper.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="Assets\veichlepack.asset" />
+		<None Include="Assets\veichlepack.asset.manifest" />
+		<None Include="mod.json" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\AD3D_Common\AD3D_Common.csproj">
+			<Project>{1168894d-14bb-4860-bca2-c12bb2db256c}</Project>
+			<Name>AD3D_Common</Name>
+		</ProjectReference>
+	</ItemGroup>
+	<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+	<PropertyGroup>
+		<PostBuildEvent>
+			REM Copy Builded Mod into Subnautica folder
+			xcopy "$(TargetPath)" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
+			xcopy "$(ProjectDir)mod.json" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
+			xcopy "$(ProjectDir)Assets\*.asset" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
+			xcopy "$(ProjectDir)Assets\*.manifest" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
+			xcopy "$(ProjectDir)Assets\*.png" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
 
+			REM  Copy Common Mod into Subnautica folder
+			xcopy "$(TargetDir)AD3D_Common.dll" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
+			xcopy "E:\Mods\Subnautica\AD3D_Common\Assets\*.asset" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
+			xcopy "E:\Mods\Subnautica\AD3D_Common\Assets\*.manifest" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
 
-xcopy "$(TargetDir)AD3D_Common.dll" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
-xcopy "E:\Mods\Subnautica\AD3D_Common\Assets\common" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
-xcopy "E:\Mods\Subnautica\AD3D_Common\Assets\common.manifest" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y</PostBuildEvent>
-  </PropertyGroup>
+			REM  Zip Mod into Git folder
+			7z a "$(SolutionDir)Download\$(ProjectName).zip" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)"
+		</PostBuildEvent>
+	</PropertyGroup>
 </Project>

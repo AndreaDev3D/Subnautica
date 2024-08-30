@@ -3,13 +3,22 @@ using AD3D_LightSolutionMod.BO.Base;
 using AD3D_LightSolutionMod.BO.Config;
 using QModManager.API.ModLoading;
 using System.Collections.Generic;
+using System.Reflection;
+using UnityEngine;
 
 namespace AD3D_LightSolutionMod
 {
     [QModCore]
     public class QPatch
     {
-        //internal static LightSolutionConfig Config { get; set; } = new LightSolutionConfig();
+        public const string _AssetBundleName = "lightsolution.asset";
+
+        private static AssetBundle _bundle;
+        public static AssetBundle Bundle => _bundle ??= Helper.GetAssetBundle(Assembly.GetCallingAssembly().Location, _AssetBundleName);
+
+        public const string _ModName = "AD3D_LightSolutionMod";
+        public const string _Mod_Version = "1.0.0";
+
         internal static DatabaseConfig Database { get; set; } = new DatabaseConfig();
 
         internal static LightSwitch LightSwitch { get; } = new LightSwitch();
@@ -56,7 +65,7 @@ namespace AD3D_LightSolutionMod
             //LanguageHandler.SetLanguageLine($"Ency_{DeepEngine.ClassID}", DeepEngine.FriendlyName);
             //LanguageHandler.SetLanguageLine($"EncyDesc_{DeepEngine.ClassID}", DeepEngine.PDADescription(Config.MaxPowerAllowed));
 
-            AD3D_Common.Helper.Log($"Patched successfully [v1.0.0]");
+            AD3D_Common.Helper.Log($"{_ModName} Patched successfully [{_Mod_Version}]");
         }
     }
 }

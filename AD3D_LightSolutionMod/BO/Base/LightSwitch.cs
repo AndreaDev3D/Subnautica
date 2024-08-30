@@ -12,7 +12,6 @@ namespace AD3D_LightSolutionMod.BO.Base
 {
     public class LightSwitch : Buildable
     {
-        public const string _AssetName = "lightsolutionasset";
         public const string _ClassID = "LightSwitch";
         public const string _FriendlyName = "Light Switch";
         public const string _Description = "The light switch provide a versatile solution to handle in once place a set of \"Light Source\" items.";
@@ -40,7 +39,7 @@ namespace AD3D_LightSolutionMod.BO.Base
         public override GameObject GetGameObject()
         {
             // Instantiates a copy of the prefab that is loaded from the AssetBundle loaded above.
-            GameObject _prefab = GameObject.Instantiate(Utils.Helper.Bundle.LoadAsset<GameObject>($"{_ClassID}.prefab"));
+            GameObject _prefab = GameObject.Instantiate(QPatch.Bundle.LoadAsset<GameObject>($"{_ClassID}.prefab"));
             _prefab.name = _ClassID;
             //Need a tech tag for most prefabs
             var techTag = _prefab.AddComponent<TechTag>();
@@ -111,7 +110,7 @@ namespace AD3D_LightSolutionMod.BO.Base
         }
         protected override Atlas.Sprite GetItemSprite()
         {
-            return Helper.GetSpriteFromBundle(Utils.Helper.Bundle, _ClassID);
+            return Helper.GetSpriteFromBundle(QPatch.Bundle, _ClassID);
         }
     }
 }

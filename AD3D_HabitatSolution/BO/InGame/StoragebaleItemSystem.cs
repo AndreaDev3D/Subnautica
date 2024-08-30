@@ -16,12 +16,12 @@ namespace AD3D_HabitatSolutionMod.BO.InGame
 
         public void OnProtoDeserialize(ProtobufSerializer serializer)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void OnProtoSerialize(ProtobufSerializer serializer)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }

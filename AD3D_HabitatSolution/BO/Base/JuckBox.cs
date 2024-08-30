@@ -38,7 +38,7 @@ namespace AD3D_HabitatSolutionMod.BO.Base
         public override GameObject GetGameObject()
         {
             // Instantiates a copy of the prefab
-            GameObject _prefab = GameObject.Instantiate(Utils.Helper.Bundle.LoadAsset<GameObject>($"{_ClassID}.prefab"));
+            GameObject _prefab = GameObject.Instantiate(QPatch.Bundle.LoadAsset<GameObject>($"{_ClassID}.prefab"));
             _prefab.name = _ClassID;
             // Need a tech tag for most prefabs
             var techTag = _prefab.AddComponent<TechTag>();
@@ -150,7 +150,7 @@ namespace AD3D_HabitatSolutionMod.BO.Base
         }
         protected override Atlas.Sprite GetItemSprite()
         {
-            return AD3D_Common.Helper.GetSpriteFromBundle(Utils.Helper.Bundle, $"{_ClassID}");
+            return AD3D_Common.Helper.GetSpriteFromBundle(QPatch.Bundle, $"{_ClassID}");
         }
     }
 }

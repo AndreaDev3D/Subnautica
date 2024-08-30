@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 659029645
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 1774bf571860b813b95c67d5cf177a25
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f19fbf085e00d23fbc8d6cf7b345590b
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/PrefabKit/Icons/Icon_Kit.png
+Dependencies: []

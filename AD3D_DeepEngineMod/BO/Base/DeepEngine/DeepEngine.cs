@@ -1,29 +1,32 @@
 ﻿using AD3D_DeepEngineMod;
-using AD3D_DeepEngineMod.BO.Utils;
-using AD3D_LightSolutionMod.BO.InGame;
-using SMLHelper.V2.Assets;
-using SMLHelper.V2.Crafting;
+using AD3D_DeepEngineMod.BO.InGame;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UWE;
 
-namespace AD3D_LightSolutionMod.BO.Patch.DeepEngine
+namespace AD3D_DeepEngineMod.BO.Patch.DeepEngine
 {
     public class DeepEngine : Buildable
     {
-        public const string _ClassID = "DeepEngine_MK2";
-        public const string _FriendlyName = "Deep Engine MK1";
+        public const string _ClassID = "DeepEngine";
+        public const string _FriendlyName = "Deep Engine";
         public const string _Description = "High efficiency electric generator that runs in deep water.";
-        public const string _PDAKey = _ClassID;
 
         public DeepEngine() : base(_ClassID, _FriendlyName, _Description)
         {
         }
 
 
-        public override WorldEntityInfo EntityInfo => new WorldEntityInfo() { cellLevel = LargeWorldEntity.CellLevel.Global, classId = this.ClassID, localScale = Vector3.one, prefabZUp = false, slotType = EntitySlot.Type.Small, techType = this.TechType };
+        public override WorldEntityInfo EntityInfo => new WorldEntityInfo() 
+        { cellLevel = LargeWorldEntity.CellLevel.Global,
+            classId = this.ClassID, 
+            localScale = Vector3.one, 
+            prefabZUp = false, 
+            slotType = EntitySlot.Type.Small, 
+            techType = this.TechType 
+        };
 
         public override TechGroup GroupForPDA => TechGroup.ExteriorModules;
         public override TechCategory CategoryForPDA => TechCategory.ExteriorModule;
@@ -44,7 +47,7 @@ namespace AD3D_LightSolutionMod.BO.Patch.DeepEngine
         public override GameObject GetGameObject()
         {
             //Instantiates a copy of the prefab that is loaded from the AssetBundle loaded above.
-            GameObject _prefab = GameObject.Instantiate(Helper.Bundle.LoadAsset<GameObject>($"{_ClassID}.prefab"));
+            GameObject _prefab = GameObject.Instantiate(QPatch.Bundle.LoadAsset<GameObject>($"{_ClassID}.prefab"));
             _prefab.name = _ClassID;
             //Need a tech tag for most prefabs
             var techTag = _prefab.AddComponent<TechTag>();
@@ -85,12 +88,12 @@ namespace AD3D_LightSolutionMod.BO.Patch.DeepEngine
 
             return _prefab;
         }
-        
+
         /// <summary>
-         /// This game uses its own shader system and as such the shaders from UnityEditor do not work and will leave you with a black object unless in direct sunlight.
-         /// Note: When copying prefabs from the game itself this is already setup and is only needed when importing new prefabs to the game.
-         /// </summary>
-         /// <param name="gameObject"></param>
+        /// This game uses its own shader system and as such the shaders from UnityEditor do not work and will leave you with a black object unless in direct sunlight.
+        /// Note: When copying prefabs from the game itself this is already setup and is only needed when importing new prefabs to the game.
+        /// </summary>
+        /// <param name="gameObject"></param>
         private static void ApplySubnauticaShaders(GameObject gameObject)
         {
             Shader shader = Shader.Find("MarmosetUBER");
@@ -122,12 +125,12 @@ namespace AD3D_LightSolutionMod.BO.Patch.DeepEngine
 
         protected override Atlas.Sprite GetItemSprite()
         {
-            return AD3D_Common.Helper.GetSpriteFromBundle(Helper.Bundle, "Icon");
+            return AD3D_Common.Helper.GetSpriteFromBundle(QPatch.Bundle, _ClassID);
         }
 
         public static Atlas.Sprite GetItemIcon()
         {
-            return AD3D_Common.Helper.GetSpriteFromBundle(Helper.Bundle ,"Icon");
+            return AD3D_Common.Helper.GetSpriteFromBundle(QPatch.Bundle, _ClassID);
         }
 
         public static string PDADescription(int MaxPower)
@@ -140,7 +143,7 @@ namespace AD3D_LightSolutionMod.BO.Patch.DeepEngine
             get
             {
                 PDAEncyclopedia.EntryData entry = new PDAEncyclopedia.EntryData();
-                entry.key = _PDAKey;
+                entry.key = _ClassID;
                 entry.path = "Tech/Power";
                 entry.nodes = new[] { "Tech", "Power" };
                 entry.unlocked = false;

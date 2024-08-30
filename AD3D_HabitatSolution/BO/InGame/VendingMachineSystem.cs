@@ -23,7 +23,7 @@ namespace AD3D_HabitatSolutionMod.BO.InGame
         private GameObject NoPowerAlert;
         private GameObject Logo;
         private GameObject txtLoadingPercentage;
-        private GameObject BootingPanel; 
+        private GameObject BootingPanel;
         private float BootingPanelValue;
         private GameObject MainPanel;
         private Button btnLeft;
@@ -34,7 +34,7 @@ namespace AD3D_HabitatSolutionMod.BO.InGame
         private int CurrentCategory = 1;
 
         private List<VendingMachineItem> ItemList = new List<VendingMachineItem>();
-        public int MaxCategoryCount => (int)Enum.GetValues(typeof(CategoryType)).Cast<CategoryType>().Last(); 
+        public int MaxCategoryCount => (int)Enum.GetValues(typeof(CategoryType)).Cast<CategoryType>().Last();
         void Start()
         {
             try
@@ -92,7 +92,7 @@ namespace AD3D_HabitatSolutionMod.BO.InGame
                 ItemList.Add(new VendingMachineItem(TechType.Battery, categoryType: CategoryType.Tech));
 
                 ItemList.Add(new VendingMachineItem("Bar1", 10, CategoryType.Food));
-                ItemList.Add(new VendingMachineItem(TechType.NutrientBlock, 10,categoryType: CategoryType.Food));
+                ItemList.Add(new VendingMachineItem(TechType.NutrientBlock, 10, categoryType: CategoryType.Food));
                 ItemList.Add(new VendingMachineItem(TechType.BigFilteredWater, categoryType: CategoryType.Food));
                 ItemList.Add(new VendingMachineItem(TechType.Snack1, categoryType: CategoryType.Food));
                 ItemList.Add(new VendingMachineItem(TechType.Snack2, categoryType: CategoryType.Food));
@@ -232,7 +232,7 @@ namespace AD3D_HabitatSolutionMod.BO.InGame
         {
             var techType = item.TechType;
 
-            var _prefab = GameObject.Instantiate(Utils.Helper.Bundle.LoadAsset<GameObject>("Item.prefab"));
+            var _prefab = GameObject.Instantiate(QPatch.Bundle.LoadAsset<GameObject>("Item.prefab"));
             var itemPrice = GameObjectFinder.FindByName(_prefab, "ItemPrice").GetComponent<Text>();
             itemPrice.text = $"{item.Cost:0}w";
 
@@ -261,7 +261,7 @@ namespace AD3D_HabitatSolutionMod.BO.InGame
         {
             return powerRelay != null && this.powerRelay.IsPowered() && powerRelay.GetPower() >= cost;
         }
-        private IEnumerator ShowNoPower() 
+        private IEnumerator ShowNoPower()
         {
             NoPowerAlert.SetActive(true);
             yield return new WaitForSeconds(4.0f);

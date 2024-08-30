@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace AD3D_LightSolutionMod.BO.InGame
+namespace AD3D_EnergySolution.BO.InGame
 {
     public class DeepEngineAnim : MonoBehaviour
     {
@@ -12,6 +12,9 @@ namespace AD3D_LightSolutionMod.BO.InGame
 
 
         private Animation anim;
+        public AnimationClip DrillingAnimation;
+
+
         // Start is called before the first frame update
         public void Start()
         {
@@ -20,7 +23,7 @@ namespace AD3D_LightSolutionMod.BO.InGame
             engine = GameObjectFinder.FindByName(this.gameObject, "Engine");
 
             anim = engine.GetComponent<Animation>();
-            anim.AddClip(AD3D_DeepEngineMod.BO.Utils.Helper.Bundle.LoadAsset<AnimationClip>("Drilling"), "Drilling");
+            anim.AddClip(DrillingAnimation, "Drilling");
 
             btnActivate = GameObjectFinder.FindByName(this.gameObject, "btnActivate").GetComponent<Button>();
             btnActivate.onClick.AddListener(() => StartNStop());

@@ -1,15 +1,15 @@
-﻿using SMLHelper.V2.Assets;
+﻿using AD3D_DeepEngineMod;
+using SMLHelper.V2.Assets;
 using SMLHelper.V2.Crafting;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UWE;
 
-namespace AD3D_LightSolutionMod.BO.Patch.DeepEngine
+namespace AD3D_DeepEngineMod.BO.Patch.DeepEngine
 {
     public class DeepEngineKit : Craftable
     {
-        public const string AssetName = "deepengineasset";
         public const string _ClassID = "DeepEngine_Kit";
         public const string _FriendlyName = "Deep Engine MK1";
         public const string _Description = "High efficiency electric generator that runs in deep water.";
@@ -40,7 +40,7 @@ namespace AD3D_LightSolutionMod.BO.Patch.DeepEngine
         public override GameObject GetGameObject()
         {
             //Instantiates a copy of the prefab that is loaded from the AssetBundle loaded above.
-            GameObject _prefab = GameObject.Instantiate(AD3D_DeepEngineMod.BO.Utils.Helper.Bundle.LoadAsset<GameObject>("DeepEngine_Kit.prefab"));
+            GameObject _prefab = GameObject.Instantiate(QPatch.Bundle.LoadAsset<GameObject>("DeepEngine_Kit.prefab"));
             _prefab.name = _ClassID;
             //Need a tech tag for most prefabs
             var techTag = _prefab.EnsureComponent<TechTag>();

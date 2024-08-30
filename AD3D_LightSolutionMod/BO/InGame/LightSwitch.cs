@@ -1,10 +1,6 @@
 ﻿using AD3D_LightSolutionMod.BO.Base;
 using AD3D_Common;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Reflection;
@@ -51,11 +47,6 @@ namespace AD3D_LightSolutionMod.BO.InGame
         public Slider SliderB;
         public Image ColorPicker;
 
-        private void Awake()
-        {
-            //QPatch.Database.Load();
-        }
-
         private void InitUI()
         {
             MainDisplay = GameObjectFinder.FindByName(this.gameObject, "MainDisplay");
@@ -64,8 +55,8 @@ namespace AD3D_LightSolutionMod.BO.InGame
             btnSwitch = GameObjectFinder.FindByName(this.gameObject, "btnSwitch").GetComponent<Button>();
             btnSwitchImage = GameObjectFinder.FindByName(this.gameObject, "btnSwitch").GetComponent<Image>();
 
-            var btnOnTex = AD3D_Common.Helper.GetTextureFromBundle(AD3D_LightSolutionMod.BO.Utils.Helper.Bundle, "btnOn");
-            var btnOffTex = AD3D_Common.Helper.GetTextureFromBundle(AD3D_LightSolutionMod.BO.Utils.Helper.Bundle, "btnOff");
+            var btnOnTex = Helper.GetTextureFromBundle(QPatch.Bundle, "btnOn");
+            var btnOffTex = Helper.GetTextureFromBundle(QPatch.Bundle, "btnOff");
             btnOn = Sprite.Create(btnOnTex, new Rect(0.0f, 95.0f, 529.0f, 322.0f), new Vector2(0.5f, 0.5f));
             btnOff = Sprite.Create(btnOffTex, new Rect(0.0f, 95.0f, 529.0f, 322.0f), new Vector2(0.5f, 0.5f));
 
@@ -159,7 +150,8 @@ namespace AD3D_LightSolutionMod.BO.InGame
         {
             if (!this.enabled)
                 return;
-            SubRoot currentSub = Player.main.GetCurrentSub();
+
+            SubRoot currentSub = gameObject.GetComponentInParent<SubRoot>();
             if (currentSub == null)
                 return;
             Constructable component = this.GetComponent<Constructable>();
@@ -218,8 +210,6 @@ namespace AD3D_LightSolutionMod.BO.InGame
             IsEnable = dbItem.IsEnable;
             Intensity = dbItem.Intensity;
             Color = new Color(dbItem.R, dbItem.G, dbItem.B, 1.0f);
-
-            //AD3D_Common.Helper.Log($"Prop : {SyncCode} | {IsEnable} @ {Intensity} Color({Color.r},{Color.g},{Color.b})", true);
         }
     }
 }

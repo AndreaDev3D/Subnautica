@@ -1,10 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: OdysseyVehicle.Odyssey
-// Assembly: OdysseyVehicle, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: D1DE1333-9213-4D33-9553-6B190E5D88C1
-// Assembly location: C:\Users\admin\Downloads\Odyssey Vehicle-871-1-1-1-1637720569\OdysseyVehicle\OdysseyVehicle.dll
-
-using AD3D_VeichlePackMod.Utils;
+﻿using AD3D_VeichlePackMod.Utils;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
@@ -18,7 +12,7 @@ namespace AD3D_VeichlePackMod
 {
     public class Kraken : ModVehicle
     {
-        public const string _AssetName = "veichlepack.asset";
+        public const string _Description = "A submarine built for exploration. It is nimble for its size, it fits into small corridors, and its floodlights are extremely powerful.";
 
 
         public static GameObject model;
@@ -27,10 +21,10 @@ namespace AD3D_VeichlePackMod
 
         public static void GetAssets()
         {
-            var myLoadedAssetBundle = Helper.Bundle;
+            var myLoadedAssetBundle = Utils.Helper.Bundle;
             if (myLoadedAssetBundle == null)
             {
-                Logger.Log("Failed to load AssetBundle!");
+                AD3D_Common.Helper.Log("Failed to load AssetBundle!");
                 return;
             }
 
@@ -57,7 +51,7 @@ namespace AD3D_VeichlePackMod
                 }
                 else
                 {
-                    Logger.Log(obj.ToString());
+                    AD3D_Common.Helper.Log(obj.ToString());
                 }
             }
         }
@@ -106,7 +100,7 @@ namespace AD3D_VeichlePackMod
         //    }
         //}
 
-        public override string GetDescription() => "A submarine built for exploration. It is nimble for its size, it fits into small corridors, and its floodlights are extremely powerful.";
+        public override string GetDescription() => _Description;
 
         public override string GetEncyEntry() => "The Odyssey is a submarine purpose built for exploration. " + "Its maneuverability and illumination capabilities are what earned it the name. \n" + "\nIt features:\n" + "- Modest storage capacity, which can be further expanded with upgrades. \n" + "- Extremely high power flood lights. \n" + "- A signature autopilot which can automatically level out the vessel. \n" + "\nRatings:\n" + "- Top Speed: 12.5m/s \n" + "- Acceleration: 5m/s/s \n" + "- Distance per Power Cell: 7km \n" + "- Crush Depth: 600 \n" + "- Upgrade Slots: 8 \n" + "- Dimensions: 3.7m x 5m x 10.6m \n" + "- Persons: 1-2\n" + "\n\"Don't like it? That's odd; I see.\" ";
 
@@ -317,13 +311,17 @@ namespace AD3D_VeichlePackMod
             get
             {
                 List<GameObject> waterClipProxies = new List<GameObject>();
-                foreach (Transform transform in this.transform.Find(nameof(WaterClipProxies)))
+
+                //waterClipProxies.Add(this.transform.Find("Models/WaterClipProxies").gameObject);
+
+                foreach (Transform transform in this.transform.Find("WaterClipProxies"))
                     waterClipProxies.Add(transform.gameObject);
+
                 return waterClipProxies;
             }
         }
 
-        public override List<GameObject> CanopyWindows => new List<GameObject>() { this.transform.Find("Modles/Canopy").gameObject };
+        public override List<GameObject> CanopyWindows => new List<GameObject>() { this.transform.Find("Models/Canopy").gameObject };
 
         public override List<GameObject> NameDecals => new List<GameObject>();
 
@@ -332,13 +330,13 @@ namespace AD3D_VeichlePackMod
             get
             {
                 List<GameObject> tetherSources = new List<GameObject>();
-                foreach (Transform transform in this.transform.Find(nameof(TetherSources)))
+                foreach (Transform transform in this.transform.Find("TetherSources"))
                     tetherSources.Add(transform.gameObject);
                 return tetherSources;
             }
         }
 
-        public override GameObject BoundingBox => this.transform.Find(nameof(BoundingBox)).gameObject;
+        public override GameObject BoundingBox => this.transform.Find("BoundingBox").gameObject;
 
         public override GameObject ControlPanel
         {
@@ -349,6 +347,6 @@ namespace AD3D_VeichlePackMod
             }
         }
 
-        public override GameObject CollisionModel => this.transform.Find(nameof(CollisionModel)).gameObject;
+        public override GameObject CollisionModel => this.transform.Find("CollisionModel").gameObject;
     }
 }

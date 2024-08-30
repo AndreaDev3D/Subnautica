@@ -1,17 +1,27 @@
-﻿using AD3D_DeepEngineMod.BO.Base.SolarSource;
+﻿using AD3D_Common.BO.Base;
+using AD3D_DeepEngineMod.BO.Base.SolarSource;
 using AD3D_DeepEngineMod.BO.Config;
-using AD3D_LightSolutionMod.BO.Patch.DeepEngine;
+using AD3D_DeepEngineMod.BO.Patch.DeepEngine;
 using QModManager.API.ModLoading;
 using QModManager.Utility;
 using SMLHelper.V2.Handlers;
+using System.Reflection;
+using UnityEngine;
 
 namespace AD3D_DeepEngineMod
 {
     [QModCore]
-    public class QPatch
+    public class QPatch : QPatchBase
     {
-        public const string _AssetName = "deepengineasset";
-        //public static TechType DeepEngineKit;
+        public new const string _AssetBundleName = "deepengine.asset";
+
+        private static AssetBundle _bundle;
+        public static AssetBundle Bundle => _bundle ??= AD3D_Common.Helper.GetAssetBundle(Assembly.GetCallingAssembly().Location, _AssetBundleName);
+
+
+        public const string _ModName = "AD3D_DeepEngineMod";
+        public const string _Mod_Version = "1.0.0";
+
         internal static DeepEngineConfig Config { get; set; } = new DeepEngineConfig();
         internal static DeepEngineKit DeepEngineKit { get; } = new DeepEngineKit();
         internal static DeepEngine DeepEngine { get; } = new DeepEngine();
@@ -25,15 +35,20 @@ namespace AD3D_DeepEngineMod
 
             DeepEngineKit.Patch();
             DeepEngine.Patch();
-            //CraftTreeHandler.AddCraftingNode(CraftTree.Type.Fabricator, DeepEngineKit.TechType, "Energy Solution");
-            //Add the databank entry.
-            LanguageHandler.SetLanguageLine($"Ency_{DeepEngine.ClassID}", DeepEngine.FriendlyName);
-            LanguageHandler.SetLanguageLine($"EncyDesc_{DeepEngine.ClassID}", DeepEngine.PDADescription(Config.MaxPowerAllowed));
+
 
 
             SolarPanelItem.Patch();
 
-            Logger.Log(Logger.Level.Info, $"Patched successfully [v1.3.0]");
+            AD3D_Common.Helper.Log($"{_ModName} Patched successfully [{_Mod_Version}]");
+        }
+
+        [QModPostPatch]
+        public static void PostPatch()
+        {
+            //Add the databank entry.
+            LanguageHandler.SetLanguageLine($"Ency_{DeepEngine.ClassID}", DeepEngine.FriendlyName);
+            LanguageHandler.SetLanguageLine($"EncyDesc_{DeepEngine.ClassID}", DeepEngine.PDADescription(Config.MaxPowerAllowed));
         }
     }
 }

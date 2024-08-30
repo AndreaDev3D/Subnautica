@@ -10,6 +10,7 @@
     <RootNamespace>AD3D_TechFabricatorMod</RootNamespace>
     <AssemblyName>AD3D_TechFabricatorMod</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <LangVersion>latest</LangVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -245,7 +246,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BO\Base\AD3D_TechFabricator.cs" />
-    <Compile Include="BO\Utils\Constant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QPatch.cs" />
   </ItemGroup>
@@ -253,10 +253,6 @@
     <ProjectReference Include="..\AD3D_Common\AD3D_Common.csproj">
       <Project>{1168894d-14bb-4860-bca2-c12bb2db256c}</Project>
       <Name>AD3D_Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AD3D_DeepEngineMod\AD3D_DeepEngineMod.csproj">
-      <Project>{d2d8049b-bd4e-4766-a193-437c01c922d3}</Project>
-      <Name>AD3D_DeepEngineMod</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -277,13 +273,21 @@
   <Target Name="AfterBuild">
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetPath)" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
-xcopy "$(ProjectDir)mod.json" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
-xcopy "$(ProjectDir)Assets\*.png" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
+    <PostBuildEvent>
+			REM Copy Builded Mod into Subnautica folder
+			xcopy "$(TargetPath)" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
+			xcopy "$(ProjectDir)mod.json" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
+			xcopy "$(ProjectDir)Assets\*.asset" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
+			xcopy "$(ProjectDir)Assets\*.manifest" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
+			xcopy "$(ProjectDir)Assets\*.png" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
 
+			REM  Copy Common Mod into Subnautica folder
+			xcopy "$(TargetDir)AD3D_Common.dll" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
+			xcopy "E:\Mods\Subnautica\AD3D_Common\Assets\*.asset" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
+			xcopy "E:\Mods\Subnautica\AD3D_Common\Assets\*.manifest" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
 
-xcopy "$(TargetDir)AD3D_Common.dll" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
-xcopy "E:\Mods\Subnautica\AD3D_Common\Assets\common" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
-xcopy "E:\Mods\Subnautica\AD3D_Common\Assets\common.manifest" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y</PostBuildEvent>
+			REM  Zip Mod into Git folder
+			7z a "$(SolutionDir)Download\$(ProjectName).zip" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)"
+		</PostBuildEvent>
   </PropertyGroup>
 </Project>

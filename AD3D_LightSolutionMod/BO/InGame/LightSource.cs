@@ -210,8 +210,6 @@ namespace AD3D_LightSolutionMod.BO.InGame
             IsEnable = dbItem.IsEnable;
             Intensity = dbItem.Intensity;
             Color = dbItem.Color;
-
-            //AD3D_Common.Helper.Log($"Prop : {SyncCode} | {IsEnable} @ {Intensity}", true);
         }
     }
 }

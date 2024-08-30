@@ -1,14 +1,14 @@
 ﻿using AD3D_Common;
 using AD3D_DeepEngineMod;
-using AD3D_LightSolutionMod.BO.Patch.DeepEngine;
+using AD3D_DeepEngineMod.BO.Patch.DeepEngine;
 using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace AD3D_LightSolutionMod.BO.InGame
+namespace AD3D_DeepEngineMod.BO.InGame
 {
-    public class DeepEngineAction : HandTarget, IHandTarget 
+    public class DeepEngineAction : HandTarget, IHandTarget
     {
 
         [AssertNotNull]
@@ -46,7 +46,8 @@ namespace AD3D_LightSolutionMod.BO.InGame
         {
             PDAEncyclopedia.Add(DeepEngine._ClassID, true);
             //Activate
-            PowerRelay solarPowerRelay = CraftData.GetPrefabForTechType(TechType.SolarPanel).GetComponent<PowerRelay>();
+            // TODO
+            PowerRelay solarPowerRelay = new PowerRelay(); //CraftData.GetPrefabForTechType(TechType.SolarPanel).GetComponent<PowerRelay>();
 
             _powerSource = this.gameObject.AddComponent<PowerSource>();
             _powerSource.maxPower = QPatch.Config.MaxPowerAllowed;
@@ -71,7 +72,7 @@ namespace AD3D_LightSolutionMod.BO.InGame
             while (true)
             {
                 yield return new WaitForSeconds(1);
-                if(IsEnabled)
+                if (IsEnabled)
                     Emission();
             }
         }
@@ -85,7 +86,7 @@ namespace AD3D_LightSolutionMod.BO.InGame
                 {
                     var power = Mathf.RoundToInt(_powerSource.GetPower());
                     var powerMax = Mathf.RoundToInt(_powerSource.GetMaxPower());
-                    lblStatus.text = $"Power Status : <color={(IsEnabled ? "green": "red")}>{IsEnabled}</color>";
+                    lblStatus.text = $"Power Status : <color={(IsEnabled ? "green" : "red")}>{IsEnabled}</color>";
                     lblBattery.text = $"Power {power}/{powerMax} Kw";
                     lblEmission.text = $"{Math.Round(CurrentEmitRate, 2)} w/sec";
                 }
@@ -128,16 +129,16 @@ namespace AD3D_LightSolutionMod.BO.InGame
 
         void SetupAudio()
         {
-            if (!QPatch.Config.MakesNoise) 
+            if (!QPatch.Config.MakesNoise)
                 return;
-            AudioClip = AD3D_DeepEngineMod.BO.Utils.Helper.Bundle.LoadAsset<AudioClip>("Engine_FX");
+            AudioClip = QPatch.Bundle.LoadAsset<AudioClip>("Engine_FX");
             AudioSource = this.gameObject.AddComponent<AudioSource>();
             AudioSource.clip = AudioClip;
             AudioSource.loop = true;
             AudioSource.maxDistance = 15f;
             AudioSource.spatialBlend = 1f;
 
-            if (!AudioSource.isPlaying) 
+            if (!AudioSource.isPlaying)
                 AudioSource.Play();
         }
 
@@ -146,7 +147,7 @@ namespace AD3D_LightSolutionMod.BO.InGame
             var y = this.gameObject.transform.position.y;
             var baseEmission = 1.0f;
             var multiplaier = 4.0f * (float)QPatch.Config.PowerMultiplier;
-            CurrentEmitRate = y >= 0 ? 0.0f : baseEmission + ((y *-1) / 1000.0f) * multiplaier;
+            CurrentEmitRate = y >= 0 ? 0.0f : baseEmission + ((y * -1) / 1000.0f) * multiplaier;
         }
 
         public void OnHandHover(GUIHand hand)
@@ -158,13 +159,14 @@ namespace AD3D_LightSolutionMod.BO.InGame
                     var emittedRate = CurrentEmitRate;
                     var power = Mathf.RoundToInt(_powerSource.GetPower());
                     var powerMax = Mathf.RoundToInt(_powerSource.GetMaxPower());
-
-                    HandReticle.main.SetInteractText($"Deep Engine: Current {power}/{powerMax}", $"Producing {Math.Round(CurrentEmitRate, 2)} w/sec", false, false, HandReticle.Hand.None);
+                    // TODO
+                    // HandReticle.main.SetText($"Deep Engine: Current {power}/{powerMax}", $"Producing {Math.Round(CurrentEmitRate, 2)} w/sec", false, false);
                     HandReticle.main.SetIcon(HandReticle.IconType.Info, 1.25f);
                 }
                 else
                 {
-                    HandReticle.main.SetInteractText("Deep Engine: ERROR", "Notice: The engine need to be submerged, please relocate", false, false, HandReticle.Hand.None);
+                    // TODO
+                    //HandReticle.main.SetText(("Deep Engine: ERROR", "Notice: The engine need to be submerged, please relocate", false, false);
                     HandReticle.main.SetIcon(HandReticle.IconType.HandDeny, 1f);
                 }
             }

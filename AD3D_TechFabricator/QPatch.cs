@@ -9,6 +9,13 @@ namespace AD3D_TechFabricatorMod
     [QModCore]
     public class QPatch
     {
+        //public const string _AssetBundleName = "lightsolution.asset";
+
+        //private static AssetBundle _bundle;
+        //public static AssetBundle Bundle => _bundle ?? (_bundle = AD3D_Common.Helper.GetAssetBundle(Assembly.GetCallingAssembly(), _AssetBundleName));
+
+        public const string _ModName = "AD3D_TechFabricatorMod";
+        public const string _Mod_Version = "1.0.0";
 
         [QModPatch]
         public static void Patch()
@@ -16,7 +23,7 @@ namespace AD3D_TechFabricatorMod
             var techFabricator = new AD3D_TechFabricator();
             // add Tabs
             var energySolutionTab = "EnergySolutionID";
-            techFabricator.AddTabNode(energySolutionTab, "Energy Solution", AD3D_LightSolutionMod.BO.Patch.DeepEngine.DeepEngine.GetItemIcon()); // add EnergySolutionID tab
+            techFabricator.AddTabNode(energySolutionTab, "Energy Solution", AD3D_DeepEngineMod.BO.Patch.DeepEngine.DeepEngine.GetItemIcon()); // add EnergySolutionID tab
             techFabricator.AddCraftNode("DeepEngine_Kit", energySolutionTab);
 
             var foodSolutionId = "FoodSolutionId";
@@ -25,7 +32,7 @@ namespace AD3D_TechFabricatorMod
 
             techFabricator.Patch();
 
-            Helper.Log($"Patched successfully [v1.0.0]");
+            AD3D_Common.Helper.Log($"{_ModName} Patched successfully [{_Mod_Version}]");
         }
     }
 }

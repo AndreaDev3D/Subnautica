@@ -39,7 +39,7 @@ namespace AD3D_HabitatSolutionMod.BO
         public override GameObject GetGameObject()
         {
             //Instantiates a copy of the prefab that is loaded from the AssetBundle loaded above.
-            GameObject _prefab = GameObject.Instantiate(Utils.Helper.Bundle.LoadAsset<GameObject>("AutoBreederTank.prefab"));
+            GameObject _prefab = GameObject.Instantiate(QPatch.Bundle.LoadAsset<GameObject>("AutoBreederTank.prefab"));
             _prefab.name = _ClassID;
             //Need a tech tag for most prefabs
             var techTag = _prefab.EnsureComponent<TechTag>();
@@ -299,7 +299,7 @@ namespace AD3D_HabitatSolutionMod.BO
         }
         protected override Atlas.Sprite GetItemSprite()
         {
-            return AD3D_Common.Helper.GetSpriteFromBundle(Utils.Helper.Bundle, $"{_ClassID}.png");
+            return AD3D_Common.Helper.GetSpriteFromBundle(QPatch.Bundle, $"{_ClassID}.png");
         }
     }
 

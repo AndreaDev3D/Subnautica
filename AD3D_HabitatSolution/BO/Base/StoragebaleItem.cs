@@ -37,7 +37,7 @@ namespace AD3D_HabitatSolutionMod.BO.Base
         public override GameObject GetGameObject()
         {
             //Instantiates a copy of the prefab that is loaded from the AssetBundle loaded above.
-            GameObject _prefab = GameObject.Instantiate(Utils.Helper.Bundle.LoadAsset<GameObject>($"{_ClassID}.prefab"));
+            GameObject _prefab = GameObject.Instantiate(QPatch.Bundle.LoadAsset<GameObject>($"{_ClassID}.prefab"));
             _prefab.name = _ClassID;
             //Need a tech tag for most prefabs
             var techTag = _prefab.AddComponent<TechTag>();
@@ -47,6 +47,7 @@ namespace AD3D_HabitatSolutionMod.BO.Base
             //Update all shaders
             ApplySubnauticaShaders(_prefab, true);
             ApplySubnauticaSky(_prefab);
+
             // Add constructable - This prefab normally isn't constructed.
             var rootModel = GameObjectFinder.FindByName(_prefab, "model");
             Constructable constructible = _prefab.AddComponent<Constructable>();
@@ -111,7 +112,10 @@ namespace AD3D_HabitatSolutionMod.BO.Base
                         material.EnableKeyword("MARMO_EMISSION");
                         material.SetFloat(ShaderPropertyID._EnableGlow, 1f);
                         material.SetTexture(ShaderPropertyID._Illum, emissionTexture);
-                        material.SetColor(ShaderPropertyID._GlowColor, new Color(1, 1f, 1, 1));
+                        material.SetColor(ShaderPropertyID._GlowColor, new Color(1f, 1f, 1f, 1f));
+
+                        material.SetFloat(ShaderPropertyID._GlowStrength, 5f);
+                        material.SetFloat(ShaderPropertyID._GlowStrengthNight, 5f);
                     }
                     if (material.name.Contains("Transparent") || material.name.Contains("Glass"))
                     {
@@ -158,7 +162,8 @@ namespace AD3D_HabitatSolutionMod.BO.Base
             }
 
         }
-        protected override Atlas.Sprite GetItemSprite() => AD3D_Common.Helper.GetSpriteFromBundle(Utils.Helper.Bundle, $"{_ClassID}");
+
+        protected override Atlas.Sprite GetItemSprite() => Helper.GetSpriteFromBundle(QPatch.Bundle, $"{_ClassID}");
 
     }
 }

@@ -37,7 +37,7 @@ namespace AD3D_HabitatSolutionMod.BO
         public override GameObject GetGameObject()
         {
             //Instantiates a copy of the prefab that is loaded from the AssetBundle loaded above.
-            GameObject _prefab = GameObject.Instantiate(AD3D_HabitatSolutionMod.BO.Utils.Helper.Bundle.LoadAsset<GameObject>("Vending Machine Plus.prefab"));
+            GameObject _prefab = GameObject.Instantiate(QPatch.Bundle.LoadAsset<GameObject>($"{_ClassID}.prefab"));
             _prefab.name = _ClassID;
             //Need a tech tag for most prefabs
             var techTag = _prefab.AddComponent<TechTag>();
@@ -111,7 +111,7 @@ namespace AD3D_HabitatSolutionMod.BO
         }
         protected override Atlas.Sprite GetItemSprite()
         {
-            return AD3D_Common.Helper.GetSpriteFromBundle(Utils.Helper.Bundle, $"{_ClassID}");
+            return AD3D_Common.Helper.GetSpriteFromBundle(QPatch.Bundle, $"{_ClassID}");
         }
     }
 

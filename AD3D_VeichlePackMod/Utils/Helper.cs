@@ -19,7 +19,7 @@ namespace AD3D_VeichlePackMod.Utils
                 if (_bundle == null)
                 {
                     var assetsFolder = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Assets");
-                    _bundle = AssetBundle.LoadFromFile(Path.Combine(assetsFolder, Kraken._AssetName));
+                    _bundle = AssetBundle.LoadFromFile(Path.Combine(assetsFolder, QPatch._AssetBundleName));
                 }
                 return _bundle;
             }

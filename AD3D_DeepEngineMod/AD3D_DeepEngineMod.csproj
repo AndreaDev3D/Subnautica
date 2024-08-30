@@ -10,6 +10,7 @@
     <RootNamespace>AD3D_DeepEngineMod</RootNamespace>
     <AssemblyName>AD3D_DeepEngineMod</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <LangVersion>latest</LangVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -43,12 +44,11 @@
     <Reference Include="Assembly-CSharp-firstpass">
       <HintPath>D:\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
+    <Reference Include="Nautilus">
+      <HintPath>D:\Steam\steamapps\common\SubnauticaZero\BepInEx\plugins\Nautilus\Nautilus.dll</HintPath>
+    </Reference>
     <Reference Include="QModInstaller">
       <HintPath>D:\Steam\steamapps\common\Subnautica\BepInEx\plugins\QModManager\QModInstaller.dll</HintPath>
-    </Reference>
-    <Reference Include="SMLHelper, Version=2.6.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\Steam\steamapps\common\Subnautica\QMods\Modding Helper\SMLHelper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -86,7 +86,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BO\Base\SolarSource\SolarPanelItem.cs" />
-    <Compile Include="BO\Utils\Helper.cs" />
     <Compile Include="BO\InGame\DeepEngineAnim.cs" />
     <Compile Include="BO\Base\DeepEngine\DeepEngineKit.cs" />
     <Compile Include="QPatch.cs" />
@@ -96,8 +95,9 @@
     <Compile Include="BO\Config\DeepEngineConfig.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\deepengineasset" />
-    <None Include="Assets\deepengineasset.manifest" />
+    <None Include="Assets\deepengine.asset" />
+    <None Include="Assets\deepengine.asset.manifest" />
+    <None Include="BuildAndDeploy.bat" />
     <None Include="config.json" />
     <None Include="mod.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -111,16 +111,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetPath)" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
-xcopy "$(ProjectDir)mod.json" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
-xcopy "$(ProjectDir)config.json" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
-xcopy "$(ProjectDir)Assets\deepengineasset" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
-xcopy "$(ProjectDir)Assets\deepengineasset.manifest" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
-
-
-xcopy "$(TargetDir)AD3D_Common.dll" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\" /y
-xcopy "E:\Mods\Subnautica\AD3D_Common\Assets\common" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y
-xcopy "E:\Mods\Subnautica\AD3D_Common\Assets\common.manifest" "D:\Steam\steamapps\common\Subnautica\QMods\$(ProjectName)\Assets\" /y</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <Target Name="AfterBuild">
   </Target>

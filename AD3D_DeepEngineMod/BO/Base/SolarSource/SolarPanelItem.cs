@@ -1,8 +1,5 @@
 ﻿using AD3D_Common;
-using AD3D_LightSolutionMod.BO.InGame;
-using SMLHelper.V2.Assets;
-using SMLHelper.V2.Crafting;
-using SMLHelper.V2.Utility;
+using Nautilus.Assets.Gadgets;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +10,8 @@ using UWE;
 
 namespace AD3D_DeepEngineMod.BO.Base.SolarSource
 {
-    public class SolarPanelItem : Buildable
+    public class SolarPanelItem : ScanningGadget
     {
-        public const string _AssetName = "deepengineasset";
         public const string _ClassID = "SolarPanel_1";
         public const string _FriendlyName = "Solar Panel 1";
         public const string _Description = "High efficiency solar panel with a capacity of 150W.";
@@ -41,7 +37,7 @@ namespace AD3D_DeepEngineMod.BO.Base.SolarSource
         public override GameObject GetGameObject()
         {
             //Instantiates a copy of the prefab that is loaded from the AssetBundle loaded above.
-            GameObject _prefab = GameObject.Instantiate(BO.Utils.Helper.Bundle.LoadAsset<GameObject>($"{_ClassID}.prefab"));
+            GameObject _prefab = GameObject.Instantiate(QPatch.Bundle.LoadAsset<GameObject>($"{_ClassID}.prefab"));
             _prefab.name = _ClassID;
             //Need a tech tag for most prefabs
             var techTag = _prefab.AddComponent<TechTag>();
@@ -142,7 +138,7 @@ namespace AD3D_DeepEngineMod.BO.Base.SolarSource
 
         protected override Atlas.Sprite GetItemSprite()
         {
-            return ImageUtils.LoadSpriteFromTexture(AD3D_DeepEngineMod.BO.Utils.Helper.Bundle.LoadAsset<Texture2D>("Icon"));
+            return ImageUtils.LoadSpriteFromTexture(QPatch.Bundle.LoadAsset<Texture2D>(_ClassID));
         }
     }
 }
