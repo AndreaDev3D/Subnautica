@@ -1,19 +1,14 @@
-﻿using AD3D_Common;
-using AD3D_LightSolutionMod.Runtime;
+﻿using AD3D_Common.Extentions;
+using AD3D_LightSolution.BZ.Runtime;
 using Nautilus.Assets;
 using Nautilus.Assets.Gadgets;
 using Nautilus.Crafting;
 using Nautilus.Extensions;
 using Nautilus.Utility;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
-using static AD3D_LightSolution.Base.Enumerators;
+using static AD3D_LightSolution.BZ.Base.Enumerators;
 
-namespace AD3D_LightSolution.Items.Buildable
+namespace AD3D_LightSolution.BZ.Items.Buildable
 {
     public class LightSourcePrefab
     {
@@ -29,7 +24,7 @@ namespace AD3D_LightSolution.Items.Buildable
 
             PrefabInfo = PrefabInfo
             .WithTechType(classID, friendlyName, _Description, unlockAtStart: true)
-            .WithIcon(ImageUtils.LoadSpriteFromTexture(Plugin.AssetBundle.LoadAsset<Texture2D>($"{classID}.png")));
+            .WithIcon(ImageUtils.LoadSpriteFromTexture(Plugin.AssetBundle.LoadAsset<Texture2D>($"{classID.RemoveSuffix()}.png")));
         }
 
         public void Register()
@@ -60,7 +55,7 @@ namespace AD3D_LightSolution.Items.Buildable
 
         private GameObject GetAssetBundlePrefab()
         {
-            var prefab = Plugin.AssetBundle.LoadAsset<GameObject>($"{PrefabInfo.ClassID}.prefab");
+            var prefab = Plugin.AssetBundle.LoadAsset<GameObject>($"{PrefabInfo.ClassID.RemoveSuffix()}.prefab");
             PrefabUtils.AddBasicComponents(prefab, PrefabInfo.ClassID, PrefabInfo.TechType, LargeWorldEntity.CellLevel.Medium);
             MaterialUtils.ApplySNShaders(prefab);
 

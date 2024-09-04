@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AD3D_LightSolution.Base
+﻿namespace AD3D_LightSolution.BZ.Base
 {
     public static class Enumerators
     {

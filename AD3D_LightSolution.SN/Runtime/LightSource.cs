@@ -1,13 +1,13 @@
 ﻿using AD3D_Common.Utils;
-using AD3D_LightSolution;
-using AD3D_LightSolution.Base;
+using AD3D_LightSolution.SN;
+using AD3D_LightSolution.SN.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static AD3D_LightSolution.Base.Enumerators;
+using static AD3D_LightSolution.SN.Base.Enumerators;
 
-namespace AD3D_LightSolutionMod.Runtime
+namespace AD3D_LightSolutionMod.SN.Runtime
 {
     public class LightSource : MonoBehaviour, IHandTarget, IProtoEventListener
     {

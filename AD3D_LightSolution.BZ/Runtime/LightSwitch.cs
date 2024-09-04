@@ -1,18 +1,14 @@
-﻿using AD3D_Common;
-using AD3D_Common.Utils;
-using AD3D_LightSolution;
-using AD3D_LightSolution.Base;
+﻿using AD3D_Common.Utils;
+using AD3D_LightSolution.BZ.Base;
 using Nautilus.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using Unity.Audio;
 using UnityEngine;
 using UnityEngine.UI;
-using static AD3D_LightSolution.Base.Enumerators;
+using static AD3D_LightSolution.BZ.Base.Enumerators;
 
-namespace AD3D_LightSolutionMod.Runtime
+namespace AD3D_LightSolution.BZ.Runtime
 {
     public class LightSwitch : MonoBehaviour, IProtoEventListener, IHandTarget
     {
@@ -88,9 +84,11 @@ namespace AD3D_LightSolutionMod.Runtime
 
             _colorPicker = this.gameObject.FindComponentByName<Image>("ColorPicker");
 
+
             // Load Sprites
             _btnOn = ImageUtils.LoadSpriteFromTexture(Plugin.AssetBundle.LoadAsset<Texture2D>($"btnOn.png"));
             _btnOff = ImageUtils.LoadSpriteFromTexture(Plugin.AssetBundle.LoadAsset<Texture2D>($"btnOff.png"));
+
 
             _btnOpenSetting = this.gameObject.FindComponentByName<Button>("btnOpenSetting");
             _btnOpenSetting.onClick.AddListener(() => ToggleSettingsDisplay(true));

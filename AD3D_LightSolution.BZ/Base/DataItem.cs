@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static AD3D_LightSolution.Base.Enumerators;
+using static AD3D_LightSolution.BZ.Base.Enumerators;
 
-namespace AD3D_LightSolution.Base
+namespace AD3D_LightSolution.BZ.Base
 {
     public class DataItem
     {
