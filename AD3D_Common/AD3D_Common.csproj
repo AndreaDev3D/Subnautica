@@ -31,6 +31,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'BZ|AnyCPU'">
+    <OutputPath>bin\BZ\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SN|AnyCPU'">
+    <OutputPath>bin\SN\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
       <HintPath>D:\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\Assembly-CSharp.dll</HintPath>
@@ -264,6 +270,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extentions\StringExtentions.cs" />
+    <Compile Include="Extentions\Texture2DExtensions.cs" />
     <Compile Include="Utils\Constant.cs" />
     <Compile Include="Utils\GameObjectFinder.cs" />
     <Compile Include="Utils\Helper.cs" />

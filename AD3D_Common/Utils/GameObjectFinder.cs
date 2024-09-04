@@ -15,6 +15,10 @@ namespace AD3D_Common.Utils
             foreach (var t in ts) 
                 if (t.gameObject.name == name) return t.gameObject;
 
+            Transform[] rts = go.GetComponentsInChildren<RectTransform>(includeInactive);
+            foreach (var t in rts)
+                if (t.gameObject.name == name) return t.gameObject;
+
             return null;
         }
 
