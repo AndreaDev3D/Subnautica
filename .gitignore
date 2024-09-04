@@ -64,3 +64,6 @@ crashlytics-build.properties
 Download
 packages
 */obj
+.vs
+*/bin
+*/obj
