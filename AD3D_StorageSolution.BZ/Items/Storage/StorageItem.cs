@@ -1,17 +1,12 @@
-﻿using AD3D_StorageSolution.Runtime;
+﻿using AD3D_StorageSolution.BZ.Runtime;
 using Nautilus.Assets;
 using Nautilus.Assets.Gadgets;
 using Nautilus.Crafting;
 using Nautilus.Extensions;
 using Nautilus.Utility;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
-namespace AD3D_StorageSolution.Items.Storage
+namespace AD3D_StorageSolution.BZ.Items.Storage
 {
     public class StorageItem
     {

@@ -1,4 +1,4 @@
-﻿using AD3D_StorageSolution.Items.Storage;
+﻿using AD3D_StorageSolution.SN.Items.Storage;
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
@@ -6,7 +6,7 @@ using Nautilus.Utility;
 using System.Reflection;
 using UnityEngine;
 
-namespace AD3D_StorageSolution
+namespace AD3D_StorageSolution.SN
 {
     [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
     [BepInDependency("com.snmodding.nautilus")]
@@ -21,7 +21,6 @@ namespace AD3D_StorageSolution
         private void Awake()
         {
             AssetBundle = AssetBundleLoadingUtils.LoadFromAssetsFolder(Assembly, "storagesolution.asset");
-
             // set project-scoped logger instance
             Logger = base.Logger;
 

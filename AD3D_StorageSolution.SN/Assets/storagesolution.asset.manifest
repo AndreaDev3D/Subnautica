@@ -1,0 +1,58 @@
+ManifestFileVersion: 0
+CRC: 2462311042
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: adead48d9f8514f772d698e190355870
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c0813286aee66ae41320d8e397b1519a
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 223
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Habitat Solution/QuantumStorage/Icons/QuantumStorage_wall_S.png
+- Assets/Habitat Solution/QuantumStorage/Prefab/QuantumStorage_floor_L.prefab
+- Assets/Habitat Solution/QuantumStorage/Icons/QuantumStorage_floor_S.png
+- Assets/Habitat Solution/QuantumStorage/Icons/QuantumStorage_wall_L.png
+- Assets/Habitat Solution/QuantumStorage/Icons/QuantumStorage_floor_L.png
+- Assets/Habitat Solution/QuantumStorage/Prefab/QuantumStorage_floor_S.prefab
+- Assets/Habitat Solution/QuantumStorage/Prefab/QuantumStorage.prefab
+- Assets/Habitat Solution/QuantumStorage/Icons/QuantumStorage.png
+- Assets/Habitat Solution/QuantumStorage/Prefab/QuantumStorage_wall_L.prefab
+- Assets/Habitat Solution/QuantumStorage/Prefab/QuantumStorage_wall_S.prefab
+Dependencies: []

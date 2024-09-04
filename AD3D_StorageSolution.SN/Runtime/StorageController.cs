@@ -1,28 +1,28 @@
-﻿using UnityEngine.UI;
-using Nautilus.Extensions;
+﻿using AD3D_Common.Utils;
+using AD3D_Common.Extentions;
+using UnityEngine.UI;
 using UnityEngine;
-using System.Collections;
-using AD3D_Common.Utils;
-using System.Runtime.CompilerServices;
-using System.ComponentModel;
-using System.Linq;
 
-namespace AD3D_StorageSolution.Runtime
+namespace AD3D_StorageSolution.SN.Runtime
 {
     public class StorageController : StorageContainer
     {
-        private Image Icon;
+        private uGUI_ItemIcon Icon;
         private bool _isInited;
 
         public void Start()
         {
-            Icon = gameObject.FindComponentByName<Image>("Icon");
+            FindIcon();
         }
 
         public void Update()
         {
             if (!_isInited)
             {
+                FindIcon();
+                if (Icon == null)
+                    return;
+
                 if (container != null)
                 {
                     _isInited = true;
@@ -39,16 +39,33 @@ namespace AD3D_StorageSolution.Runtime
             SetIcon();
         }
 
+        public void FindIcon()
+        {
+            if (Icon != null)
+                return;
+
+            var IconGO = gameObject.FindByName("Icon");
+            var img = IconGO.GetComponent<Image>();
+            Destroy(img);
+
+            Icon = IconGO.AddComponent<uGUI_ItemIcon>();
+            if(Icon != null)
+            {
+                Icon.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
+            }
+        }
+
         public void SetIcon()
         {
             if (Icon != null && (container != null || container.itemsMap != null))
             {
-                var firstItem = container.itemsMap[0,0]; 
-                if(firstItem == null)
+                var firstItem = container.itemsMap[0, 0];
+                if (firstItem == null)
                 {
                     return;
                 }
-                Icon.sprite = SpriteManager.Get(firstItem.techType);
+                Icon.SetForegroundSprite(SpriteManager.Get(firstItem.techType));
+
             }
             else
             {
@@ -57,7 +74,7 @@ namespace AD3D_StorageSolution.Runtime
         }
         public new void OnHandHover(GUIHand hand)
         {
-            if (!this.enabled || this.disableUseability)
+            if (!this.enabled)
                 return;
 
             Constructable component = this.gameObject.GetComponent<Constructable>();
