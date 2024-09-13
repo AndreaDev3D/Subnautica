@@ -50,6 +50,7 @@ namespace AD3D_StorageSolution.BZ.Runtime
                 Plugin.Logger.LogError($"SetIcon something is broken");
             }
         }
+
         public new void OnHandHover(GUIHand hand)
         {
             if (!this.enabled || this.disableUseability)

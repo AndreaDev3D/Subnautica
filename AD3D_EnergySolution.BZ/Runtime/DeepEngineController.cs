@@ -1,35 +1,16 @@
 ﻿using AD3D_Common.Utils;
+using AD3D_EnergySolution.BZ.Runtime;
 using Nautilus.Extensions;
 using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using static ICSharpCode.SharpZipLib.Zip.Compression.DeflaterHuffman;
 
 namespace AD3D_EnergySolution.BZ.BO.Runtime
 {
-    public class Out<T> : IOut<T>
+    public class DeepEngineController : GenericPowerController
     {
-        private T _value;
-
-        public void Set(T value)
-        {
-            _value = value;
-        }
-
-        public T Get()
-        {
-            return _value;
-        }
-    }
-
-    public class DeepEngineController : HandTarget, IHandTarget
-    {
-
-        [AssertNotNull]
-        public PowerRelay _powerRelay;
-        public PowerFX _powerFX;
-        public PowerSource _powerSource;
-
         public AudioClip AudioClip;
         public AudioSource AudioSource;
 
@@ -37,102 +18,49 @@ namespace AD3D_EnergySolution.BZ.BO.Runtime
         public Text lblBattery;
         public Text lblEmission;
         public Text lblDepth;
+        public Text lblLubricant;
 
-        public float CurrentEmitRate;
-
-        private Constructable _constructable;
-        public Constructable Constructable => _constructable ??= gameObject.GetComponent<Constructable>();
-
-        public bool IsEnabled;
-
-        public int MaxPowerAllowed = 10000;
         public float PowerMultiplier = 2f;
         public bool MakesNoise;
         public AudioClip Engine_SFX;
 
-        private Animation anim;
-        public AnimationClip DrillingAnimation;
-
-        override public void Awake()
+        private void Awake()
         {
             // Init UI
-            lblStatus = FindByName(this.gameObject, "lblStatus").gameObject.GetComponent<Text>();
-            lblBattery = FindByName(this.gameObject, "lblBattery").gameObject.GetComponent<Text>();
-            lblEmission = FindByName(this.gameObject, "lblEmission").gameObject.GetComponent<Text>();
-            lblDepth = FindByName(this.gameObject, "lblDepth").gameObject.GetComponent<Text>();
+            lblStatus = gameObject.FindComponentByName<Text>("lblStatus");
+            lblBattery = gameObject.FindComponentByName<Text>("lblBattery");
+            lblEmission = gameObject.FindComponentByName<Text>("lblEmission");
+            lblDepth = gameObject.FindComponentByName<Text>("lblDepth");
+            lblLubricant = gameObject.FindComponentByName<Text>("lblLubricant");
+        }
 
-            anim = this.gameObject.FindByName("Engine").GetComponent<Animation>();
-            anim.AddClip(DrillingAnimation, "Drilling");
-
+        public override void Start()
+        {
             Plugin.DeepEngineConfig.Load();
-
             Plugin.DeepEngineConfig.OnConfigChanged += () =>
             {
                 SetEmittedRate();
             };
-        }
-
-        public void Start()
-        {
-            Plugin.DeepEngineConfig.OnConfigChanged += () =>
-            {
-                SetEmittedRate();
-            };
-
-            StartCoroutine(SetupSolarPowerRelay());
-        }
-
-        private IEnumerator SetupSolarPowerRelay()
-        {
-            yield return new WaitForSeconds(5f);
-            Out<GameObject> result = new Out<GameObject>();
-            yield return CraftData.GetPrefabForTechTypeAsync(TechType.SolarPanel, true, result);
-
-            GameObject prefab = Instantiate(result.Get());
-
-            prefab.SetActive(false);
-
-            PowerRelay solarPowerRelay = prefab.GetComponent<PowerRelay>();
-
-            _powerSource = this.gameObject.AddComponent<PowerSource>().CopyComponent(prefab.GetComponent<PowerSource>());
-            _powerSource.maxPower = MaxPowerAllowed;
-
-            _powerFX = this.gameObject.AddComponent<PowerFX>().CopyComponent(prefab.GetComponent<PowerFX>());
-            _powerFX.vfxPrefab = solarPowerRelay.powerFX.vfxPrefab;
-            _powerFX.attachPoint = this.gameObject.transform;
-
-            _powerRelay = this.gameObject.AddComponent<PowerRelay>().CopyComponent(prefab.GetComponent<PowerRelay>());
-            _powerRelay.powerSystemPreviewPrefab = Instantiate(solarPowerRelay.powerSystemPreviewPrefab);
-            _powerRelay.powerFX = _powerFX;
-            _powerRelay.maxOutboundDistance = 15;
-            _powerRelay.internalPowerSource = _powerSource;
-
-            DestroyImmediate(prefab);
-
 
             SetupAudio();
-
             SetEmittedRate();
             lblDepth.text = $"{Mathf.RoundToInt(Mathf.Abs(this.gameObject.transform.position.y)).ToString()} m";
 
-            InvokeRepeating("EmitEnergy", 0, 1);
+            base.Start();
 
             StartNStop();
         }
-
-        private void EmitEnergy()
+        
+        public override void EmitEnergy()
         {
-            if (!IsEnabled)
-                return;
+            base.EmitEnergy();
 
             try
             {
                 if (Constructable.constructed)
                 {
-                    _powerRelay.ModifyPower(CurrentEmitRate, out float num);
-
-                    var power = Mathf.RoundToInt(_powerSource.GetPower());
-                    var powerMax = Mathf.RoundToInt(_powerSource.GetMaxPower());
+                    var power = Mathf.RoundToInt(powerSource.GetPower());
+                    var powerMax = Mathf.RoundToInt(powerSource.GetMaxPower());
                     lblBattery.text = $"Power {power}/{powerMax} Kw";
                     
                     UpdateUI();
@@ -148,18 +76,20 @@ namespace AD3D_EnergySolution.BZ.BO.Runtime
         {
             if (IsEnabled)
             {
-                var power = Mathf.RoundToInt(_powerSource.GetPower());
-                var powerMax = Mathf.RoundToInt(_powerSource.GetMaxPower());
-                lblStatus.text = $"Power Status : <color={(IsEnabled ? "green" : "red")}>{IsEnabled}</color>";
+                var power = Mathf.RoundToInt(powerSource.GetPower());
+                var powerMax = Mathf.RoundToInt(powerSource.GetMaxPower());
+                lblStatus.text = $"<color=green>POWERED</color>";
                 lblBattery.text = $"Power {power}/{powerMax} Kw";
                 lblEmission.text = $"{Math.Round(CurrentEmitRate, 2)} w/sec";
             }
             else
             {
-                lblStatus.text = $"Power Status : <color=yellow>N/A</color>";
+                lblStatus.text = $"<color=yellow>STANDBY</color>";
                 lblBattery.text = $"Power 0/0  Kw";
                 lblEmission.text = $"0.0 w/sec";
             }
+
+            lblLubricant.text = $"{lubricantStorageController.LubricantAmount:P}";
         }
 
         void SetupAudio()
@@ -185,15 +115,15 @@ namespace AD3D_EnergySolution.BZ.BO.Runtime
             CurrentEmitRate = y >= 0 ? 0.0f : baseEmission + ((y * -1) / 1000.0f) * multiplaier;
         }
 
-        public void OnHandHover(GUIHand hand)
+        public override void OnHandHover(GUIHand hand)
         {
-            if (Constructable.constructed && _powerSource != null)
+            if (Constructable.constructed && powerSource != null)
             {
                 if (transform.position.y <= 0f)
                 {
                     var emittedRate = CurrentEmitRate;
-                    var power = Mathf.RoundToInt(_powerSource.GetPower());
-                    var powerMax = Mathf.RoundToInt(_powerSource.GetMaxPower());
+                    var power = Mathf.RoundToInt(powerSource.GetPower());
+                    var powerMax = Mathf.RoundToInt(powerSource.GetMaxPower());
                     // TODO
                     //HandReticle.main.SetText($"Deep Engine: Current {power}/{powerMax}", $"Producing {Math.Round(CurrentEmitRate, 2)} w/sec", false, false);
                     HandReticle.main.SetTextRaw(HandReticle.TextType.Hand, $"Deep Engine: Current {power}/{powerMax} \nProducing {Math.Round(CurrentEmitRate, 2)} w/sec");
@@ -209,32 +139,17 @@ namespace AD3D_EnergySolution.BZ.BO.Runtime
             }
         }
 
-        public void OnHandClick(GUIHand hand)
+        public override void OnHandClick(GUIHand hand)
         {
             StartNStop();
         }
 
-        private void StartNStop()
+        public override void StartNStop()
         {
-            IsEnabled = !IsEnabled;
-            if (IsEnabled)
-            {
-                anim.Play("Drilling");
-            }
-            else
-            {
-                anim.Stop();
-            }
+            base.StartNStop();
+
+            gameObject.GetComponent<DeepEngineAnimations>().IsEnabled = IsEnabled;
             UpdateUI();
-        }
-
-        public GameObject FindByName(GameObject go, string name)
-        {
-            Transform[] ts = go.GetComponentsInChildren<Transform>();
-            foreach (var t in ts)
-                if (t.gameObject.name == name) return t.gameObject;
-
-            return null;
         }
     }
 

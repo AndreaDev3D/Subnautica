@@ -86,10 +86,10 @@ namespace AD3D_EnergySolution.BZ.Items.Buildable
         private static void SetupAdditionalComponents(GameObject prefab)
         {
             // Add components necessary for power management
-            prefab.AddComponent<PowerSource>();
-            prefab.AddComponent<PowerFX>();
-            prefab.AddComponent<PowerRelay>();
-            prefab.AddComponent<ConstructableBounds>();
+            //prefab.AddComponent<PowerSource>();
+            //prefab.AddComponent<PowerFX>();
+            //prefab.AddComponent<PowerRelay>();
+            //prefab.AddComponent<ConstructableBounds>();
             //prefab.AddComponent<HighlightingBlocker>();
 
             // Custom components related to Deep Engine
@@ -98,7 +98,7 @@ namespace AD3D_EnergySolution.BZ.Items.Buildable
             deepEngineController.PowerMultiplier = Plugin.DeepEngineConfig.PowerMultiplier;
             deepEngineController.MakesNoise = Plugin.DeepEngineConfig.MakesNoise;
             deepEngineController.Engine_SFX = Plugin.AssetsBundle.LoadAsset<AudioClip>("Engine_FX");
-            deepEngineController.DrillingAnimation = Plugin.AssetsBundle.LoadAsset<AnimationClip>("Drilling.anim");
+            //deepEngineController.DrillingAnimation = Plugin.AssetsBundle.LoadAsset<AnimationClip>("Drilling.anim");
         }
     }
 }

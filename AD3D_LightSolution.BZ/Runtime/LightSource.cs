@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UWE;
 using static AD3D_LightSolution.BZ.Base.Enumerators;
 
 namespace AD3D_LightSolution.BZ.Runtime
@@ -12,6 +13,8 @@ namespace AD3D_LightSolution.BZ.Runtime
     public class LightSource : MonoBehaviour, IHandTarget, IProtoEventListener
     {
         public static event Action OnSyncLight;
+
+        private PowerRelay powerRelay;
 
         public string Id => gameObject.GetComponent<PrefabIdentifier>().Id;
 
@@ -34,6 +37,27 @@ namespace AD3D_LightSolution.BZ.Runtime
         {
             InitDb();
             ApplyLightSettings(SyncCode, IsEnabled, LightColor, Intensity);
+
+            powerRelay = PowerSource.FindRelay(base.transform);
+
+            powerRelay.powerDownEvent.AddHandler(this, OnPowerDown);
+            powerRelay.powerUpEvent.AddHandler(this, OnPowerUp);
+        }
+
+        private void OnPowerUp(PowerRelay relay)
+        {
+            if (relay == powerRelay)
+            {
+                ApplyLightSettings(SyncCode, true, LightColor, Intensity);
+            }
+        }
+
+        void OnPowerDown(PowerRelay relay)
+        {
+            if (relay == powerRelay)
+            {
+                ApplyLightSettings(SyncCode, false, Color.black, 0.0f);
+            }
         }
 
         private void OnLightSwitchStatusChanged(int syncCode, bool isEnabled, Color color, float intensity)

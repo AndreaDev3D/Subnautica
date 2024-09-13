@@ -2,7 +2,6 @@
 using Nautilus.Extensions;
 using System;
 using System.Collections;
-using System.Drawing;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -46,8 +45,8 @@ namespace AD3D_EnergySolution.SN.BO.Runtime
 
         public bool IsEnabled;
 
-        public int MaxPowerAllowed = 10000;
-        public float PowerMultiplier = 2f;
+        public int MaxPowerAllowed = 750;
+        public float PowerMultiplier = 1f;
         public bool MakesNoise;
         public AudioClip Engine_SFX;
 

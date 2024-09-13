@@ -1,8 +1,11 @@
-﻿using AD3D_EnergySolution.BZ.Config;
+﻿using AD3D_EnergySolution.BZ.BO.Runtime;
+using AD3D_EnergySolution.BZ.Config;
 using AD3D_EnergySolution.BZ.Items.Buildable;
+using AD3D_EnergySolution.BZ.Runtime;
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
+using Nautilus.Crafting;
 using Nautilus.Handlers;
 using Nautilus.Utility;
 using System.Reflection;
@@ -39,8 +42,76 @@ namespace AD3D_EnergySolution.BZ
 
         private void InitializePrefabs()
         {
-            //BetterSolarPanelPrefab.Register();
-            DeepEnginePrefab.Register();
+            var solarPanelPrefab = new GenericPowerPrefab(
+                classID:"PowerSolarPanel",
+                friendlyName: "Power Solar Panel",
+                shortDescription: "A high efficiency Solar Panel that produce 0.125 W/sec.",
+                recipeData: new RecipeData(
+                    new Ingredient(TechType.Titanium, 2),
+                    new Ingredient(TechType.WiringKit, 1))
+                );
+            solarPanelPrefab.Register();
+            solarPanelPrefab.OnRegisterCompleted = (prefab) =>
+            {
+                var pow = prefab.AddComponent<GenericPowerController>();
+                pow.MaxPowerAllowed = 250;
+                pow.CurrentEmitRate = 0.25f;
+                pow.CurrentEmitIntervalSec = 2f;
+            };
+
+            var solarPanelFloorPrefab = new GenericPowerPrefab(
+                classID: "PowerSolarPanel_floor",
+                friendlyName: "Power Solar Panel Flat",
+                shortDescription: "A high efficiency Solar Panel that produce 0.125 W/sec.",
+                recipeData: new RecipeData(
+                    new Ingredient(TechType.Titanium, 2),
+                    new Ingredient(TechType.WiringKit, 1))
+                );
+            solarPanelFloorPrefab.Register();
+            solarPanelFloorPrefab.OnRegisterCompleted = (prefab) =>
+            {
+                var pow = prefab.AddComponent<GenericPowerController>();
+                pow.MaxPowerAllowed = 250;
+                pow.CurrentEmitRate = 0.25f;
+                pow.CurrentEmitIntervalSec = 2f;
+            };
+
+            var powerWindTurbinePrefab = new GenericPowerPrefab(
+                classID: "PowerWindTurbine",
+                friendlyName: "Power Wind Turbine",
+                shortDescription: "High efficiency Wind Turbine that produce 0.25 W/sec.",
+                recipeData: new RecipeData(
+                    new Ingredient(TechType.Titanium, 3),
+                    new Ingredient(TechType.WiringKit, 1))
+                );
+            powerWindTurbinePrefab.Register();
+            powerWindTurbinePrefab.OnRegisterCompleted = (prefab) =>
+            {
+                var pow = prefab.AddComponent<GenericPowerController>();
+                pow.MaxPowerAllowed = 500;
+                pow.CurrentEmitRate = 0.5f;
+                pow.CurrentEmitIntervalSec = 2f;
+            };
+
+            var deepEnginePrefab = new GenericPowerPrefab(
+                classID: "DeepEngine",
+                friendlyName: "Deep Engine v2",
+                shortDescription: "High efficiency electric generator that produce 750w of energy in deep water.",
+                recipeData: new RecipeData(
+                    new Ingredient(TechType.Titanium, 5),
+                    new Ingredient(TechType.WiringKit, 1))
+                );
+            deepEnginePrefab.Register();
+            deepEnginePrefab.OnRegisterCompleted = (prefab) =>
+            {
+                prefab.AddComponent<DeepEngineAnimations>();
+
+                var pow = prefab.AddComponent<DeepEngineController>();
+                pow.MaxPowerAllowed = 750;
+                pow.CurrentEmitRate = 0.75f;
+                pow.CurrentEmitIntervalSec = 2f;
+
+            };
         }
     }
 }

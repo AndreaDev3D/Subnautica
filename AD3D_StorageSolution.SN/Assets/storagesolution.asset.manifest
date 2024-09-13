@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2462311042
+CRC: 2797636415
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: adead48d9f8514f772d698e190355870
+    Hash: 66120558079c6a4b955cc1e430c7fe69
   TypeTreeHash:
     serializedVersion: 2
     Hash: c0813286aee66ae41320d8e397b1519a
@@ -45,14 +45,13 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/Habitat Solution/QuantumStorage/Icons/QuantumStorage_wall_S.png
-- Assets/Habitat Solution/QuantumStorage/Prefab/QuantumStorage_floor_L.prefab
-- Assets/Habitat Solution/QuantumStorage/Icons/QuantumStorage_floor_S.png
-- Assets/Habitat Solution/QuantumStorage/Icons/QuantumStorage_wall_L.png
-- Assets/Habitat Solution/QuantumStorage/Icons/QuantumStorage_floor_L.png
-- Assets/Habitat Solution/QuantumStorage/Prefab/QuantumStorage_floor_S.prefab
-- Assets/Habitat Solution/QuantumStorage/Prefab/QuantumStorage.prefab
-- Assets/Habitat Solution/QuantumStorage/Icons/QuantumStorage.png
-- Assets/Habitat Solution/QuantumStorage/Prefab/QuantumStorage_wall_L.prefab
-- Assets/Habitat Solution/QuantumStorage/Prefab/QuantumStorage_wall_S.prefab
+- Assets/QuantumStorage/Prefab/QuantumStorage_floor_L.prefab
+- Assets/QuantumStorage/Icons/QuantumStorage_wall_S.png
+- Assets/QuantumStorage/Icons/QuantumStorage_wall_L.png
+- Assets/QuantumStorage/Icons/QuantumStorage_floor_L.png
+- Assets/QuantumStorage/Icons/QuantumStorage_floor_S.png
+- Assets/QuantumStorage/Prefab/QuantumStorage_floor_S.prefab
+- Assets/QuantumStorage/Prefab/QuantumStorage.prefab
+- Assets/QuantumStorage/Prefab/QuantumStorage_wall_L.prefab
+- Assets/QuantumStorage/Prefab/QuantumStorage_wall_S.prefab
 Dependencies: []

@@ -1,23 +1,12 @@
 ManifestFileVersion: 0
-<<<<<<<< HEAD:AD3D_EnergySolution/Assets/energysolution.asset.manifest
-CRC: 4178934783
+CRC: 1579720354
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 34eb0df6742e235ca9b657f1042517dd
+    Hash: dd057b8761ccd1c4932ee65ac4ff0f96
   TypeTreeHash:
     serializedVersion: 2
-    Hash: e3e6ccb035e4c858b1be13492015bdcc
-========
-CRC: 370143088
-Hashes:
-  AssetFileHash:
-    serializedVersion: 2
-    Hash: 4f38e8245c7e1050689244daa3fe5e9c
-  TypeTreeHash:
-    serializedVersion: 2
-    Hash: 422f273d154ac50990fff1e43994fd96
->>>>>>>> 8c9e20dcba6abf355ff24c370675d9003addd3e4:AD3D_HabitatSolution/Assets/habitatasset.manifest
+    Hash: cd5e24156bf84321f27f53a72a298b4e
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -36,21 +25,12 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
-- Class: 54
-  Script: {instanceID: 0}
-- Class: 64
-  Script: {instanceID: 0}
 - Class: 65
   Script: {instanceID: 0}
-<<<<<<<< HEAD:AD3D_EnergySolution/Assets/energysolution.asset.manifest
 - Class: 74
   Script: {instanceID: 0}
 - Class: 83
   Script: {instanceID: 0}
-- Class: 111
-  Script: {instanceID: 0}
-========
->>>>>>>> 8c9e20dcba6abf355ff24c370675d9003addd3e4:AD3D_HabitatSolution/Assets/habitatasset.manifest
 - Class: 114
   Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
 - Class: 114
@@ -58,18 +38,12 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 128
-  Script: {instanceID: 0}
-- Class: 136
   Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
@@ -81,34 +55,26 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-<<<<<<<< HEAD:AD3D_EnergySolution/Assets/energysolution.asset.manifest
-- Assets/Icons/Main_BG.png
+- Assets/Resources/Icons/Main_BG.png
 - Assets/PrefabKit/Models/PrefabKit.mat
-- Assets/DeepEngine/Icons/SolarPanel_1.png
-- Assets/Icons/Battery.png
-- Assets/DeepEngine/Prefabs/DeepEngine.prefab
-- Assets/Icons/Wifi.png
-- Assets/DeepEngine/Sounds/Engine_FX.mp3
-- Assets/DeepEngine/Textures/DeepEngine_DeepEngine_MaskMap.png
-- Assets/DeepEngine/Textures/DeepEngine_DeepEngine_BaseMap.png
-- Assets/DeepEngine/Textures/DeepEngine_DeepEngine_Emissive.png
-- Assets/Icons/Power.png
-- Assets/DeepEngine/Textures/DeepEngine_DeepEngine_Normal.png
-- Assets/DeepEngine/Models/DeepEngine.mat
-- Assets/Icons/Depth.png
-- Assets/DeepEngine/Prefabs/DeepEngine_Kit.prefab
-- Assets/DeepEngine/Animation/Drilling.anim
-- Assets/DeepEngine/Icons/DeepEngine.png
-========
-- Assets/Habitat Solution/SeaCrosser/Prefabs/SeaCrosser.prefab
-- Assets/Habitat Solution/FoodSolution/Prefabs/Bar1.prefab
-- Assets/Habitat Solution/VendingMachine/Prefab/Vending Machine Plus.prefab
-- Assets/Habitat Solution/VendingMachine/Prefab/Item.prefab
-- Assets/Habitat Solution/Auto Fish-Tank/Icons/AutoBreederTank_Icon.png
-- Assets/Habitat Solution/Prefabs/HabitatTest.prefab
-- Assets/Habitat Solution/Auto Fish-Tank/Prefabs/AutoBreederTank.prefab
-- Assets/Habitat Solution/Icons/Icon.png
-- Assets/Habitat Solution/FoodSolution/Icons/Bar1.png
-- Assets/Habitat Solution/SeaCrosser/Icons/SeaCrosser_Icon.png
->>>>>>>> 8c9e20dcba6abf355ff24c370675d9003addd3e4:AD3D_HabitatSolution/Assets/habitatasset.manifest
+- Assets/Resources/Icons/Battery.png
+- Assets/EnergySolution/Icons/PowerSolarPanel.png
+- Assets/EnergySolution/Prefabs/PowerSolarPanel.prefab
+- Assets/EnergySolution/Icons/DeepEngine.png
+- Assets/EnergySolution/Prefabs/DeepEngine.prefab
+- Assets/EnergySolution/Icons/PowerSolarPanel_floor.png
+- Assets/Resources/Icons/Wifi.png
+- Assets/EnergySolution/Sounds/Engine_FX.mp3
+- Assets/EnergySolution/Textures/DeepEngine_DeepEngine_MaskMap.png
+- Assets/EnergySolution/Textures/DeepEngine_DeepEngine_BaseMap.png
+- Assets/EnergySolution/Textures/DeepEngine_DeepEngine_Emissive.png
+- Assets/Resources/Icons/Power.png
+- Assets/EnergySolution/Icons/PowerWindTurbine.png
+- Assets/EnergySolution/Textures/DeepEngine_DeepEngine_Normal.png
+- Assets/EnergySolution/Prefabs/PowerSolarPanel_floor.prefab
+- Assets/EnergySolution/Models/DeepEngine.mat
+- Assets/Resources/Icons/Depth.png
+- Assets/EnergySolution/Prefabs/DeepEngine_Kit.prefab
+- Assets/EnergySolution/Animation/Drilling.anim
+- Assets/EnergySolution/Prefabs/PowerWindTurbine.prefab
 Dependencies: []
