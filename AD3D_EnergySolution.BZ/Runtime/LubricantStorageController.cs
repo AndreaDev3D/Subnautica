@@ -17,20 +17,18 @@ namespace AD3D_EnergySolution.BZ.Runtime
 
         void Start()
         {
-            this.container.isAllowedToAdd = new global::IsAllowedToAdd(this.IsAllowedToAdd);
+            this.container.isAllowedToAdd += new global::IsAllowedToAdd(this.IsAllowedToAdd);
             this.container.isAllowedToRemove += new global::IsAllowedToRemove(this.IsAllowedToRemove);
-
             this.container.onAddItem += AddLubricant;
-            LubricantAmountObj = transform.Find("LubricantAmount");
 
-            SetLubricantAmount(0.25f);
+            LubricantAmountObj = transform.Find("LubricantAmount");
         }
 
-        private bool IsAllowedToAdd(Pickupable pickupable, bool verbose) => pickupable.GetTechType() == TechType.Lubricant;        
+        private bool IsAllowedToAdd(Pickupable pickupable, bool verbose) => pickupable.GetTechType() == TechType.Lubricant;
 
         private bool IsAllowedToRemove(Pickupable pickupable, bool verbose)
         {
-            if (LubricantAmount > 0.25f)
+            if (LubricantAmount >= 0.25f)
             {
                 SetLubricantAmount(-0.25f);
                 return true;
@@ -41,6 +39,7 @@ namespace AD3D_EnergySolution.BZ.Runtime
 
         private void AddLubricant(InventoryItem inventoryItem)
         {
+            container.Clear();
             SetLubricantAmount(0.25f);
         }
 

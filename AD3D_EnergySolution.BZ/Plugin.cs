@@ -87,7 +87,7 @@ namespace AD3D_EnergySolution.BZ
             powerWindTurbinePrefab.Register();
             powerWindTurbinePrefab.OnRegisterCompleted = (prefab) =>
             {
-                var pow = prefab.AddComponent<GenericPowerController>();
+                var pow = prefab.AddComponent<PowerWindTurbineController>();
                 pow.MaxPowerAllowed = 500;
                 pow.CurrentEmitRate = 0.5f;
                 pow.CurrentEmitIntervalSec = 2f;

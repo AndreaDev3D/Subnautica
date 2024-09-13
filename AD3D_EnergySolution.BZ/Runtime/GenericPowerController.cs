@@ -66,8 +66,10 @@ namespace AD3D_EnergySolution.BZ.Runtime
 
                     if (lubricantStorageController != null)
                     {
-                        var result = lubricantStorageController.SetLubricantAmount(-0.0001f);
-                        if(result == 0f)
+                        // TODO: Uncomment for release
+                        //var result = lubricantStorageController.SetLubricantAmount(-0.0001f);
+                        var result = lubricantStorageController.SetLubricantAmount(-0.01f);
+                        if (result == 0f)
                         {
                             StartNStop();
                         }
@@ -84,7 +86,16 @@ namespace AD3D_EnergySolution.BZ.Runtime
         {
             if (!this.gameObject.GetComponent<Constructable>().constructed)
                 return;
-            HandReticle.main.SetText(HandReticle.TextType.Hand, Language.main.GetFormat<int, int, int>("SolarPanelStatus", Mathf.RoundToInt(this.GetRechargeScalar() * 100f), Mathf.RoundToInt(this.powerSource.GetPower()), Mathf.RoundToInt(this.powerSource.GetMaxPower())), false);
+
+            var recharge = Mathf.RoundToInt(this.GetRechargeScalar() * 100f);
+            var power = Mathf.RoundToInt(this.powerSource.GetPower());
+            var maxPower = Mathf.RoundToInt(this.powerSource.GetMaxPower());
+            var text = $"Recharge: {recharge:P} \nPower: {power}/{maxPower} kW";
+
+            if(lubricantStorageController != null)
+                text += $"\nLubricant: {lubricantStorageController.LubricantAmount:P}";
+
+            HandReticle.main.SetText(HandReticle.TextType.Hand, text, false);
             HandReticle.main.SetText(HandReticle.TextType.HandSubscript, string.Empty, false);
             HandReticle.main.SetIcon(HandReticle.IconType.Hand);
         }

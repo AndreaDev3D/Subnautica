@@ -36,7 +36,6 @@ namespace AD3D_EnergySolution.BZ.BO.Runtime
 
         public override void Start()
         {
-            Plugin.DeepEngineConfig.Load();
             Plugin.DeepEngineConfig.OnConfigChanged += () =>
             {
                 SetEmittedRate();
@@ -74,7 +73,7 @@ namespace AD3D_EnergySolution.BZ.BO.Runtime
 
         private void UpdateUI()
         {
-            if (IsEnabled)
+            if (IsEnabled && powerSource != null)
             {
                 var power = Mathf.RoundToInt(powerSource.GetPower());
                 var powerMax = Mathf.RoundToInt(powerSource.GetMaxPower());
@@ -115,34 +114,34 @@ namespace AD3D_EnergySolution.BZ.BO.Runtime
             CurrentEmitRate = y >= 0 ? 0.0f : baseEmission + ((y * -1) / 1000.0f) * multiplaier;
         }
 
-        public override void OnHandHover(GUIHand hand)
-        {
-            if (Constructable.constructed && powerSource != null)
-            {
-                if (transform.position.y <= 0f)
-                {
-                    var emittedRate = CurrentEmitRate;
-                    var power = Mathf.RoundToInt(powerSource.GetPower());
-                    var powerMax = Mathf.RoundToInt(powerSource.GetMaxPower());
-                    // TODO
-                    //HandReticle.main.SetText($"Deep Engine: Current {power}/{powerMax}", $"Producing {Math.Round(CurrentEmitRate, 2)} w/sec", false, false);
-                    HandReticle.main.SetTextRaw(HandReticle.TextType.Hand, $"Deep Engine: Current {power}/{powerMax} \nProducing {Math.Round(CurrentEmitRate, 2)} w/sec");
-                    HandReticle.main.SetIcon(HandReticle.IconType.Info, 1.25f);
-                }
-                else
-                {
-                    // TODO
-                    //HandReticle.main.SetText(("Deep Engine: ERROR", "Notice: The engine need to be submerged, please relocate", false, false);
-                    HandReticle.main.SetTextRaw(HandReticle.TextType.Hand, $"Deep Engine: ERROR \nNotice: The engine need to be submerged, please relocate at lower depth");
-                    HandReticle.main.SetIcon(HandReticle.IconType.HandDeny, 1f);
-                }
-            }
-        }
+        //public override void OnHandHover(GUIHand hand)
+        //{
+        //    if (Constructable.constructed && powerSource != null)
+        //    {
+        //        if (transform.position.y <= 0f)
+        //        {
+        //            var emittedRate = CurrentEmitRate;
+        //            var power = Mathf.RoundToInt(powerSource.GetPower());
+        //            var powerMax = Mathf.RoundToInt(powerSource.GetMaxPower());
+        //            // TODO
+        //            //HandReticle.main.SetText($"Deep Engine: Current {power}/{powerMax}", $"Producing {Math.Round(CurrentEmitRate, 2)} w/sec", false, false);
+        //            HandReticle.main.SetTextRaw(HandReticle.TextType.Hand, $"Deep Engine: Current {power}/{powerMax} \nProducing {Math.Round(CurrentEmitRate, 2)} w/sec");
+        //            HandReticle.main.SetIcon(HandReticle.IconType.Info, 1.25f);
+        //        }
+        //        else
+        //        {
+        //            // TODO
+        //            //HandReticle.main.SetText(("Deep Engine: ERROR", "Notice: The engine need to be submerged, please relocate", false, false);
+        //            HandReticle.main.SetTextRaw(HandReticle.TextType.Hand, $"Deep Engine: ERROR \nNotice: The engine need to be submerged, please relocate at lower depth");
+        //            HandReticle.main.SetIcon(HandReticle.IconType.HandDeny, 1f);
+        //        }
+        //    }
+        //}
 
-        public override void OnHandClick(GUIHand hand)
-        {
-            StartNStop();
-        }
+        //public override void OnHandClick(GUIHand hand)
+        //{
+        //    StartNStop();
+        //}
 
         public override void StartNStop()
         {

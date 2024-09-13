@@ -22,8 +22,6 @@ namespace AD3D_EnergySolution.BZ.Items.Buildable
 
         public Action<GameObject> OnRegisterCompleted;
 
-        //private readonly List<Type> _monoBehaviourTypes = new List<Type>();
-
         public GenericPowerPrefab(string classID, string friendlyName, string shortDescription, RecipeData recipeData)
         {
             PrefabInfo = PrefabInfo
@@ -67,7 +65,7 @@ namespace AD3D_EnergySolution.BZ.Items.Buildable
 
             SetupAdditionalComponents(prefab, solarPanelPrefab);
 
-            SetupLubricatController(prefab);
+            SetupLubricantController(prefab);
 
             prefab.SetActive(true);
 
@@ -110,7 +108,7 @@ namespace AD3D_EnergySolution.BZ.Items.Buildable
             powerRelay.internalPowerSource = powerSource;
         }
 
-        private void SetupLubricatController(GameObject prefab)
+        private void SetupLubricantController(GameObject prefab)
         {
 
             // LubricantContainer
@@ -133,8 +131,5 @@ namespace AD3D_EnergySolution.BZ.Items.Buildable
                 UnityEngine.Object.DestroyImmediate(container);
             }
         }
-
-        private bool IsAllowedToAdd(Pickupable pickupable, bool verbose) => pickupable.GetTechType() == TechType.Lubricant;
-        
     }
 }
