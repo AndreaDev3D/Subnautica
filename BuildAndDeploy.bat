@@ -5,9 +5,9 @@ set buildPath=%2
 set projectDir=%3
 set targetDir=%4
 set Configuration=%~5
-set subnauticaFolder=D:\Steam\steamapps\common\Subnautica\BepInEx\plugins\%projectName%\
-set subnauticaZeroFolder=D:\Steam\steamapps\common\SubnauticaZero\BepInEx\plugins\%projectName%\
-set zipDestination=%3..\Download\%Configuration%\%projectName%.zip
+set subnauticaFolder=D:\Steam\steamapps\common\Subnautica\BepInEx\plugins\%projectName%.%Configuration%\
+set subnauticaZeroFolder=D:\Steam\steamapps\common\SubnauticaZero\BepInEx\plugins\%projectName%.%Configuration%\
+set zipDestination=%3..\Download\%Configuration%\%projectName%.%Configuration%.zip
 
 REM Debugging: Echo paths to verify
 echo projectName=%projectName%
