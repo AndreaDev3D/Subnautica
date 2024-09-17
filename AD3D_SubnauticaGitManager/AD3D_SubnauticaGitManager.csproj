@@ -31,6 +31,5 @@
 	</ItemGroup>
 
 	<Import Project="..\References.targets" />
-	<Import Project="..\SharedPostBuild.targets" />
 
 </Project>

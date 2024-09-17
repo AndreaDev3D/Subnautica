@@ -26,7 +26,9 @@ namespace AD3D_SubnauticaGitManager.Patches
             modManagerButton.transform.SetSiblingIndex(1);
             var button = modManagerButton.GetComponent<Button>();
             button.onClick.RemoveAllListeners();// = new Button.ButtonClickedEvent();
-            button.onClick.AddListener(SGMMenuHandler.Show);
+            
+            var sgmMenu = new SGMMenuHandler();
+            button.onClick.AddListener(sgmMenu.Show);
         }
     }
 }
