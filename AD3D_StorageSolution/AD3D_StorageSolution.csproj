@@ -2,11 +2,11 @@
 
 	<PropertyGroup>
 		<TargetFramework>net472</TargetFramework>
-		<AssemblyName>AD3D_StorageSolution.BZ</AssemblyName>
+		<AssemblyName>AD3D_StorageSolution</AssemblyName>
 		<Version>1.0.2</Version>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<LangVersion>11</LangVersion>
-		<RootNamespace>AD3D_StorageSolution.BZ</RootNamespace>
+		<RootNamespace>AD3D_StorageSolution</RootNamespace>
 
 		<RestoreAdditionalProjectSources>
 			https://api.nuget.org/v3/index.json;
@@ -15,7 +15,7 @@
 
 		<Platforms>AnyCPU</Platforms>
 
-		<Configurations>BZ;SN;Release;Debug</Configurations>
+		<Configurations>BZ;SN</Configurations>
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">

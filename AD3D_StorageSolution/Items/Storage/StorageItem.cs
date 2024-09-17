@@ -1,4 +1,4 @@
-﻿using AD3D_StorageSolution.BZ.Runtime;
+﻿using AD3D_StorageSolution.Runtime;
 using Nautilus.Assets;
 using Nautilus.Assets.Gadgets;
 using Nautilus.Crafting;
@@ -6,7 +6,11 @@ using Nautilus.Extensions;
 using Nautilus.Utility;
 using UnityEngine;
 
-namespace AD3D_StorageSolution.BZ.Items.Storage
+#if SN
+using static CraftData;
+#endif
+
+namespace AD3D_StorageSolution.Items.Storage
 {
     public class StorageItem
     {
