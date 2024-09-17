@@ -64,7 +64,7 @@ namespace AD3D_EnergySolution.BZ.Items.Buildable
             GameObject solarPanelPrefab = task.GetResult();
 
             SetupAdditionalComponents(prefab, solarPanelPrefab);
-
+            SetupMaterials(prefab);
             SetupLubricantController(prefab);
 
             prefab.SetActive(true);
@@ -92,6 +92,30 @@ namespace AD3D_EnergySolution.BZ.Items.Buildable
             constructible.placeMaxDistance = 15f;
             constructible.surfaceType = VFXSurfaceTypes.metal;
             constructible.forceUpright = true;
+        }
+
+        private void SetupMaterials(GameObject prefab)
+        {
+            try
+            {
+                foreach (Renderer renderer in prefab.GetComponentsInChildren<Renderer>())
+                {
+                    foreach (Material material in renderer.materials)
+                    {
+                        if (material == null) continue;
+
+
+                        material.EnableKeyword("MARMO_EMISSION");
+                        //material.SetColor(ShaderPropertyID._GlowColor, LightColor);
+                        material.SetFloat(ShaderPropertyID._GlowStrength, 2.0f);
+                        material.SetFloat(ShaderPropertyID._GlowStrengthNight, 3.0f);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Plugin.Logger.LogError($"Error updating materials: {ex}");
+            }
         }
 
         private void SetupAdditionalComponents(GameObject prefab, GameObject clonePrefab)

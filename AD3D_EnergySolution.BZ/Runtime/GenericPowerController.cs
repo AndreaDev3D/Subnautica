@@ -10,7 +10,7 @@ namespace AD3D_EnergySolution.BZ.Runtime
 {
     public class GenericPowerController: MonoBehaviour, IHandTarget
     {
-        public bool IsEnabled;
+        public bool IsEnabled = true;
 
         public PowerSource powerSource;
         [AssertNotNull]
@@ -66,9 +66,7 @@ namespace AD3D_EnergySolution.BZ.Runtime
 
                     if (lubricantStorageController != null)
                     {
-                        // TODO: Uncomment for release
-                        //var result = lubricantStorageController.SetLubricantAmount(-0.0001f);
-                        var result = lubricantStorageController.SetLubricantAmount(-0.01f);
+                        var result = lubricantStorageController.SetLubricantAmount(-0.0001f);
                         if (result == 0f)
                         {
                             StartNStop();
@@ -87,13 +85,21 @@ namespace AD3D_EnergySolution.BZ.Runtime
             if (!this.gameObject.GetComponent<Constructable>().constructed)
                 return;
 
-            var recharge = Mathf.RoundToInt(this.GetRechargeScalar() * 100f);
-            var power = Mathf.RoundToInt(this.powerSource.GetPower());
-            var maxPower = Mathf.RoundToInt(this.powerSource.GetMaxPower());
-            var text = $"Recharge: {recharge:P} \nPower: {power}/{maxPower} kW";
+            var text = "";
+            if (IsEnabled)
+            {
+                var recharge = Mathf.RoundToInt(this.GetRechargeScalar());
+                var power = Mathf.RoundToInt(this.powerSource.GetPower());
+                var maxPower = Mathf.RoundToInt(this.powerSource.GetMaxPower());
+                text = $"Efficiency: {recharge:P0} \n Charge: {power}/{maxPower} kW";
 
-            if(lubricantStorageController != null)
-                text += $"\nLubricant: {lubricantStorageController.LubricantAmount:P}";
+                if (lubricantStorageController != null)
+                    text += $"\nLubricant: {lubricantStorageController.LubricantAmount:P}";
+
+            }else
+            {
+                text = "Power Off";
+            }
 
             HandReticle.main.SetText(HandReticle.TextType.Hand, text, false);
             HandReticle.main.SetText(HandReticle.TextType.HandSubscript, string.Empty, false);
@@ -102,6 +108,7 @@ namespace AD3D_EnergySolution.BZ.Runtime
 
         public virtual void OnHandClick(GUIHand hand)
         {
+            StartNStop();
         }
 
         public virtual void StartNStop()

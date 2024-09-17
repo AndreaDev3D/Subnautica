@@ -15,6 +15,8 @@ namespace AD3D_EnergySolution.BZ.Runtime
         private float _maxLubricantAmount = 1f;
         public Transform LubricantAmountObj;
 
+        private bool _NeedsCleanUp = false;
+
         void Start()
         {
             this.container.isAllowedToAdd += new global::IsAllowedToAdd(this.IsAllowedToAdd);
@@ -39,14 +41,18 @@ namespace AD3D_EnergySolution.BZ.Runtime
 
         private void AddLubricant(InventoryItem inventoryItem)
         {
-            container.Clear();
             SetLubricantAmount(0.25f);
+            _NeedsCleanUp = true;
         }
 
         public override void OnClose()
         {
             base.OnClose();
-
+            if (_NeedsCleanUp)
+            {
+                container.Clear(true); 
+                _NeedsCleanUp = false;
+            }
         }
 
         public float SetLubricantAmount(float amount)
