@@ -15,6 +15,7 @@ namespace AD3D_LightSolution.BZ.Runtime
         public static event Action OnSyncLight;
 
         private PowerRelay powerRelay;
+        private float _lightCost = 0.01f;
 
         public string Id => gameObject.GetComponent<PrefabIdentifier>().Id;
 
@@ -39,24 +40,22 @@ namespace AD3D_LightSolution.BZ.Runtime
             ApplyLightSettings(SyncCode, IsEnabled, LightColor, Intensity);
 
             powerRelay = PowerSource.FindRelay(base.transform);
+            powerRelay.powerStatusEvent.AddHandler(this, OnPowerStatus);
 
-            powerRelay.powerDownEvent.AddHandler(this, OnPowerDown);
-            powerRelay.powerUpEvent.AddHandler(this, OnPowerUp);
+
+            InvokeRepeating("RequestLight", 0, 5);
         }
 
-        private void OnPowerUp(PowerRelay relay)
+        private void OnPowerStatus(PowerRelay relay)
         {
-            if (relay == powerRelay)
-            {
-                ApplyLightSettings(SyncCode, true, LightColor, Intensity);
-            }
+            ApplyLight(relay.IsPowered());
         }
 
-        void OnPowerDown(PowerRelay relay)
+        private void RequestLight()
         {
-            if (relay == powerRelay)
+            if(powerRelay != null)
             {
-                ApplyLightSettings(SyncCode, false, Color.black, 0.0f);
+                powerRelay.ModifyPower(_lightCost * -1, out float modified);
             }
         }
 
@@ -72,6 +71,13 @@ namespace AD3D_LightSolution.BZ.Runtime
             IsEnabled = isEnabled;
             Intensity = intensity;
             LightColor = color;
+
+            UpdateLightComponent();
+            UpdateMaterials();
+        }
+        public void ApplyLight(bool isEnabled)
+        {
+            IsEnabled = isEnabled;
 
             UpdateLightComponent();
             UpdateMaterials();
