@@ -5,7 +5,11 @@ using Nautilus.Extensions;
 using Nautilus.Utility;
 using UnityEngine;
 
-namespace AD3D_TransportSolution.BZ.Items.Drivable
+#if SN
+using static CraftData;
+#endif
+
+namespace AD3D_TransportSolution.Items.Drivable
 {
     public class RailItem
     {

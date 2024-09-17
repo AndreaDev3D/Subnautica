@@ -1,4 +1,4 @@
-﻿using AD3D_TransportSolution.BZ.Items.Drivable;
+﻿using AD3D_TransportSolution.Items.Drivable;
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
@@ -6,7 +6,7 @@ using Nautilus.Utility;
 using System.Reflection;
 using UnityEngine;
 
-namespace AD3D_TransportSolution.BZ
+namespace AD3D_TransportSolution
 {
     [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
     [BepInDependency("com.snmodding.nautilus")]
