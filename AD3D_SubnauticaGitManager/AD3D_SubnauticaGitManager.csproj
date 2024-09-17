@@ -15,7 +15,7 @@
 
 		<Platforms>AnyCPU</Platforms>
 
-		<Configurations>BZ;SN;Release;Debug</Configurations>
+		<Configurations>BZ;SN</Configurations>
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
