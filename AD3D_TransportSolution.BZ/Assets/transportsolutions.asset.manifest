@@ -1,0 +1,38 @@
+ManifestFileVersion: 0
+CRC: 2978703179
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9e48c275900290216f0d16a11e7efeed
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: bb28e223b524cc6b7637a7337cb8f8b5
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Monorail/Prefabs/Monorail_Pod.prefab
+- Assets/Monorail/Icons/Monorail_Straight.png
+- Assets/Monorail/Icons/Monorail_Curve.png
+- Assets/Monorail/Prefabs/Monorail_Curve.prefab
+- Assets/Monorail/Prefabs/Monorail_Straight.prefab
+- Assets/Monorail/Icons/Monorail_Pod.png
+Dependencies: []
