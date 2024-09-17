@@ -1,6 +1,6 @@
 ﻿using AD3D_Common;
-using AD3D_LightSolution.SN.BO.Config;
-using AD3D_LightSolution.SN.Items.Buildable;
+using AD3D_LightSolution.Items.Buildable;
+using AD3D_LightSolutionMod.BO.Config;
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
@@ -8,16 +8,18 @@ using Nautilus.Handlers;
 using Nautilus.Utility;
 using System.Reflection;
 using UnityEngine;
-using static AD3D_LightSolution.SN.Base.Enumerators;
+using static AD3D_LightSolution.Base.Enumerators;
 
-namespace AD3D_LightSolution.SN
+namespace AD3D_LightSolution
 {
     [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
     [BepInDependency("com.snmodding.nautilus")]
     public class Plugin : BaseUnityPlugin
     {
         public new static ManualLogSource Logger { get; private set; }
+
         private static Assembly Assembly { get; } = Assembly.GetExecutingAssembly();
+
         public static AssetBundle AssetBundle { get; private set; }
         public static DatabaseConfig Database { get; private set; }
 

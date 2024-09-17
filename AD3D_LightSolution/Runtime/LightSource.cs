@@ -1,14 +1,14 @@
 ﻿using AD3D_Common.Utils;
-using AD3D_LightSolution.BZ;
-using AD3D_LightSolution.BZ.Base;
+using AD3D_LightSolution;
+using AD3D_LightSolution.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UWE;
-using static AD3D_LightSolution.BZ.Base.Enumerators;
+using static AD3D_LightSolution.Base.Enumerators;
 
-namespace AD3D_LightSolution.BZ.Runtime
+namespace AD3D_LightSolution.Runtime
 {
     public class LightSource : MonoBehaviour, IHandTarget, IProtoEventListener
     {
@@ -40,7 +40,12 @@ namespace AD3D_LightSolution.BZ.Runtime
             ApplyLightSettings(SyncCode, IsEnabled, LightColor, Intensity);
 
             powerRelay = PowerSource.FindRelay(base.transform);
+#if BZ
             powerRelay.powerStatusEvent.AddHandler(this, OnPowerStatus);
+#else
+            powerRelay.powerUpEvent.AddHandler(this, OnPowerStatus);
+            powerRelay.powerDownEvent.AddHandler(this, OnPowerStatus);
+#endif
 
 
             InvokeRepeating("RequestLight", 0, 5);

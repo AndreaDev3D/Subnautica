@@ -1,5 +1,5 @@
 ﻿using AD3D_Common.Extentions;
-using AD3D_LightSolutionMod.SN.Runtime;
+using AD3D_LightSolution.Runtime;
 using Nautilus.Assets;
 using Nautilus.Assets.Gadgets;
 using Nautilus.Crafting;
@@ -8,7 +8,7 @@ using Nautilus.Utility;
 using UnityEngine;
 using static CraftData;
 
-namespace AD3D_LightSolution.SN.Items.Buildable
+namespace AD3D_LightSolution.Items.Buildable
 {
     public class LightStandPrefab
     {

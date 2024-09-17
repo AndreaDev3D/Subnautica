@@ -1,13 +1,16 @@
 ﻿using AD3D_Common.Extentions;
-using AD3D_LightSolution.BZ.Runtime;
+using AD3D_LightSolution.Runtime;
 using Nautilus.Assets;
 using Nautilus.Assets.Gadgets;
 using Nautilus.Crafting;
 using Nautilus.Extensions;
 using Nautilus.Utility;
 using UnityEngine;
+#if SN
+using static CraftData;
+#endif
 
-namespace AD3D_LightSolution.BZ.Items.Buildable
+namespace AD3D_LightSolution.Items.Buildable
 {
     public class LightSwitchPrefab
     {

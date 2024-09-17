@@ -1,14 +1,19 @@
 ﻿using AD3D_Common.Utils;
-using AD3D_LightSolution.BZ.Base;
+using AD3D_Common.Extentions;
+using AD3D_LightSolution.Base;
 using Nautilus.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using static AD3D_LightSolution.BZ.Base.Enumerators;
+using static AD3D_LightSolution.Base.Enumerators;
 
-namespace AD3D_LightSolution.BZ.Runtime
+#if SN
+using static Atlas.Sprite;
+#endif
+
+namespace AD3D_LightSolution.Runtime
 {
     public class LightSwitch : MonoBehaviour, IProtoEventListener, IHandTarget
     {
@@ -86,9 +91,14 @@ namespace AD3D_LightSolution.BZ.Runtime
 
 
             // Load Sprites
+#if SN
+            _btnOn = Plugin.AssetBundle.LoadAsset<Texture2D>($"btnOn.png").ToSprite();
+            _btnOff = Plugin.AssetBundle.LoadAsset<Texture2D>($"btnOff.png").ToSprite();
+#elif BZ
+
             _btnOn = ImageUtils.LoadSpriteFromTexture(Plugin.AssetBundle.LoadAsset<Texture2D>($"btnOn.png"));
             _btnOff = ImageUtils.LoadSpriteFromTexture(Plugin.AssetBundle.LoadAsset<Texture2D>($"btnOff.png"));
-
+#endif
 
             _btnOpenSetting = this.gameObject.FindComponentByName<Button>("btnOpenSetting");
             _btnOpenSetting.onClick.AddListener(() => ToggleSettingsDisplay(true));

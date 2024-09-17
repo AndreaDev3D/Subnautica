@@ -1,4 +1,4 @@
-﻿namespace AD3D_LightSolution.BZ.Base
+﻿namespace AD3D_LightSolution.Base
 {
     public static class Enumerators
     {
